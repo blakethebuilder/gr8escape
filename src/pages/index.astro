@@ -5,6 +5,7 @@ import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import LockPuzzle from '~/components/widgets/LockPuzzle.astro';
 
 const metadata = {
   title: 'The Gr8 Escape — SA\'s Highest Rated Escape Room',
@@ -52,6 +53,11 @@ const metadata = {
       <p class="text-xl text-accent font-semibold">With built-in adventure, competition, and suspense!</p>
       <p class="text-2xl text-white font-bold mt-4">You are guaranteed a <span class="text-accent">Gr8 time!</span></p>
     </div>
+  </section>
+
+  <!-- Lock Puzzle -->
+  <section class="py-20" style="background-color:#242424">
+    <LockPuzzle />
   </section>
 
   <!-- 3 Feature Cards: Fun Night Out, Special Events, Team Building -->

@@ -2,46 +2,20 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 const rooms = [
-  {
-    name: 'Asylum Escape',
-    difficulty: '7/10',
-    story: 'You and your team have been sent to investigate the office of Dr. Mulasy Tretour and gather evidence on his vicious crimes. You have 60 minutes to find a way out before they get hold of you.',
-    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Asylum01b-600x600.jpg',
-    icon: '🧪',
-  },
-  {
-    name: 'Trapped',
-    difficulty: '8/10',
-    story: 'You are welcomed by a Butler at the home of wealthy gold trader Mr. Charles A Clarence. A fire breaks out — 60 minutes to find another way out before you are burned alive!',
-    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Trapped01b-600x600.jpg',
-    icon: '🔥',
-  },
-  {
-    name: 'The Hunted',
-    difficulty: '8.5/10',
-    story: "You journey to your uncle's abandoned cabin in Eldertree. The door slams shut. All you hear is movement in the woods... Can YOU escape the creature?",
-    img: 'https://thegr8escape.co.za/wp-content/uploads/2023/11/TheHunted-600x600.jpg',
-    icon: '🌲',
-  },
-  {
-    name: 'Nightmare',
-    difficulty: '9/10',
-    story: 'On the night of the Dead Moon, The Sandman comes to play. Ensnared by his haunting lullaby, you have 60 minutes before he claims you forever.',
-    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Nightmare02b-600x600.jpg',
-    icon: '🌙',
-  },
-  {
-    name: 'The Basement',
-    difficulty: '10/10',
-    story: "Waking up in a dark basement, chains dragging over metal. You are pawns in a psychopath's game — can you make it out?",
-    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Basement01b-600x600.jpg',
-    icon: '⛓️',
-  },
+  { name: 'Asylum Escape', difficulty: '7/10', img: '/assets/asylum.jpg', icon: '🧪',
+    story: 'You and your team have been sent to investigate the office of Dr. Mulasy Tretour. You have 60 minutes to find a way out before they get hold of you.' },
+  { name: 'Trapped', difficulty: '8/10', img: '/assets/trapped.jpg', icon: '🔥',
+    story: 'Welcomed by a Butler at a wealthy gold trader\'s home, a fire breaks out. 60 minutes to escape before you are burned alive!' },
+  { name: 'The Hunted', difficulty: '8.5/10', img: '/assets/hunted.jpg', icon: '🌲',
+    story: 'You journey to your uncle\'s abandoned cabin. The door slams shut. Can YOU escape the creature the town has fallen to?' },
+  { name: 'Nightmare', difficulty: '9/10', img: '/assets/nightmare.jpg', icon: '🌙',
+    story: 'The Sandman comes out on the night of the Dead Moon. 60 minutes before he claims you as one of his night terrors forever.' },
+  { name: 'The Basement', difficulty: '10/10', img: '/assets/basement.jpg', icon: '⛓️',
+    story: 'Waking up in a dark basement, chains dragging. You are pawns in a psychopath\'s game — can you make it out?' },
 ];
 ---
 
 <Layout metadata={{ title: 'Our Rooms — The Gr8 Escape' }}>
-  <!-- Hero -->
   <section class="py-20" style="background-color:#1a1a1a;background-image:url(/assets/bg-pattern.png)">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Escape Rooms</h1>
@@ -49,7 +23,6 @@ const rooms = [
     </div>
   </section>
 
-  <!-- Room Cards -->
   <section class="py-20" style="background-color:#242424">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,7 +47,6 @@ const rooms = [
     </div>
   </section>
 
-  <!-- Witch's Curse feature -->
   <section class="py-20" style="background-color:#1a1a1a">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="card-dark overflow-hidden md:flex">

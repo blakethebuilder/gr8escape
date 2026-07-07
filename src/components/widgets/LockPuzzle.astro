@@ -1,0 +1,166 @@
+---
+// ponytail: single-file interactive lock puzzle, no deps
+// Upgrade: daily riddle via API, confetti library, leaderboard
+---
+
+<div class="lock-puzzle" data-code="061" data-solved="false">
+  <div class="max-w-lg mx-auto px-4 sm:px-6 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">🔐 Can You Crack the Code?</h2>
+    <p class="text-gr8-gold text-sm font-semibold mb-4 uppercase tracking-wider">Solve the riddle to unlock a surprise</p>
+
+    <div class="riddle-box mb-6">
+      <p class="text-gray-300 italic text-lg">
+        "We count down from <span class="text-gr8-gold font-bold">60</span>,<br />
+        <span class="text-gr8-gold font-bold">0</span>ne team, <span class="text-gr8-gold font-bold">1</span> goal.<br />
+        What three numbers unlock the door?"
+      </p>
+    </div>
+
+    <div class="dials flex justify-center gap-4 mb-6">
+      {[0, 1, 2].map((i) => (
+        <div class="dial-group">
+          <button class="dial-btn dial-up" data-index={i} aria-label="Spin up">▲</button>
+          <div class="dial-display" data-index={i}>0</div>
+          <button class="dial-btn dial-down" data-index={i} aria-label="Spin down">▼</button>
+        </div>
+      ))}
+    </div>
+
+    <button class="btn-gr8 text-lg px-10 py-3 try-btn mb-4">UNLOCK</button>
+    <p class="message text-sm hidden"></p>
+
+    <!-- Reward (hidden until solved) -->
+    <div class="reward hidden">
+      <div class="mt-6 p-6 rounded-xl border-2 border-gr8-gold bg-gradient-to-b from-gr8-gold/10 to-transparent">
+        <div class="text-5xl mb-3">🎉</div>
+        <h3 class="text-2xl font-bold text-gr8-gold mb-2">YOU ESCAPED!</h3>
+        <p class="text-gray-300 mb-4">Sharp mind. Ready for the real thing?</p>
+        <a href="/bookings" class="btn-gr8 text-lg px-10 py-3">BOOK YOUR ESCAPE</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const puzzle = document.querySelector('.lock-puzzle');
+    if (!puzzle) return;
+    const code = puzzle.dataset.code.split('').map(Number);
+    const displays = puzzle.querySelectorAll('.dial-display');
+    const values = [0, 0, 0];
+    const msg = puzzle.querySelector('.message');
+    const reward = puzzle.querySelector('.reward');
+    const tryBtn = puzzle.querySelector('.try-btn');
+
+    function updateDisplay() {
+      displays.forEach((d, i) => { d.textContent = values[i]; });
+    }
+
+    function spin(index, dir) {
+      values[index] = (values[index] + dir + 10) % 10;
+      updateDisplay();
+      msg.classList.add('hidden');
+    }
+
+    puzzle.querySelectorAll('.dial-up').forEach(btn => {
+      btn.addEventListener('click', () => spin(+btn.dataset.index, 1));
+    });
+    puzzle.querySelectorAll('.dial-down').forEach(btn => {
+      btn.addEventListener('click', () => spin(+btn.dataset.index, -1));
+    });
+
+    tryBtn.addEventListener('click', () => {
+      if (puzzle.dataset.solved === 'true') return;
+      const correct = values.every((v, i) => v === code[i]);
+      if (correct) {
+        puzzle.dataset.solved = 'true';
+        msg.className = 'text-sm text-gr8-gold font-bold';
+        msg.textContent = '✓ ACCESS GRANTED';
+        msg.classList.remove('hidden');
+        reward.classList.remove('hidden');
+        tryBtn.textContent = '✓ ESCAPED';
+        tryBtn.disabled = true;
+        confetti();
+      } else {
+        msg.className = 'text-sm text-red-500 font-bold shake';
+        msg.textContent = '✗ WRONG COMBO — TRY AGAIN';
+        msg.classList.remove('hidden');
+        puzzle.querySelector('.dials').classList.remove('shake-anim');
+        // force reflow
+        void puzzle.querySelector('.dials').offsetWidth;
+        puzzle.querySelector('.dials').classList.add('shake-anim');
+        setTimeout(() => {
+          puzzle.querySelector('.dials').classList.remove('shake-anim');
+        }, 500);
+      }
+    });
+
+    // ponytail: inline confetti — works, no lib needed. Upgrade: canvas confetti for more pizazz
+    function confetti() {
+      const colors = ['#E53935', '#FFB900', '#ffffff', '#C62828'];
+      for (let i = 0; i < 60; i++) {
+        const el = document.createElement('div');
+        el.style.cssText = `
+          position: fixed; width: 8px; height: 8px;
+          background: ${colors[i % colors.length]};
+          border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+          left: ${Math.random() * 100}vw;
+          top: -10px;
+          z-index: 9999;
+          pointer-events: none;
+          animation: confetti-fall ${1.5 + Math.random() * 2}s ease-out forwards;
+          animation-delay: ${Math.random() * 0.5}s;
+          transform: rotate(${Math.random() * 360}deg);
+        `;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 4000);
+      }
+    }
+  })();
+</script>
+
+<style is:inline>
+  .dial-group { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .dial-display {
+    width: 72px; height: 80px;
+    background: #0d0d0d;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; font-weight: 800;
+    color: #E53935;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.3s;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .dial-group:hover .dial-display { border-color: #E53935; }
+  .dial-btn {
+    width: 72px; height: 36px;
+    background: #1e1e1e; border: 1px solid #333;
+    border-radius: 6px; color: #aaa;
+    font-size: 0.75rem; cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .dial-btn:hover { background: #333; color: #E53935; border-color: #E53935; }
+  .dial-btn:active { transform: scale(0.95); }
+
+  .riddle-box {
+    background: #1e1e1e; border: 1px solid #333;
+    border-radius: 12px; padding: 1.25rem;
+  }
+
+  .shake-anim { animation: shake 0.4s ease-in-out; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+  }
+
+  @keyframes confetti-fall {
+    0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+  }
+</style>

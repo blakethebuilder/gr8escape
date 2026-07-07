@@ -21,6 +21,9 @@
 
   --animate-fade: fadeInUp 1s both;
 
+  --color-gr8-red: #E53935;
+  --color-gr8-gold: #FFB900;
+
   @keyframes fadeInUp {
     0% {
       opacity: 0;
