@@ -1,0 +1,98 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const rooms = [
+  {
+    name: 'Asylum Escape',
+    difficulty: '7/10',
+    story: 'You and your team have been sent to investigate the office of Dr. Mulasy Tretour and gather evidence on his vicious crimes. You have 60 minutes to find a way out before they get hold of you.',
+    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Asylum01b-600x600.jpg',
+    icon: '🧪',
+  },
+  {
+    name: 'Trapped',
+    difficulty: '8/10',
+    story: 'You are welcomed by a Butler at the home of wealthy gold trader Mr. Charles A Clarence. A fire breaks out — 60 minutes to find another way out before you are burned alive!',
+    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Trapped01b-600x600.jpg',
+    icon: '🔥',
+  },
+  {
+    name: 'The Hunted',
+    difficulty: '8.5/10',
+    story: "You journey to your uncle's abandoned cabin in Eldertree. The door slams shut. All you hear is movement in the woods... Can YOU escape the creature?",
+    img: 'https://thegr8escape.co.za/wp-content/uploads/2023/11/TheHunted-600x600.jpg',
+    icon: '🌲',
+  },
+  {
+    name: 'Nightmare',
+    difficulty: '9/10',
+    story: 'On the night of the Dead Moon, The Sandman comes to play. Ensnared by his haunting lullaby, you have 60 minutes before he claims you forever.',
+    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Nightmare02b-600x600.jpg',
+    icon: '🌙',
+  },
+  {
+    name: 'The Basement',
+    difficulty: '10/10',
+    story: "Waking up in a dark basement, chains dragging over metal. You are pawns in a psychopath's game — can you make it out?",
+    img: 'https://thegr8escape.co.za/wp-content/uploads/2024/02/Basement01b-600x600.jpg',
+    icon: '⛓️',
+  },
+];
+---
+
+<Layout metadata={{ title: 'Our Rooms — The Gr8 Escape' }}>
+  <!-- Hero -->
+  <section class="py-20" style="background-color:#1a1a1a;background-image:url(/assets/bg-pattern.png)">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Escape Rooms</h1>
+      <p class="text-lg text-gray-300">5 unique rooms + a special outdoor experience.</p>
+    </div>
+  </section>
+
+  <!-- Room Cards -->
+  <section class="py-20" style="background-color:#242424">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {rooms.map(r => (
+          <div class="card-dark overflow-hidden">
+            <div class="h-48 bg-cover bg-center" style={`background-image:url(${r.img})`}>
+              <div class="w-full h-full bg-gradient-to-t from-[#1e1e1e]/90 to-transparent flex items-end p-4">
+                <span class="text-4xl">{r.icon}</span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between mb-3">
+                <h2 class="text-xl font-bold text-white">{r.name}</h2>
+                <span class="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded">{r.difficulty}</span>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">{r.story}</p>
+              <a href="https://thegr8escape.co.za/bookings/" target="_blank" class="btn-gr8 w-full text-center inline-block text-sm py-3">BOOK NOW</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Witch's Curse feature -->
+  <section class="py-20" style="background-color:#1a1a1a">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="card-dark overflow-hidden md:flex">
+        <div class="md:w-1/3 h-64 md:h-auto bg-gradient-to-br from-purple-900/60 to-[#1a1a1a] flex items-center justify-center">
+          <span class="text-7xl">🧙‍♀️</span>
+        </div>
+        <div class="md:w-2/3 p-8">
+          <span class="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded mb-3 inline-block">OUTDOOR EXPERIENCE</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">The Witch's Curse</h2>
+          <p class="text-gray-300 mb-4">Hidden within a container at <strong class="text-white">The Golf Place — Fore-Ways</strong> lies a curse waiting to be broken. Solve magical puzzles in just <strong class="text-white">45 minutes</strong>.</p>
+          <div class="grid grid-cols-3 gap-4 text-center mb-6 max-w-sm">
+            <div class="bg-[#242424] rounded-lg p-3"><span class="text-red-500 font-bold block">2–4</span><span class="text-xs text-gray-400">Players</span></div>
+            <div class="bg-[#242424] rounded-lg p-3"><span class="text-red-500 font-bold block">45 min</span><span class="text-xs text-gray-400">Duration</span></div>
+            <div class="bg-[#242424] rounded-lg p-3"><span class="text-red-500 font-bold block">R320</span><span class="text-xs text-gray-400">Per person</span></div>
+          </div>
+          <a href="https://thegr8escape.co.za/bookings/" target="_blank" class="btn-gr8 inline-block">BOOK THIS ROOM</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

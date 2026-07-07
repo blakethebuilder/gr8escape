@@ -1,22 +1,21 @@
 site:
-  name: Your Business
-  site: 'https://yourbusiness.co.za'
+  name: The Gr8 Escape
+  site: 'https://gr8.smartintegrate.co.za'
   base: '/'
   trailingSlash: false
 
   googleSiteVerificationId: ''
 
-# Default SEO metadata
 metadata:
   title:
-    default: Your Business
-    template: '%s — Your Business'
-  description: "Professional services and solutions for your business needs."
+    default: The Gr8 Escape
+    template: '%s — The Gr8 Escape'
+  description: "South Africa's highest rated Escape Room. Immersive puzzle adventures in Fourways, Johannesburg."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Your Business
+    site_name: The Gr8 Escape
     images:
       - url: '~/assets/images/default.png'
         width: 1200
@@ -33,40 +32,12 @@ i18n:
 
 apps:
   blog:
-    isEnabled: true
-    postsPerPage: 6
-
-    post:
-      isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
-      robots:
-        index: true
-
-    list:
-      isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
-      robots:
-        index: true
-
-    category:
-      isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
-      robots:
-        index: true
-
-    tag:
-      isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
-      robots:
-        index: false
-
-    isRelatedPostsEnabled: true
-    relatedPostsCount: 4
+    isEnabled: false
 
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: null
 
 ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'dark'

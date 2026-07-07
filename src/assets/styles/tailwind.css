@@ -54,7 +54,7 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+  @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-red-500 focus:ring-offset-red-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
 }
 
 @utility btn-primary {
@@ -69,13 +69,33 @@
   @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
 }
 
+/* Gr8 Escape brand overrides */
+:root {
+  --color-gr8-red: #E53935;
+  --color-gr8-red-hover: #C62828;
+  --color-gr8-gold: #FFB900;
+  --color-gr8-dark: #242424;
+  --color-gr8-darker: #1a1a1a;
+  --color-gr8-black: #0d0d0d;
+}
+
+.dark {
+  --aw-color-primary: #E53935;
+  --aw-color-secondary: #C62828;
+  --aw-color-accent: #FFB900;
+  --aw-color-text-page: #ffffff;
+  --aw-color-text-muted: #aaaaaa;
+  --aw-color-bg-page: #242424;
+  --aw-color-bg-page-dark: #1a1a1a;
+}
+
 #header.scroll > div:first-child {
-  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
-  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+  @apply bg-page md:bg-page;
+  box-shadow: 0 0.375rem 1.5rem 0 rgb(0 0 0 / 30%);
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+  @apply bg-page md:bg-[#1a1a1ae6] border-b border-gray-700/30;
   box-shadow: none;
 }
 
@@ -114,4 +134,48 @@
 
 .dd *:first-child {
   margin-top: 0;
+}
+
+/* Custom utilities */
+.bg-maze-pattern {
+  background-image: url('/assets/bg-pattern.png');
+  background-repeat: repeat;
+}
+
+.btn-gr8 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #E53935, #C62828);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-gr8:hover {
+  background: linear-gradient(135deg, #C62828, #B71C1C);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(36,36,36,0.85) 0%, rgba(36,36,36,0.6) 50%, rgba(13,13,13,0.85) 100%);
+}
+
+.card-dark {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+.card-dark:hover {
+  border-color: #E53935;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(229, 57, 53, 0.15);
 }

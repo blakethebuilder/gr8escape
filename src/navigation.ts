@@ -3,12 +3,11 @@ import { getPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     { text: 'Home', href: '/' },
-    { text: 'Services', href: getPermalink('/services') },
-    { text: 'Pricing', href: getPermalink('/pricing') },
-    { text: 'About', href: getPermalink('/about') },
+    { text: 'Rooms', href: getPermalink('/rooms') },
+    { text: 'Rules & FAQs', href: getPermalink('/rules-faqs') },
     { text: 'Contact', href: getPermalink('/contact') },
   ],
-  actions: [{ text: 'Get Started', href: '/contact' }],
+  actions: [{ text: 'BOOK NOW!', href: 'https://thegr8escape.co.za/bookings/', target: '_blank' }],
 };
 
 export const footerData = {
@@ -17,39 +16,24 @@ export const footerData = {
       title: 'Quick Links',
       links: [
         { text: 'Home', href: '/' },
-        { text: 'Services', href: '/services' },
-        { text: 'Pricing', href: '/pricing' },
-        { text: 'About', href: '/about' },
+        { text: 'Rooms', href: '/rooms' },
+        { text: 'Rules & FAQs', href: '/rules-faqs' },
         { text: 'Contact', href: '/contact' },
       ],
     },
     {
-      title: 'Services',
+      title: 'Contact',
       links: [
-        { text: 'Service One', href: '/services' },
-        { text: 'Service Two', href: '/services' },
-        { text: 'Service Three', href: '/services' },
-      ],
-    },
-    {
-      title: 'Support',
-      links: [
-        { text: 'Contact Us', href: '/contact' },
-        { text: 'Privacy Policy', href: '/privacy' },
-        { text: 'Terms of Service', href: '/terms' },
+        { text: 'info@thegr8escape.co.za', href: 'mailto:info@thegr8escape.co.za' },
+        { text: '076 362 0765', href: 'tel:0763620765' },
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   socialLinks: [
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://facebook.com/thegr8escape' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://instagram.com/thegr8escape' },
+    { ariaLabel: 'TikTok', icon: 'tabler:brand-tiktok', href: '#' },
   ],
-  footNote: `
-    All rights reserved.
-  `,
+  footNote: `© 2026 The Gr8 Escape. All rights reserved.`,
 };
