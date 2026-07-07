@@ -28,7 +28,7 @@
       ))}
     </div>
 
-    <button class="btn-gr8 text-lg px-10 py-3 try-btn mb-4">UNLOCK</button>
+    <button class="btn-gr8 text-base px-10 py-3 try-btn mb-4">UNLOCK</button>
     <p class="message text-sm hidden"></p>
 
     <!-- Reward (hidden until solved) -->
@@ -137,12 +137,15 @@
   }
   .dial-group:hover .dial-display { border-color: #E53935; }
   .dial-btn {
-    width: 72px; height: 36px;
+    width: 72px; height: 44px;
     background: #1e1e1e; border: 1px solid #333;
     border-radius: 6px; color: #aaa;
-    font-size: 0.75rem; cursor: pointer;
+    font-size: 16px; cursor: pointer;
     transition: all 0.2s;
     display: flex; align-items: center; justify-content: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
   }
   .dial-btn:hover { background: #333; color: #E53935; border-color: #E53935; }
   .dial-btn:active { transform: scale(0.95); }
