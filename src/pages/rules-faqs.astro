@@ -4,80 +4,93 @@ import Layout from '~/layouts/PageLayout.astro';
 const metadata = {
   title: 'Rules & FAQs — The Gr8 Escape',
 };
+
+const rules = [
+  { icon: '🔞', title: 'Age Requirement', desc: 'Players under 16 must be accompanied by an adult. Minimum age is 10 years old.' },
+  { icon: '📱', title: 'No Phones', desc: 'No cell phones, cameras, or recording devices are allowed inside the room. This keeps the experience fair for all players.' },
+  { icon: '🔦', title: 'No Excessive Force', desc: "Don't force anything open or use excessive force. Our rooms are designed with clever puzzles — not brute strength." },
+  { icon: '⏰', title: 'Arrive Early', desc: 'Please arrive 15 minutes before your booking. Late arrivals may shorten your game time.' },
+  { icon: '🚫', title: 'No Food or Drinks', desc: 'No food, drinks, or gum are allowed inside the game rooms.' },
+  { icon: '💡', title: 'Ask for Hints', desc: 'Stuck? Use the hint system! Our Games Master is watching and ready to help — just ask!' },
+];
+
+const faqs = [
+  { q: 'What happens if I need to cancel?', a: 'Please refer to our refund policy on the Contact page for cancellation and refund details.' },
+  { q: 'What should I bring?', a: 'Just yourself and your team! Everything you need is provided in the room. Please leave phones and bags outside.' },
+  { q: 'Can I book a private event?', a: 'Absolutely! We accommodate birthdays, bachelor/bachelorette parties, corporate team building, and more. See our Special Events page for packages.' },
+  { q: "What if we don't escape in time?", a: "Don't worry! The Games Master will let you out. You can always come back and try again!" },
+  { q: 'Is the room wheelchair accessible?', a: "Please contact us to discuss accessibility needs and we'll do our best to accommodate you." },
+  { q: 'How do I book?', a: 'Book directly through our online booking system. Visit the Bookings page to get started.' },
+];
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero -->
-  <section class="py-24 bg-[#1a1a1a] text-center">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Rules & FAQs</h1>
-      <p class="text-lg text-gray-300">Everything you need to know before your escape room adventure.</p>
+  <section class="relative py-24 overflow-hidden" style="background:#0a0a0a">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="dot-grid"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+        Rules <span class="text-gr8-red">&</span> <span class="text-gr8-gold">FAQs</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+        Everything you need to know before your escape room adventure.
+      </p>
     </div>
   </section>
 
   <!-- Rules -->
-  <section class="py-16 bg-[#242424]">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl font-bold text-white mb-8">Rules</h2>
-      <div class="space-y-4">
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">🔞 Age Requirement</h3>
-          <p class="text-gray-300">Players under 16 must be accompanied by an adult. Minimum age is 10 years old.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">📱 No Phones</h3>
-          <p class="text-gray-300">No cell phones, cameras, or recording devices are allowed inside the room. This keeps the experience fair for all players.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">🔦 No Excessive Force</h3>
-          <p class="text-gray-300">Don't force anything open or use excessive force. Our rooms are designed with clever puzzles — not brute strength.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">⏰ Arrive Early</h3>
-          <p class="text-gray-300">Please arrive 15 minutes before your booking. Late arrivals may shorten your game time.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">🏋️ No Food or Drinks</h3>
-          <p class="text-gray-300">No food, drinks, or gum are allowed inside the game rooms.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">💡 Ask for Hints</h3>
-          <p class="text-gray-300">Stuck? Use the hint system! Our Games Master is watching and ready to help — just ask!</p>
-        </div>
+  <section class="py-20" style="background:#1a1a1a">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">The Rules</h2>
+      <p class="text-gray-400 mb-10 text-lg">A few ground rules to keep the fun safe and fair for everyone.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        {rules.map((rule) => (
+          <div class="card-dark">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl flex-shrink-0">{rule.icon}</span>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-1">{rule.title}</h3>
+                <p class="text-gray-400 leading-relaxed">{rule.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- FAQs -->
-  <section class="py-16 bg-[#1a1a1a]">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
-      <div class="space-y-4">
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">What happens if I need to cancel?</h3>
-          <p class="text-gray-300">Please refer to our refund policy on the Contact page for cancellation and refund details.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">What should I bring?</h3>
-          <p class="text-gray-300">Just yourself and your team! Everything you need is provided in the room. Please leave phones and bags outside.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">Can I book a private event?</h3>
-          <p class="text-gray-300">Absolutely! We accommodate birthdays, bachelor/bachelorette parties, corporate team building, and more. See our Special Events page for packages.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">What if we don't escape in time?</h3>
-          <p class="text-gray-300">Don't worry! The Games Master will let you out. You can always come back and try again!</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">Is the room wheelchair accessible?</h3>
-          <p class="text-gray-300">Please contact us to discuss accessibility needs and we'll do our best to accommodate you.</p>
-        </div>
-        <div class="card-dark p-6">
-          <h3 class="text-xl font-bold text-white mb-2">How do I book?</h3>
-          <p class="text-gray-300">Book directly through our online booking system. Visit the Bookings page to get started.</p>
-        </div>
+  <section class="py-20" style="background:#0a0a0a">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Frequently Asked Questions</h2>
+      <p class="text-gray-400 mb-10 text-lg">Got questions? We've got answers.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        {faqs.map((faq) => (
+          <div class="card-dark">
+            <h3 class="text-lg font-bold text-gr8-gold mb-2">{faq.q}</h3>
+            <p class="text-gray-400 leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 </Layout>
+
+<style is:global>
+  .dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(229,57,53,0.15) 1px, transparent 1px);
+    background-size: 48px 48px;
+    animation: dot-pulse 4s ease-in-out infinite;
+    opacity: 0.6;
+  }
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+</style>

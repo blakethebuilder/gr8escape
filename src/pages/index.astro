@@ -87,84 +87,123 @@ const metadata = {
     </div>
   </section>
 
-  <!-- What is an Escape Room? -->
-  <section class="py-20" style="background-color:#1a1a1a">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">What is an Escape Room?</h2>
-      <p class="text-lg text-gray-300 mb-4">
-        An escape room is a physical adventure game where a group of <strong class="text-white">2 – 7 players</strong> are given a thrilling scenario to work through.
-      </p>
-      <p class="text-lg text-gray-300 mb-4">
-        Your team will solve a series of puzzles, riddles, and clues to advance through the room and achieve the objective at hand — all under <strong class="text-white">60 minutes!</strong>
-      </p>
-      <p class="text-xl text-gr8-gold font-semibold">With built-in adventure, competition, and suspense!</p>
-      <p class="text-2xl text-white font-bold mt-4">You are guaranteed a <span class="text-gr8-gold">Gr8 time!</span></p>
+  <!-- What is an Escape Room? — with visual punch -->
+  <section class="py-20 relative overflow-hidden" style="background-color:#1a1a1a">
+    <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle,rgba(229,57,53,0.08) 1px,transparent 1px);background-size:32px 32px"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div class="inline-flex items-center gap-2 bg-red-500/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">
+        <span>🎯</span> The Experience
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">What is an <span class="text-gr8-red">Escape Room</span>?</h2>
+      <div class="max-w-3xl mx-auto space-y-4 text-lg text-gray-300 leading-relaxed">
+        <p>
+          An escape room is a physical adventure game where a group of <strong class="text-white">2–7 players</strong> are locked in a themed room and given a thrilling scenario to work through.
+        </p>
+        <p>
+          Your team must solve a series of puzzles, riddles, and clues to advance through the room and complete the objective — all under <strong class="text-white">60 minutes!</strong>
+        </p>
+      </div>
+      <div class="mt-8 grid grid-cols-3 gap-4 max-w-lg mx-auto">
+        <div class="bg-[#242424] rounded-xl p-4 border border-white/5">
+          <div class="text-3xl mb-1">🧩</div>
+          <div class="text-white font-bold text-lg">2–7</div>
+          <div class="text-gray-500 text-xs">Players</div>
+        </div>
+        <div class="bg-[#242424] rounded-xl p-4 border border-white/5">
+          <div class="text-3xl mb-1">⏱️</div>
+          <div class="text-white font-bold text-lg">60</div>
+          <div class="text-gray-500 text-xs">Minutes</div>
+        </div>
+        <div class="bg-[#242424] rounded-xl p-4 border border-white/5">
+          <div class="text-3xl mb-1">🏆</div>
+          <div class="text-white font-bold text-lg">5★</div>
+          <div class="text-gray-500 text-xs">Rating</div>
+        </div>
+      </div>
+      <p class="text-xl text-gr8-gold font-semibold mt-8">With built-in adventure, competition, and suspense!</p>
+      <p class="text-2xl text-white font-bold mt-2">You are guaranteed a <span class="text-gr8-gold">Gr8 time!</span> 🎉</p>
     </div>
   </section>
 
   <!-- Lock Puzzle -->
-  <section class="py-20" style="background-color:#242424">
-    <LockPuzzle />
-  </section>
-
-  <!-- 3 Feature Cards: Fun Night Out, Special Events, Team Building -->
-  <section class="py-20" style="background-color:#242424">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="max-w-md mx-auto">
-        <!-- Fun Night Out -->
-        <div class="card-dark text-center">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center">
-            <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"/></svg>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-4">Fun Night Out</h3>
-          <p class="text-gray-400 mb-4">
-            Are you spending every night watching the same movies? Switch it up with a fun night out at the Escape Room.
-          </p>
-          <p class="text-gray-400">
-            Grab your smartest friends and family and see if you have what it takes to <strong class="text-white">escape the room.</strong>
-          </p>
-        </div>
-      </div>
+  <section class="py-20 relative overflow-hidden" style="background-color:#242424">
+    <div class="absolute inset-0 opacity-20" style="background-image:radial-gradient(circle,rgba(229,57,53,0.08) 1px,transparent 1px);background-size:32px 32px"></div>
+    <div class="relative">
+      <LockPuzzle />
     </div>
   </section>
 
-  <!-- Special Events & Team Building -->
-  <section class="py-20" style="background-color:#1a1a1a">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="card-dark text-center">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center">
-            <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+  <!-- Feature Cards: Fun Night Out, Special Events, Team Building -->
+  <section class="py-20 relative overflow-hidden" style="background-color:#0d0d0d">
+    <div class="absolute inset-0 dot-grid opacity-30"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 bg-red-500/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
+          <span>🔥</span> Why Choose Us
+        </div>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">More Than Just <span class="text-gr8-red">a Game</span></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Fun Night Out -->
+        <div class="group card-dark text-center relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gr8-red to-gr8-gold opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-gr8-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"/></svg>
           </div>
-          <h3 class="text-2xl font-bold text-white mb-4">Special Events</h3>
+          <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gr8-red transition-colors">Fun Night Out</h3>
+          <p class="text-gray-400 mb-4">
+            Are you spending every night watching the same movies? Switch it up with a fun night out at the Escape Room.
+          </p>
+          <p class="text-gray-400 text-sm">
+            Grab your smartest friends and see if you have what it takes to <strong class="text-white">escape the room.</strong>
+          </p>
+        </div>
+
+        <!-- Special Events -->
+        <div class="group card-dark text-center relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gr8-gold to-gr8-red opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-gr8-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gr8-red transition-colors">Special Events</h3>
           <p class="text-gray-400 mb-4">Birthday parties, bachelor/bachelorette, or just fun with friends — we have packages to make it special.</p>
           <div class="space-y-2 text-left max-w-xs mx-auto">
             <p class="text-gray-400 text-sm flex justify-between"><span>Birthday Package</span><span class="text-white font-bold">R500</span></p>
             <p class="text-gray-400 text-sm flex justify-between"><span>Challenge Wheel</span><span class="text-white font-bold">R50</span></p>
-            <p class="text-gray-400 text-sm flex justify-between"><span>Bachelor's Package</span><span class="text-white font-bold">R550/pp</span></p>
-            <p class="text-gray-400 text-sm flex justify-between"><span>Bachelorette's Package</span><span class="text-white font-bold">R450/pp</span></p>
+            <p class="text-gray-400 text-sm flex justify-between"><span>Bachelor's</span><span class="text-white font-bold">R550/pp</span></p>
+            <p class="text-gray-400 text-sm flex justify-between"><span>Bachelorette's</span><span class="text-white font-bold">R450/pp</span></p>
           </div>
         </div>
-        <div class="card-dark text-center">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center">
-            <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+
+        <!-- Team Building -->
+        <div class="group card-dark text-center relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gr8-red to-gr8-gold opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-gr8-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
           </div>
-          <h3 class="text-2xl font-bold text-white mb-4">Team Building</h3>
+          <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-gr8-red transition-colors">Team Building</h3>
           <p class="text-gray-400 mb-2">Don't spend another team building day doing trust falls.</p>
-          <p class="text-gray-400">The Escape Room provides the ultimate team building activity because everyone shares the same goal — <strong class="text-white">to escape the room.</strong></p>
+          <p class="text-gray-400 text-sm">The ultimate team activity because everyone shares the same goal — <strong class="text-white">to escape together.</strong></p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20" style="background-color:#1a1a1a; background-image:url(/assets/bg-pattern.png)">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Do you have what it takes to Escape?</h2>
-      <p class="text-xl text-gray-300 mb-8">
-        Book now to experience immersive storytelling, mind bending challenges, and collaborative puzzle solving in each of our unique Escape Rooms!
+  <section class="py-20 relative overflow-hidden" style="background-color:#0d0d0d">
+    <div class="absolute inset-0">
+      <div class="dot-grid"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0d0d0d 70%)"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Do You Have What It Takes to <span class="text-gr8-red">Escape</span>?</h2>
+      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+        Immersive storytelling, mind bending challenges, and collaborative puzzle solving await. The clock is ticking.
       </p>
-      <a href="/bookings" class="btn-gr8 text-lg px-10 py-4">BOOK NOW</a>
+      <a href="/bookings" class="btn-gr8 text-lg px-12 py-4 shadow-lg shadow-red-500/30 inline-flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        BOOK YOUR ESCAPE
+      </a>
     </div>
   </section>
 </Layout>
