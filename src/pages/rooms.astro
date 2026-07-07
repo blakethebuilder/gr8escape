@@ -38,7 +38,7 @@ const rooms = [
             <div class="room-card-img h-56 bg-cover bg-center relative" style={`background-image:url(${r.img})`}>
               <div class="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] via-[#1e1e1e]/30 to-transparent"></div>
               <span class="absolute bottom-3 left-3 text-5xl">{r.icon}</span>
-              <span class="absolute top-3 right-3 difficulty-badge">{r.difficulty}</span>
+              <span class="absolute top-3 right-3 difficulty-badge">DIFFICULTY {r.difficulty}</span>
             </div>
             <div class="p-5 flex flex-col flex-1">
               <h2 class="text-xl font-bold text-white mb-3">{r.name}</h2>
@@ -142,11 +142,11 @@ const rooms = [
     align-items: center;
     background: linear-gradient(135deg, #E53935, #C62828);
     color: white;
-    font-weight: 800;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
+    font-weight: 700;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
     border-radius: 9999px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     box-shadow: 0 2px 10px rgba(229,57,53,0.4);
   }
 
