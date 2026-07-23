@@ -30,6 +30,22 @@ Every booking link on the site points to either:
 
 There are **20+ booking CTAs** across the site — header button, homepage CTA, room cards, murder mystery cards, availability page, contact page, lock puzzle reward, footer.
 
+### Design System (Match This In Your Booking UI)
+
+- **Dark backgrounds**: `#080808` (deepest), `#0d0d0d`, `#141414` (mid), `#1a1a1a` (cards)
+- **Red**: `#E53935` (primary, buttons, accents)
+- **Teal/Cyan**: `#06B6D4` (secondary accent, pricing, links)
+- **Borders**: `rgba(255,255,255,0.06)` to `rgba(255,255,255,0.1)`
+- **Font**: Inter Variable, 900 weight headings, 400-700 body
+- **Border radius**: `0.6rem` buttons, `0.75rem`–`1rem` cards
+- **Hover**: `translateY(-2px)` to `-4px`, box-shadow glows
+- **Buttons**: Red gradient `#E53935 → #B71C1C` with shimmer overlay
+
+CSS variables:
+```css
+:root { --red: #E53935; --red-dark: #B71C1C; --teal: #06B6D4; --teal-dark: #0891B2; --bg-deep: #080808; --bg-dark: #0d0d0d; --bg-mid: #141414; --bg-card: #1a1a1a; }
+```
+
 ---
 
 ## 2. Real Business Content (from thegr8escape.co.za)

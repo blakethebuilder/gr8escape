@@ -1,7 +1,5 @@
 ---
-// Gr8 Escape custom header — dark, clean, bold
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-
 function isActive(path: string) {
   if (path === '/') return currentPath === '/';
   return currentPath.startsWith(path);
@@ -11,28 +9,53 @@ function isActive(path: string) {
 <header id="gr8-header" class="fixed top-0 left-0 right-0 z-50" style="background:#0d0d0d; border-bottom:1px solid #222">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex items-center justify-between h-16 md:h-20">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2 flex-shrink-0">
         <img src="/assets/logo-main.png" alt="The Gr8 Escape" class="h-8 md:h-10" />
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+      <nav class="hidden md:flex items-center" aria-label="Main navigation">
         <a href="/" class={`nav-link ${isActive('/') ? 'nav-active' : ''}`}>Home</a>
-        <a href="/rooms" class={`nav-link ${isActive('/rooms') ? 'nav-active' : ''}`}>Rooms</a>
-        <a href="/murder-mysteries" class={`nav-link ${isActive('/murder-mysteries') ? 'nav-active' : ''}`}>Murder Mysteries</a>
-        <a href="/book" class={`nav-link ${isActive('/book') ? 'nav-active' : ''}`}>Book</a>
+
+        <div class="nav-dropdown">
+          <a href="/rooms" class={`nav-link ${isActive('/rooms') ? 'nav-active' : ''}`}>Escape Rooms ▾</a>
+          <div class="dropdown-menu">
+            <a href="/rooms">All Rooms</a>
+            <a href="/rooms">Asylum Escape <span class="drop-badge">7/10</span></a>
+            <a href="/rooms">Trapped <span class="drop-badge">8/10</span></a>
+            <a href="/rooms">The Hunted <span class="drop-badge">8.5/10</span></a>
+            <a href="/rooms">Nightmare <span class="drop-badge">9/10</span></a>
+            <a href="/rooms">The Basement <span class="drop-badge">10/10</span></a>
+            <a href="/rooms">The Witch's Curse</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="/murder-mysteries" class={`nav-link ${isActive('/murder-mysteries') ? 'nav-active' : ''}`}>Murder Mysteries ▾</a>
+          <div class="dropdown-menu">
+            <a href="/murder-mysteries">All Mysteries</a>
+            <a href="/murder-mysteries">Ghosts of the Past</a>
+            <a href="/murder-mysteries">The Gilded Carcanet</a>
+            <a href="/murder-mysteries">The Cost of the Truth</a>
+            <a href="/murder-mysteries">The Road to Olympus</a>
+          </div>
+        </div>
+
         <a href="/rules-faqs" class={`nav-link ${isActive('/rules-faqs') ? 'nav-active' : ''}`}>Rules & FAQs</a>
-        <a href="/availability" class={`nav-link ${isActive('/availability') ? 'nav-active' : ''}`}>Availability</a>
         <a href="/contact" class={`nav-link ${isActive('/contact') ? 'nav-active' : ''}`}>Contact</a>
       </nav>
 
-      <!-- Book Now & Mobile Toggle -->
+      <!-- Book CTA + Mobile Toggle -->
       <div class="flex items-center gap-3">
-        <a href="/book"
-           class="hidden sm:inline-flex items-center px-5 py-2 bg-gr8-red text-white font-bold text-sm rounded-lg hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-500/25">
-          BOOK NOW!
-        </a>
+        <div class="nav-dropdown">
+          <a href="/book" class="hidden sm:inline-flex items-center px-5 py-2 bg-gr8-red text-white font-bold text-sm rounded-lg hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-500/25">
+            BOOK NOW! ▾
+          </a>
+          <div class="dropdown-menu dropdown-right">
+            <a href="/book">📅 Book a Room</a>
+            <a href="https://gr8bookings.smartintegrate.co.za/availability" target="_blank" rel="noopener noreferrer">📊 Live Availability</a>
+          </div>
+        </div>
         <button id="gr8-menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors" aria-label="Toggle menu">
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
             <path stroke-linecap="round" id="menu-icon-open" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
@@ -44,21 +67,21 @@ function isActive(path: string) {
 
     <!-- Mobile Menu -->
     <div id="gr8-mobile-menu" class="mobile-menu md:hidden border-t border-white/10 pt-4">
-      <div class="flex flex-col gap-2 pb-4">
-        <a href="/" class={`mobile-nav-link ${isActive('/') ? 'nav-active' : ''}`}>Home</a>
-        <a href="/rooms" class={`mobile-nav-link ${isActive('/rooms') ? 'nav-active' : ''}`}>Rooms</a>
-        <a href="/murder-mysteries" class={`mobile-nav-link ${isActive('/murder-mysteries') ? 'nav-active' : ''}`}>Murder Mysteries</a>
-        <a href="/book" class={`mobile-nav-link ${isActive('/book') ? 'nav-active' : ''}`}>Book</a>
-        <a href="/rules-faqs" class={`mobile-nav-link ${isActive('/rules-faqs') ? 'nav-active' : ''}`}>Rules & FAQs</a>
-        <a href="/availability" class={`mobile-nav-link ${isActive('/availability') ? 'nav-active' : ''}`}>Availability</a>
-        <a href="/contact" class={`mobile-nav-link ${isActive('/contact') ? 'nav-active' : ''}`}>Contact</a>
-        <a href="/book" class="btn-gr8 text-center mt-3 py-3">BOOK NOW!</a>
+      <div class="flex flex-col gap-1 pb-4">
+        <a href="/" class="mob-link">Home</a>
+        <a href="/rooms" class="mob-link">Escape Rooms</a>
+        <a href="/murder-mysteries" class="mob-link">Murder Mysteries</a>
+        <a href="/rules-faqs" class="mob-link">Rules & FAQs</a>
+        <a href="/contact" class="mob-link">Contact</a>
+        <div class="grid grid-cols-2 gap-2 mt-3">
+          <a href="/book" class="btn-gr8 text-center py-3 text-sm">BOOK NOW</a>
+          <a href="https://gr8bookings.smartintegrate.co.za/availability" target="_blank" rel="noopener noreferrer" class="text-center py-3 text-sm rounded-lg border border-white/10 text-white font-semibold hover:border-white/30 transition-all">Availability</a>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Spacer for fixed header -->
 <div class="h-16 md:h-20"></div>
 
 <script>
@@ -68,9 +91,7 @@ function isActive(path: string) {
     const openIcon = document.getElementById('menu-icon-open');
     const closeIcon = document.getElementById('menu-icon-close');
     if (!toggle || !menu) return;
-
     let isOpen = false;
-
     toggle.addEventListener('click', () => {
       isOpen = !isOpen;
       if (isOpen) {
@@ -90,56 +111,39 @@ function isActive(path: string) {
 
 <style is:inline>
   .nav-link {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.85rem;
     color: #aaa;
     font-weight: 500;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     border-radius: 0.5rem;
     transition: all 0.2s;
+    white-space: nowrap;
   }
   .nav-link:hover { color: white; background: rgba(255,255,255,0.05); }
+  .nav-active { color: #fff !important; background: rgba(229, 57, 53, 0.12); }
 
-  .nav-active {
-    color: #fff !important;
-    background: rgba(229, 57, 53, 0.15);
-    position: relative;
+  /* Dropdowns */
+  .nav-dropdown { position: relative; }
+  .dropdown-menu {
+    display: none; position: absolute; top: 100%; left: 0;
+    min-width: 200px; background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem;
+    padding: 0.5rem 0; z-index: 100;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
   }
-  .nav-active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 2px;
-    background: #E53935;
-    border-radius: 2px;
+  .dropdown-right { left: auto; right: 0; }
+  .dropdown-menu a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.55rem 1rem; font-size: 0.8rem; color: #bbb;
+    transition: all 0.15s; white-space: nowrap;
   }
+  .dropdown-menu a:hover { color: white; background: rgba(255,255,255,0.05); }
+  .drop-badge { font-size: 0.65rem; color: #E53935; font-weight: 600; }
+  .nav-dropdown:hover .dropdown-menu { display: block; }
 
-  .mobile-nav-link {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: #ccc;
-    font-weight: 500;
-    border-radius: 0.5rem;
-    transition: all 0.2s;
-  }
-  .mobile-nav-link:hover { color: white; background: rgba(255,255,255,0.05); }
-  .mobile-nav-link.nav-active {
-    color: #E53935 !important;
-    background: rgba(229, 57, 53, 0.1);
-  }
-  .mobile-nav-link.nav-active::after { display: none; }
-
-  /* Mobile menu animation */
-  .mobile-menu {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease;
-  }
-  .mobile-menu-open {
-    max-height: 500px;
-    opacity: 1;
-  }
+  /* Mobile */
+  .mob-link { display: block; padding: 0.7rem 1rem; color: #ccc; font-weight: 500; border-radius: 0.5rem; transition: all 0.2s; font-size: 0.9rem; }
+  .mob-link:hover { color: white; background: rgba(255,255,255,0.05); }
+  .mobile-menu { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.25s ease; }
+  .mobile-menu-open { max-height: 500px; opacity: 1; }
 </style>
