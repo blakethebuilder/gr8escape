@@ -6,85 +6,101 @@ const metadata = {
   description: 'Immersive murder mystery experiences at The Gr8 Escape. Solve crimes at Doppio Zero or take the mystery home.',
 };
 
+const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
+
 const doppioGames = [
-  { name: 'Ghosts of the Past', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '👻' },
-  { name: 'The Gilded Carcanet', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '💎' },
-  { name: 'The Cost of the Truth', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '⚖️' },
-  { name: 'The Road to Olympus', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '🏛️' },
+  { name: 'Ghosts of the Past', icon: '👻', color: '#9C27B0', players: '2–7', duration: '2.5 hrs', price: 'R200', desc: "A cold case reopens. Ghosts don't lie — but the living do. Can your team separate fact from the supernatural and name the killer?" },
+  { name: 'The Gilded Carcanet', icon: '💎', color: '#E91E63', players: '2–7', duration: '2.5 hrs', price: 'R200', desc: "A priceless necklace vanishes during a high-society gala. Everyone's a suspect. Everyone has a motive. Unravel the web of lies before the culprit slips away." },
+  { name: 'The Cost of the Truth', icon: '⚖️', color: '#FF5722', players: '2–7', duration: '2.5 hrs', price: 'R200', desc: 'A whistleblower is found dead the night before a major trial. Was it revenge? A cover-up? Your team must follow the money and expose the truth.' },
+  { name: 'The Road to Olympus', icon: '🏛️', color: '#FFB900', players: '2–7', duration: '2.5 hrs', price: 'R200', desc: 'A powerful Greek tycoon is murdered at his own party. The myths are real, the stakes are mortal. Find the killer among gods and mortals before dawn.' },
 ];
 
 const homeGames = [
-  { name: 'Ghosts of the Past @ Home', price: 'R600/pack', players: '2–6', desc: 'One-use mystery kit. Solve the case from your living room.', img: '📦' },
-  { name: 'The Road to Olympus @ Home', price: 'R400/pack', players: '2–6', desc: 'One-use mystery kit. A Greek mythology-inspired whodunit.', img: '📦' },
+  { name: 'Ghosts of the Past', icon: '📦', color: '#9C27B0', players: '2–6', duration: 'At your pace', price: 'R600', desc: 'Same cold case, delivered to your door. One-use mystery kit with everything you need. Pudo locker delivery or Fourways pickup.' },
+  { name: 'The Road to Olympus', icon: '📦', color: '#FFB900', players: '2–6', duration: 'At your pace', price: 'R400', desc: 'Greek whodunit in a box. All evidence, suspect profiles, and puzzles included. Perfect for dinner parties or game night.' },
 ];
 ---
 
 <Layout metadata={metadata}>
-  <!-- ════════ HERO ════════ -->
-  <section class="mm-hero">
-    <div class="mm-hero-bg"></div>
-    <div class="mm-hero-content">
-      <div class="mm-badge"><span>🔍</span> Mystery Missions</div>
+  <section class="m-hero">
+    <div class="m-hero-bg"></div>
+    <div class="m-hero-content">
+      <div class="m-badge"><span>🔍</span> Mystery Missions</div>
       <h1>Murder <span class="text-red">Mysteries</span></h1>
-      <p>Step into a world of intrigue, deception, and deduction. Can you solve the crime?</p>
+      <p>Step into a world of intrigue, deception, and deduction. <em>Can you solve the crime?</em></p>
     </div>
   </section>
 
-  <!-- ════════ DOPPIO ZERO ════════ -->
-  <section class="mm-section">
-    <div class="mm-container">
-      <div class="mm-venue-badge">
-        <span>🍽️</span> Hosted at Doppio Zero — Pineslopes, Fourways
+  <!-- Doppio Zero -->
+  <section class="m-section">
+    <div class="m-container">
+      <div class="m-section-head">
+        <div class="m-venue"><span>🍽️</span> Hosted at Doppio Zero, Pineslopes &bull; R200/pp &bull; 2.5 hrs &bull; Games Master guided</div>
+        <h2>In-Person <span class="text-red">Mysteries</span></h2>
       </div>
-      <h2>In-Person <span class="text-red">Mysteries</span></h2>
-      <p class="mm-sub">A Games Master guides your group through a live whodunit. Food and drinks available from Doppio Zero.</p>
-
-      <div class="mm-grid">
+      <div class="m-grid">
         {doppioGames.map((game) => (
-          <div class="mm-card">
-            <div class="mm-card-emoji">{game.img}</div>
-            <h3>{game.name}</h3>
-            <div class="mm-stats">
-              <span>{game.players} players</span>
-              <span>{game.duration}</span>
-              <span class="mm-price">{game.price}</span>
+          <details class="m-card" style={`--mc:${game.color}`}>
+            <summary class="m-summary">
+              <div class="m-icon-ring" style={`background:${game.color}18`}>{game.icon}</div>
+              <div class="m-preview">
+                <div class="m-top">
+                  <h3>{game.name}</h3>
+                  <svg class="m-chevron" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </div>
+                <div class="m-stats">{game.players} players &bull; {game.duration} &bull; <span class="text-teal">{game.price}/pp</span></div>
+              </div>
+            </summary>
+            <div class="m-details">
+              <p>{game.desc}</p>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="m-book-btn" style={`background:${game.color}`}>
+                Book {game.name}
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </a>
             </div>
-            <a href="https://gr8bookings.smartintegrate.co.za/book" target="_blank" rel="noopener noreferrer" class="mm-btn">Book This Mystery</a>
-          </div>
+          </details>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ════════ @HOME ════════ -->
-  <section class="mm-home-section">
-    <div class="mm-container">
-      <h2>Play <span class="text-teal">@ Home</span></h2>
-      <p class="mm-sub">Can't make it to the venue? Bring the mystery to your living room. One-use kits — each pack serves 2–6 players. Delivery via Pudo locker or pickup in Fourways.</p>
-
-      <div class="mm-grid mm-grid-2">
+  <!-- @Home -->
+  <section class="m-section m-section-alt">
+    <div class="m-container">
+      <div class="m-section-head">
+        <div class="m-venue m-venue-teal"><span>🏠</span> Play at Home &bull; One-use kits &bull; 2–6 players &bull; Pudo delivery or Fourways pickup</div>
+        <h2>Play <span class="text-teal">@ Home</span></h2>
+      </div>
+      <div class="m-grid m-grid-2">
         {homeGames.map((game) => (
-          <div class="mm-card mm-card-home">
-            <div class="mm-card-emoji">{game.img}</div>
-            <h3>{game.name}</h3>
-            <p class="mm-home-desc">{game.desc}</p>
-            <div class="mm-stats">
-              <span>{game.players} players</span>
-              <span class="mm-price">{game.price}</span>
+          <details class="m-card" style={`--mc:${game.color}`}>
+            <summary class="m-summary">
+              <div class="m-icon-ring" style={`background:${game.color}18`}>{game.icon}</div>
+              <div class="m-preview">
+                <div class="m-top">
+                  <h3>{game.name}</h3>
+                  <svg class="m-chevron" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </div>
+                <div class="m-stats">{game.players} players &bull; {game.duration} &bull; <span class="text-teal">{game.price}/pack</span></div>
+              </div>
+            </summary>
+            <div class="m-details">
+              <p>{game.desc}</p>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="m-book-btn" style={`background:${game.color}`}>
+                Order {game.name}
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </a>
             </div>
-            <a href="https://gr8bookings.smartintegrate.co.za/book" target="_blank" rel="noopener noreferrer" class="mm-btn mm-btn-teal">Order Now</a>
-          </div>
+          </details>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ════════ CTA ════════ -->
-  <section class="mm-cta">
-    <div class="mm-cta-bg"></div>
+  <section class="m-cta">
     <h2>Ready to Solve a Mystery?</h2>
-    <p>All mysteries include a dedicated Games Master. Food and drinks available at the venue.</p>
-    <a href="https://gr8bookings.smartintegrate.co.za/book" target="_blank" rel="noopener noreferrer" class="btn-primary-hero glow-red">
+    <p>All in-person mysteries include a dedicated Games Master. Food and drinks available at the venue.</p>
+    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="btn-primary-hero glow-red">
       <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       BOOK A MYSTERY
     </a>
@@ -92,98 +108,92 @@ const homeGames = [
 </Layout>
 
 <style is:global>
-  .mm-hero {
-    position: relative; padding: 3.5rem 1.5rem 3rem;
+  .m-hero {
+    position: relative; padding: 5rem 1.5rem 3rem;
     background: #080808; overflow: hidden; text-align: center;
   }
-  .mm-hero-bg {
+  .m-hero-bg {
     position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(156,39,176,0.05) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(156,39,176,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
   }
-  .mm-hero-content { position: relative; max-width: 36rem; margin: 0 auto; }
-  .mm-badge {
+  .m-hero-content { position: relative; max-width: 34rem; margin: 0 auto; }
+  .m-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.3rem 1rem; border-radius: 999px;
     background: rgba(156,39,176,0.1); color: #9C27B0;
     font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
     margin-bottom: 1.5rem;
   }
-  .mm-hero-content h1 {
-    font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
-    line-height: 1.1; margin-bottom: 1rem;
-  }
-  .mm-hero-content p { font-size: 1.05rem; color: #999; }
+  .m-hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; margin-bottom: 0.75rem; }
+  .m-hero-content p { font-size: 1rem; color: #999; }
+  .m-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 500; }
 
-  .mm-section { padding: 4rem 1.5rem; background: #0d0d0d; }
-  .mm-home-section { padding: 4rem 1.5rem; background: #141414; }
-  .mm-container { max-width: 56rem; margin: 0 auto; text-align: center; }
-  .mm-venue-badge {
+  .m-section { padding: 2rem 1.5rem; background: #0d0d0d; }
+  .m-section-alt { background: #111; }
+  .m-container { max-width: 48rem; margin: 0 auto; }
+  .m-section-head { text-align: center; margin-bottom: 1.5rem; }
+  .m-venue {
     display: inline-flex; align-items: center; gap: 0.4rem;
-    padding: 0.4rem 0.9rem; border-radius: 999px;
+    padding: 0.3rem 0.8rem; border-radius: 999px;
     background: rgba(156,39,176,0.08); color: #9C27B0;
-    font-size: 0.75rem; font-weight: 600;
-    margin-bottom: 1.5rem;
+    font-size: 0.7rem; font-weight: 600; margin-bottom: 0.75rem;
+    text-align: center;
   }
-  .mm-section h2, .mm-home-section h2 {
-    font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
-    margin-bottom: 0.5rem;
-  }
-  .mm-sub { font-size: 0.95rem; color: #888; max-width: 36rem; margin: 0 auto 2.5rem; }
+  .m-venue-teal { background: rgba(6,182,212,0.08); color: var(--teal, #06B6D4); }
+  .m-section-head h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: white; }
 
-  .mm-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
-  }
-  .mm-grid-2 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .m-grid { display: flex; flex-direction: column; gap: 0.65rem; }
+  .m-grid-2 { max-width: 36rem; margin: 0 auto; }
 
-  .mm-card {
+  .m-card {
     background: #141414; border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 1rem; padding: 1.75rem; text-align: center;
-    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
-    display: flex; flex-direction: column;
+    border-radius: 0.85rem; overflow: hidden;
+    transition: all 0.25s;
   }
-  .mm-card:hover {
-    border-color: rgba(156,39,176,0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-  }
-  .mm-card-home { border-color: rgba(6,182,212,0.1); }
-  .mm-card-home:hover { border-color: rgba(6,182,212,0.3); }
-  .mm-card-emoji { font-size: 3rem; margin-bottom: 1rem; }
-  .mm-card h3 { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.75rem; }
-  .mm-stats {
-    display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
-    font-size: 0.8rem; color: #888; margin-bottom: 1.25rem;
-  }
-  .mm-price { color: var(--teal, #06B6D4); font-weight: 700; }
-  .mm-home-desc { font-size: 0.8rem; color: #888; margin-bottom: 1rem; line-height: 1.5; }
-  .mm-btn {
-    display: block; padding: 0.75rem; border-radius: 0.6rem;
-    background: rgba(156,39,176,0.1); color: #9C27B0;
-    font-weight: 700; font-size: 0.85rem; text-decoration: none;
-    transition: all 0.3s; margin-top: auto;
-  }
-  .mm-btn:hover { background: #9C27B0; color: white; }
-  .mm-btn-teal { background: rgba(6,182,212,0.1); color: var(--teal, #06B6D4); }
-  .mm-btn-teal:hover { background: var(--teal, #06B6D4); color: white; }
+  .m-card[open] { border-color: var(--mc); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
 
-  .mm-cta {
-    position: relative; padding: 3.5rem 1.5rem;
-    background: #080808; overflow: hidden; text-align: center;
+  .m-summary {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem; cursor: pointer; list-style: none;
   }
-  .mm-cta-bg {
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(156,39,176,0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
+  .m-summary::-webkit-details-marker { display: none; }
+  .m-icon-ring {
+    width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
   }
-  .mm-cta h2 {
-    position: relative; font-size: clamp(1.5rem, 4vw, 2.25rem);
-    font-weight: 900; color: white; margin-bottom: 0.75rem;
+  .m-preview { flex: 1; min-width: 0; }
+  .m-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.25rem;
   }
-  .mm-cta p { position: relative; font-size: 0.95rem; color: #999; margin-bottom: 1.5rem; }
-  .mm-cta .btn-primary-hero { position: relative; }
+  .m-top h3 { font-size: 0.95rem; font-weight: 700; color: white; transition: color 0.2s; }
+  .m-card[open] .m-top h3 { color: var(--mc); }
+  .m-chevron { color: #555; transition: transform 0.25s; flex-shrink: 0; }
+  .m-card[open] .m-chevron { transform: rotate(180deg); color: var(--mc); }
+  .m-stats { font-size: 0.75rem; color: #888; }
+
+  .m-details {
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .m-details p {
+    font-size: 0.85rem; color: #aaa; line-height: 1.7;
+    padding: 0.75rem 0;
+  }
+  .m-book-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.75rem; color: white; font-weight: 700; font-size: 0.85rem;
+    border-radius: 0.5rem; text-decoration: none; transition: all 0.2s;
+  }
+  .m-book-btn:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+  .m-cta {
+    padding: 3.5rem 1.5rem; background: #080808; text-align: center;
+  }
+  .m-cta h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: white; margin-bottom: 0.5rem; }
+  .m-cta p { font-size: 0.9rem; color: #999; margin-bottom: 1.25rem; max-width: 30rem; margin-left: auto; margin-right: auto; }
 
   .btn-primary-hero {
     display: inline-flex; align-items: center; gap: 0.6rem;
@@ -192,15 +202,7 @@ const homeGames = [
     color: white; font-weight: 700; font-size: 0.95rem;
     text-transform: uppercase; letter-spacing: 0.06em;
     border-radius: 0.6rem; text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
-    box-shadow: 0 4px 20px rgba(229,57,53,0.3);
-    position: relative; overflow: hidden;
+    transition: all 0.3s; box-shadow: 0 4px 20px rgba(229,57,53,0.3);
   }
-  .btn-primary-hero::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
-    transform: translateX(-100%); transition: transform 0.5s;
-  }
-  .btn-primary-hero:hover::after { transform: translateX(100%); }
   .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(229,57,53,0.45); }
 </style>
