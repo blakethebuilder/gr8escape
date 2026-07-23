@@ -1,0 +1,188 @@
+---
+// Particle / laser-grid background — escape room atmosphere
+// Props: particleCount, connectDistance, speed, color1, color2, opacity
+export interface Props {
+  particleCount?: number;
+  connectDistance?: number;
+  speed?: number;
+  color1?: string;
+  color2?: string;
+  opacity?: number;
+  mazeMode?: boolean;
+  className?: string;
+}
+
+const {
+  particleCount = 80,
+  connectDistance = 120,
+  speed = 0.3,
+  color1 = '#E53935',
+  color2 = '#06B6D4',
+  opacity = 0.6,
+  mazeMode = false,
+  className = '',
+} = Astro.props;
+---
+
+<canvas
+  class={`particle-bg ${className}`}
+  data-particles={particleCount}
+  data-connect={connectDistance}
+  data-speed={speed}
+  data-color1={color1}
+  data-color2={color2}
+  data-opacity={opacity}
+  data-maze={mazeMode ? 'true' : 'false'}
+  aria-hidden="true"
+></canvas>
+
+<script>
+  (() => {
+    const canvas = document.currentScript?.previousElementSibling as HTMLCanvasElement | null;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const count = parseInt(canvas.dataset.particles || '80');
+    const connectDist = parseInt(canvas.dataset.connect || '120');
+    const spd = parseFloat(canvas.dataset.speed || '0.3');
+    const c1 = canvas.dataset.color1 || '#E53935';
+    const c2 = canvas.dataset.color2 || '#06B6D4';
+    const alpha = parseFloat(canvas.dataset.opacity || '0.6');
+    const mazeMode = canvas.dataset.maze === 'true';
+
+    interface Particle {
+      x: number; y: number;
+      vx: number; vy: number;
+      size: number; color: string;
+    }
+
+    let particles: Particle[] = [];
+    let w = 0, h = 0;
+    let animId = 0;
+
+    function resize() {
+      const rect = canvas!.parentElement!.getBoundingClientRect();
+      w = rect.width; h = rect.height;
+      canvas!.width = w * devicePixelRatio;
+      canvas!.height = h * devicePixelRatio;
+      canvas!.style.width = w + 'px';
+      canvas!.style.height = h + 'px';
+      ctx!.scale(devicePixelRatio, devicePixelRatio);
+    }
+
+    function init() {
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * spd,
+          vy: (Math.random() - 0.5) * spd,
+          size: Math.random() * 1.8 + 0.4,
+          color: Math.random() > 0.5 ? c1 : c2,
+        });
+      }
+    }
+
+    function draw() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, w, h);
+
+      // Draw connections (laser lines)
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < connectDist) {
+            const lineAlpha = (1 - dist / connectDist) * alpha * 0.5;
+            ctx.strokeStyle = `rgba(229,57,53,${lineAlpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw maze grid if enabled
+      if (mazeMode) {
+        const gridSize = 80;
+        ctx.strokeStyle = `rgba(6,182,212,${alpha * 0.15})`;
+        ctx.lineWidth = 0.5;
+        for (let x = gridSize; x < w; x += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, h);
+          ctx.stroke();
+        }
+        for (let y = gridSize; y < h; y += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+      }
+
+      // Draw particles
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = alpha;
+        ctx.fill();
+
+        // Glow
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = alpha * 0.12;
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // Update positions
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < -20) p.x = w + 20;
+        if (p.x > w + 20) p.x = -20;
+        if (p.y < -20) p.y = h + 20;
+        if (p.y > h + 20) p.y = -20;
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    // Start
+    resize();
+    init();
+    draw();
+
+    // Handle resize
+    const observer = new ResizeObserver(() => {
+      resize();
+      // Re-distribute particles horizontally
+      for (const p of particles) {
+        p.x = Math.min(p.x, w);
+        p.y = Math.min(p.y, h);
+      }
+    });
+    observer.observe(canvas.parentElement!);
+  })();
+</script>
+
+<style is:global>
+  .particle-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>

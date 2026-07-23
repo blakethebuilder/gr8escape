@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import ParticleBackground from '~/components/common/ParticleBackground.astro';
 
 const metadata = {
   title: 'Murder Mysteries',
@@ -32,8 +33,9 @@ const homeGames = [
   </section>
 
   <!-- Doppio Zero -->
-  <section class="m-section">
-    <div class="m-container">
+  <section class="m-section" style="position:relative">
+    <ParticleBackground particleCount={50} connectDistance={100} speed={0.2} color1="#9C27B0" color2="#E91E63" opacity={0.4} />
+    <div class="m-container" style="position:relative;z-index:1">
       <div class="m-section-head">
         <div class="m-venue"><span>🍽️</span> Hosted at Doppio Zero, Pineslopes &bull; R200/pp &bull; 2.5 hrs &bull; Games Master guided</div>
         <h2>In-Person <span class="text-red">Mysteries</span></h2>

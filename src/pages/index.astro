@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import LockPuzzle from '~/components/widgets/LockPuzzle.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import ParticleBackground from '~/components/common/ParticleBackground.astro';
 
 const metadata = {
   title: "The Gr8 Escape — SA's Highest Rated Escape Room",
@@ -12,8 +13,7 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- ════════════ HERO ════════════ -->
   <section class="hero-section">
-    <!-- Background layers -->
-    <div class="hero-bg"></div>
+    <ParticleBackground particleCount={100} connectDistance={140} speed={0.4} />
     <div class="hero-vignette"></div>
     <div class="hero-scanlines"></div>
 

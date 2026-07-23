@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import ParticleBackground from '~/components/common/ParticleBackground.astro';
 
 const metadata = {
   title: 'Escape Rooms',
@@ -52,8 +53,9 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
     </div>
   </section>
 
-  <section class="r-section">
-    <div class="r-grid">
+  <section class="r-section" style="position:relative">
+    <ParticleBackground particleCount={60} connectDistance={100} speed={0.2} mazeMode={true} />
+    <div class="r-grid" style="position:relative;z-index:1">
       {rooms.map((room) => (
         <details class="r-card" style={`--rc:${room.color}`} id={room.slug}>
           <summary class="r-summary">
