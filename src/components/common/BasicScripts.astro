@@ -157,6 +157,14 @@ import { UI } from 'astrowind:config';
   window.onload = onLoad;
   window.onpageshow = onPageShow;
 
+  // Force scroll to top on refresh
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+  });
+
   document.addEventListener('astro:after-swap', () => {
     initTheme();
     onLoad();
