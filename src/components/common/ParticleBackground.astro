@@ -12,12 +12,12 @@ export interface Props {
 }
 
 const {
-  particleCount = 80,
-  connectDistance = 120,
-  speed = 0.3,
+  particleCount = 120,
+  connectDistance = 160,
+  speed = 0.5,
   color1 = '#E53935',
   color2 = '#06B6D4',
-  opacity = 0.6,
+  opacity = 0.85,
   mazeMode = false,
   className = '',
 } = Astro.props;
@@ -86,8 +86,8 @@ const uid = `pb-${Math.random().toString(36).slice(2, 10)}`;
           y: Math.random() * h,
           vx: (Math.random() - 0.5) * spd,
           vy: (Math.random() - 0.5) * spd,
-          size: Math.random() * 1.8 + 0.4,
-          color: Math.random() > 0.5 ? c1 : c2,
+          size: Math.random() * 3 + 1.2,
+          color: Math.random() > 0.4 ? c1 : c2,
         });
       }
     }
@@ -104,9 +104,9 @@ const uid = `pb-${Math.random().toString(36).slice(2, 10)}`;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectDist) {
-            const lineAlpha = (1 - dist / connectDist) * alpha * 0.5;
+            const lineAlpha = (1 - dist / connectDist) * alpha * 0.7;
             ctx.strokeStyle = `rgba(229,57,53,${lineAlpha})`;
-            ctx.lineWidth = 0.5;
+            ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -144,9 +144,9 @@ const uid = `pb-${Math.random().toString(36).slice(2, 10)}`;
 
         // Glow
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.size * 5, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = alpha * 0.12;
+        ctx.globalAlpha = alpha * 0.2;
         ctx.fill();
       }
       ctx.globalAlpha = 1;
