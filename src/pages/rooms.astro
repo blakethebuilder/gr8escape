@@ -2,8 +2,8 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Our Rooms',
-  description: 'Explore all 6 escape rooms at The Gr8 Escape. From Asylum to The Basement — which will you conquer?',
+  title: 'Escape Rooms',
+  description: '6 immersive escape rooms at The Gr8 Escape. From beginner to extreme — which will you conquer?',
 };
 
 const rooms = [
@@ -11,7 +11,6 @@ const rooms = [
     name: 'Asylum Escape', slug: 'asylum-escape', difficulty: 7, icon: '🧪', color: '#E53935',
     players: '2–8', duration: '60 min', price: 'R320',
     story: "Dr. Mulasy Tretour's office holds evidence of his vicious crimes — but one of his experiments is closer than you think. Gather the proof and get out before they get hold of you.",
-    tag: 'Most Popular',
   },
   {
     name: 'Trapped', slug: 'trapped', difficulty: 8, icon: '🔥', color: '#06B6D4',
@@ -32,80 +31,75 @@ const rooms = [
     name: 'The Basement', slug: 'the-basement', difficulty: 10, icon: '⛓️', color: '#FF9800',
     players: '2–8', duration: '60 min', price: 'R320',
     story: "You wake up in darkness. Chains dragging on metal. You're pawns in a psychopath's game — 60 minutes to escape his chamber for good. Our hardest room.",
-    tag: 'Hardest',
   },
   {
     name: "The Witch's Curse", slug: 'the-witchs-curse', difficulty: 'Outdoor', icon: '🧙‍♀️', color: '#7C4DFF',
     players: '2–4', duration: '45 min', price: 'R320',
     story: "Hidden within a container at The Golf Place — Fore-Ways lies a curse waiting to be broken. Solve magical puzzles in just 45 minutes. Our outdoor experience.",
-    tag: 'Outdoor',
   },
 ];
+
+const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
 ---
 
 <Layout metadata={metadata}>
-  <!-- ════════ HERO ════════ -->
-  <section class="rooms-hero">
-    <div class="rooms-hero-bg"></div>
-    <div class="rooms-hero-content">
-      <div class="rooms-badge"><span>🔍</span> Choose Your Challenge</div>
+  <section class="r-hero">
+    <div class="r-hero-bg"></div>
+    <div class="r-hero-content">
+      <div class="r-badge"><span>🔍</span> Choose Your Challenge</div>
       <h1>Our <span class="text-red">Escape</span> Rooms</h1>
-      <p>Six unique worlds. One way out. <em>Which will you survive?</em></p>
+      <p>Six unique worlds. One way out. <em>Click any room for full details.</em></p>
     </div>
   </section>
 
-  <!-- ════════ ROOM GRID ════════ -->
-  <section class="rooms-grid-section">
-    <div class="rooms-grid-bg"></div>
-    <div class="rooms-grid">
+  <section class="r-section">
+    <div class="r-grid">
       {rooms.map((room) => (
-        <article class="room-card" style={`--room-color: ${room.color}`}>
-          <!-- Room atmosphere block with real photo -->
-          <div class="room-atmo" style={`background-image: url('/assets/${room.slug}.jpg'); background-size: cover; background-position: center`}>
-            <div class="room-atmo-overlay"></div>
-            <span class="room-emoji">{room.icon}</span>
-            {room.tag && <span class="room-tag" style={`background:${room.color}20; color:${room.color}`}>{room.tag}</span>}
-          </div>
-
-          <!-- Room info -->
-          <div class="room-body">
-            <div class="room-header">
-              <h2>{room.name}</h2>
-              <div class="room-difficulty">
-                <span class="diff-dots">
-                  {typeof room.difficulty === 'number' && Array.from({ length: 5 }, (_, i) => {
-                    const filled = i < Math.round(room.difficulty / 2);
-                    return <span class={`diff-dot${filled ? ' filled' : ''}`} style={filled ? `background:${room.color}` : ''}></span>;
-                  })}
-                </span>
-                <span class="diff-label">Difficulty {room.difficulty}/10</span>
+        <details class="r-card" style={`--rc:${room.color}`} id={room.slug}>
+          <summary class="r-summary">
+            <div class="r-photo" style={`background-image:url('/assets/${room.slug}.jpg')`}>
+              <div class="r-photo-overlay"></div>
+              <span class="r-emoji">{room.icon}</span>
+              <span class="r-diff" style={`background:${room.color}; color:white`}>
+                {typeof room.difficulty === 'number' ? `${room.difficulty}/10` : room.difficulty}
+              </span>
+            </div>
+            <div class="r-preview">
+              <div class="r-preview-top">
+                <h2>{room.name}</h2>
+                <svg class="r-chevron" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+              </div>
+              <div class="r-preview-stats">
+                <span>{room.players} players</span>
+                <span>{room.duration}</span>
+                <span class="text-teal">{room.price}/pp</span>
               </div>
             </div>
+          </summary>
 
-            <p class="room-story">{room.story}</p>
-
-            <div class="room-stats">
-              <div class="room-stat"><span class="room-stat-val">{room.players}</span><span class="room-stat-lbl">Players</span></div>
-              <div class="room-stat"><span class="room-stat-val">{room.duration}</span><span class="room-stat-lbl">Duration</span></div>
-              <div class="room-stat"><span class="room-stat-val accent">{room.price}</span><span class="room-stat-lbl">Per Person</span></div>
+          <div class="r-details">
+            <p class="r-story">{room.story}</p>
+            <div class="r-stats-full">
+              <div><span>Players</span><strong>{room.players}</strong></div>
+              <div><span>Duration</span><strong>{room.duration}</strong></div>
+              <div><span>Difficulty</span><strong>{typeof room.difficulty === 'number' ? `${room.difficulty}/10` : 'Outdoor'}</strong></div>
+              <div><span>Price</span><strong class="text-teal">{room.price}/pp</strong></div>
             </div>
-
-            <a href={`https://gr8bookings.smartintegrate.co.za/book?room=${room.slug}`} target="_blank" rel="noopener noreferrer" class="room-book-btn">
-              Book This Room
+            <a href={`${BOOKING_URL}?room=${room.slug}`} target="_blank" rel="noopener noreferrer" class="r-book-btn">
+              Book {room.name}
               <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
             </a>
           </div>
-        </article>
+        </details>
       ))}
     </div>
   </section>
 
-  <!-- ════════ CTA ════════ -->
-  <section class="rooms-cta">
-    <div class="rooms-cta-bg"></div>
+  <section class="r-cta">
+    <div class="r-cta-bg"></div>
     <h2>Ready to Take On a Room?</h2>
-    <p>All rooms are open Thursday – Sunday. Choose your challenge and lock in your slot.</p>
-    <a href="/book" class="btn-primary-hero glow-red">
+    <p>Open 7 days a week. Choose your challenge and lock in your slot.</p>
+    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="btn-primary-hero glow-red">
       <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       BOOK NOW
     </a>
@@ -113,167 +107,130 @@ const rooms = [
 </Layout>
 
 <style is:global>
-  /* ── Hero ── */
-  .rooms-hero {
-    position: relative; padding: 3.5rem 1.5rem 3rem;
+  .r-hero {
+    position: relative; padding: 5rem 1.5rem 3rem;
     background: #080808; overflow: hidden; text-align: center;
   }
-  .rooms-hero-bg {
+  .r-hero-bg {
     position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(229,57,53,0.05) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
-    animation: bg-drift 20s linear infinite;
   }
-  @keyframes bg-drift {
-    0% { background-position: 0 0; }
-    100% { background-position: 48px 48px; }
-  }
-  .rooms-hero-content { position: relative; max-width: 36rem; margin: 0 auto; }
-  .rooms-badge {
+  .r-hero-content { position: relative; max-width: 34rem; margin: 0 auto; }
+  .r-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.3rem 1rem; border-radius: 999px;
     background: rgba(229,57,53,0.08); color: var(--red, #E53935);
     font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
     margin-bottom: 1.5rem;
   }
-  .rooms-hero-content h1 {
-    font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
-    line-height: 1.1; margin-bottom: 1rem;
-  }
-  .rooms-hero-content p { font-size: 1.1rem; color: #999; }
-  .rooms-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 600; }
+  .r-hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; margin-bottom: 0.75rem; }
+  .r-hero-content p { font-size: 1rem; color: #999; }
+  .r-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 500; }
 
-  /* ── Grid section ── */
-  .rooms-grid-section {
-    position: relative; padding: 3rem 1.5rem 4rem;
-    background: #0d0d0d; overflow: hidden;
-  }
-  .rooms-grid-bg {
-    position: absolute; inset: 0; opacity: 0.15;
-    background-image: radial-gradient(circle, rgba(229,57,53,0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-  .rooms-grid {
-    position: relative; max-width: 72rem; margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
+  .r-section { padding: 2rem 1.5rem 4rem; background: #0d0d0d; }
+  .r-grid { max-width: 48rem; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
 
-  /* ── Room card ── */
-  .room-card {
-    background: #141414;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 1rem;
-    overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
-    display: flex; flex-direction: column;
+  /* Card */
+  .r-card {
+    background: #141414; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.85rem; overflow: hidden;
+    transition: all 0.25s;
   }
-  .room-card:hover {
-    border-color: var(--room-color, #E53935);
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px color-mix(in srgb, var(--room-color, #E53935) 30%, transparent);
+  .r-card[open] { border-color: var(--rc); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+  /* Summary (always visible) */
+  .r-summary {
+    display: flex; cursor: pointer; list-style: none;
   }
-  .room-atmo {
-    height: 160px;
+  .r-summary::-webkit-details-marker { display: none; }
+
+  .r-photo {
+    width: 140px; flex-shrink: 0;
+    background-size: cover; background-position: center;
+    position: relative;
     display: flex; align-items: center; justify-content: center;
-    position: relative; background-color: #141414;
   }
-  .room-atmo-overlay {
+  .r-photo-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(20,20,20,0.85) 0%, rgba(20,20,20,0.3) 60%, rgba(20,20,20,0.5) 100%);
+    background: linear-gradient(to right, rgba(20,20,20,0.3), rgba(20,20,20,0.7));
   }
-  .room-emoji { font-size: 3.5rem; position: relative; z-index: 1; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)); transition: transform 0.3s; }
-  .room-card:hover .room-emoji { transform: scale(1.15); }
-  .room-tag {
-    position: absolute; top: 0.75rem; right: 0.75rem;
-    padding: 0.2rem 0.6rem; border-radius: 999px;
-    font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-  }
-  .room-body {
-    padding: 1.5rem; flex: 1; display: flex; flex-direction: column;
-  }
-  .room-header { margin-bottom: 1rem; }
-  .room-header h2 {
-    font-size: 1.25rem; font-weight: 800; color: white;
-    margin-bottom: 0.5rem;
-    transition: color 0.3s;
-  }
-  .room-card:hover .room-header h2 { color: var(--room-color); }
-  .room-difficulty { display: flex; align-items: center; gap: 0.5rem; }
-  .diff-dots { display: flex; gap: 3px; }
-  .diff-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-  }
-  .diff-dot.filled { background: #E53935; }
-  .diff-label { font-size: 0.65rem; color: #666; font-weight: 600; text-transform: uppercase; }
-
-  .room-story {
-    font-size: 0.85rem; color: #999; line-height: 1.65;
-    flex: 1; margin-bottom: 1.25rem;
+  .r-emoji { font-size: 2.5rem; position: relative; z-index: 1; }
+  .r-diff {
+    position: absolute; top: 0.5rem; right: 0.5rem;
+    padding: 0.15rem 0.5rem; border-radius: 999px;
+    font-size: 0.6rem; font-weight: 700;
   }
 
-  .room-stats {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem; margin-bottom: 1.25rem;
+  .r-preview {
+    flex: 1; padding: 1rem 1.25rem;
+    display: flex; flex-direction: column; justify-content: center;
   }
-  .room-stat {
-    background: rgba(255,255,255,0.03);
-    border-radius: 0.6rem; padding: 0.6rem 0.4rem; text-align: center;
+  .r-preview-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.4rem;
   }
-  .room-stat-val { display: block; font-weight: 700; color: white; font-size: 0.85rem; }
-  .room-stat-val.accent { color: var(--teal, #06B6D4); }
-  .room-stat-lbl { font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 0.08em; }
+  .r-preview-top h2 {
+    font-size: 1.05rem; font-weight: 700; color: white;
+    transition: color 0.2s;
+  }
+  .r-card[open] .r-preview-top h2 { color: var(--rc); }
+  .r-chevron { color: #555; transition: transform 0.25s; flex-shrink: 0; }
+  .r-card[open] .r-chevron { transform: rotate(180deg); color: var(--rc); }
 
-  .room-book-btn {
+  .r-preview-stats {
+    display: flex; gap: 1rem; font-size: 0.75rem; color: #888;
+  }
+
+  /* Expanded details */
+  .r-details {
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .r-story {
+    font-size: 0.85rem; color: #aaa; line-height: 1.7;
+    padding: 1rem 0; margin: 0;
+  }
+  .r-stats-full {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem; margin-bottom: 1rem;
+  }
+  .r-stats-full div {
+    background: rgba(255,255,255,0.03); border-radius: 0.5rem;
+    padding: 0.6rem 0.4rem; text-align: center;
+  }
+  .r-stats-full span { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 0.08em; }
+  .r-stats-full strong { font-size: 0.85rem; color: white; font-weight: 700; }
+
+  .r-book-btn {
     display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    padding: 0.75rem;
-    background: rgba(255,255,255,0.04);
-    color: white; font-weight: 600; font-size: 0.85rem;
-    border-radius: 0.6rem;
-    transition: all 0.3s;
+    padding: 0.8rem; background: var(--rc); color: white;
+    font-weight: 700; font-size: 0.9rem; border-radius: 0.5rem;
+    text-decoration: none; transition: all 0.2s;
   }
-  .room-book-btn:hover {
-    background: var(--room-color, #E53935);
-    color: white;
-  }
+  .r-book-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-  /* ── CTA ── */
-  .rooms-cta {
+  /* CTA */
+  .r-cta {
     position: relative; padding: 3.5rem 1.5rem;
     background: #080808; overflow: hidden; text-align: center;
   }
-  .rooms-cta-bg {
+  .r-cta-bg {
     position: absolute; inset: 0;
     background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
   }
-  .rooms-cta h2 {
-    position: relative; font-size: clamp(1.5rem, 4vw, 2.25rem);
-    font-weight: 900; color: white; margin-bottom: 0.75rem;
-  }
-  .rooms-cta p {
-    position: relative; font-size: 1rem; color: #999; margin-bottom: 1.5rem;
-  }
-  .rooms-cta .btn-primary-hero { position: relative; }
+  .r-cta h2 { position: relative; font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: white; margin-bottom: 0.5rem; }
+  .r-cta p { position: relative; font-size: 0.9rem; color: #999; margin-bottom: 1.25rem; }
 
   .btn-primary-hero {
     display: inline-flex; align-items: center; gap: 0.6rem;
-    padding: 1rem 2.25rem;
+    padding: 1rem 2.25rem; position: relative;
     background: linear-gradient(135deg, #E53935, #B71C1C);
     color: white; font-weight: 700; font-size: 0.95rem;
     text-transform: uppercase; letter-spacing: 0.06em;
-    border-radius: 0.6rem;
-    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
-    box-shadow: 0 4px 20px rgba(229,57,53,0.3);
-    position: relative; overflow: hidden;
+    border-radius: 0.6rem; text-decoration: none;
+    transition: all 0.3s; box-shadow: 0 4px 20px rgba(229,57,53,0.3);
   }
-  .btn-primary-hero::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
-    transform: translateX(-100%); transition: transform 0.5s;
-  }
-  .btn-primary-hero:hover::after { transform: translateX(100%); }
   .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(229,57,53,0.45); }
 </style>

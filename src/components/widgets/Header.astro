@@ -16,32 +16,9 @@ function isActive(path: string) {
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center" aria-label="Main navigation">
         <a href="/" class={`nav-link ${isActive('/') ? 'nav-active' : ''}`}>Home</a>
-
-        <div class="nav-dropdown">
-          <a href="/rooms" class={`nav-link ${isActive('/rooms') ? 'nav-active' : ''}`}>Escape Rooms ▾</a>
-          <div class="dropdown-menu">
-            <a href="/rooms">All Rooms</a>
-            <a href="/rooms">Asylum Escape <span class="drop-badge">7/10</span></a>
-            <a href="/rooms">Trapped <span class="drop-badge">8/10</span></a>
-            <a href="/rooms">The Hunted <span class="drop-badge">8.5/10</span></a>
-            <a href="/rooms">Nightmare <span class="drop-badge">9/10</span></a>
-            <a href="/rooms">The Basement <span class="drop-badge">10/10</span></a>
-            <a href="/rooms">The Witch's Curse</a>
-          </div>
-        </div>
-
-        <div class="nav-dropdown">
-          <a href="/murder-mysteries" class={`nav-link ${isActive('/murder-mysteries') ? 'nav-active' : ''}`}>Murder Mysteries ▾</a>
+        <a href="/rooms" class={`nav-link ${isActive('/rooms') ? 'nav-active' : ''}`}>Escape Rooms</a>
+        <a href="/murder-mysteries" class={`nav-link ${isActive('/murder-mysteries') ? 'nav-active' : ''}`}>Murder Mysteries</a>
         <a href="/team-building" class={`nav-link ${isActive('/team-building') ? 'nav-active' : ''}`}>Team Building</a>
-          <div class="dropdown-menu">
-            <a href="/murder-mysteries">All Mysteries</a>
-            <a href="/murder-mysteries">Ghosts of the Past</a>
-            <a href="/murder-mysteries">The Gilded Carcanet</a>
-            <a href="/murder-mysteries">The Cost of the Truth</a>
-            <a href="/murder-mysteries">The Road to Olympus</a>
-          </div>
-        </div>
-
         <a href="/rules-faqs" class={`nav-link ${isActive('/rules-faqs') ? 'nav-active' : ''}`}>Rules & FAQs</a>
         <a href="/contact" class={`nav-link ${isActive('/contact') ? 'nav-active' : ''}`}>Contact</a>
       </nav>
