@@ -10,12 +10,12 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
 const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
 
 const rooms = [
-  { name: 'Asylum Escape', difficulty: '7/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🧪', color: '#E53935' },
-  { name: 'Trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🔥', color: '#06B6D4' },
-  { name: 'The Hunted', difficulty: '8.5/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🌲', color: '#4CAF50' },
-  { name: 'Nightmare', difficulty: '9/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🌙', color: '#9C27B0' },
-  { name: 'The Basement', difficulty: '10/10', players: '2–8', duration: '60 min', price: 'R250', icon: '⛓️', color: '#FF9800' },
-  { name: "The Witch's Curse", difficulty: 'Outdoor', players: '2–4', duration: '45 min', price: 'R320', icon: '🧙‍♀️', color: '#7C4DFF' },
+  { name: 'Asylum Escape', slug: 'asylum-escape', difficulty: '7/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🧪', color: '#E53935' },
+  { name: 'Trapped', slug: 'trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🔥', color: '#06B6D4' },
+  { name: 'The Hunted', slug: 'the-hunted', difficulty: '8.5/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🌲', color: '#4CAF50' },
+  { name: 'Nightmare', slug: 'nightmare', difficulty: '9/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🌙', color: '#9C27B0' },
+  { name: 'The Basement', slug: 'the-basement', difficulty: '10/10', players: '2–8', duration: '60 min', price: 'R320', icon: '⛓️', color: '#FF9800' },
+  { name: "The Witch's Curse", slug: 'the-witchs-curse', difficulty: 'Outdoor', players: '2–4', duration: '45 min', price: 'R320', icon: '🧙‍♀️', color: '#7C4DFF' },
 ];
 ---
 
@@ -42,7 +42,7 @@ const rooms = [
 
       <div class="book-room-grid">
         {rooms.map((room) => (
-          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="book-room-card" style={`--rc:${room.color}`}>
+          <a href={`${BOOKING_URL}?room=${room.slug}`} target="_blank" rel="noopener noreferrer" class="book-room-card" style={`--rc:${room.color}`}>
             <div class="brc-emoji">{room.icon}</div>
             <div class="brc-info">
               <h3>{room.name}</h3>
