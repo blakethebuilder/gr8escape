@@ -103,7 +103,7 @@ const metadata = {
     background: #080808; overflow: hidden; text-align: center;
   }
   .contact-hero-bg {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
   }
@@ -207,7 +207,7 @@ const metadata = {
     position: relative; overflow: hidden;
   }
   .btn-primary-hero::after {
-    content: ''; position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
     transform: translateX(-100%); transition: transform 0.5s;
   }

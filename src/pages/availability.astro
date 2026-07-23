@@ -98,7 +98,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
     background: var(--bg-deep, #080808); overflow: hidden; text-align: center;
   }
   .avail-hero-bg {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background-image: radial-gradient(circle, rgba(6,182,212,0.06) 1px, transparent 1px);
     background-size: 48px 48px;
   }
@@ -156,7 +156,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
     background: var(--bg-dark, #0d0d0d); overflow: hidden;
   }
   .avail-calendar-bg {
-    position: absolute; inset: 0; opacity: 0.3;
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.3;
     background-image: radial-gradient(circle, rgba(6,182,212,0.08) 1px, transparent 1px);
     background-size: 40px 40px;
   }
@@ -219,7 +219,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
     background: var(--bg-deep, #080808); overflow: hidden; text-align: center;
   }
   .avail-cta-bg {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background-image: radial-gradient(circle, rgba(229,57,53,0.05) 1px, transparent 1px);
     background-size: 48px 48px;
   }
@@ -245,7 +245,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
     position: relative; overflow: hidden;
   }
   .btn-primary-hero::after {
-    content: ''; position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
     transform: translateX(-100%); transition: transform 0.5s;
   }

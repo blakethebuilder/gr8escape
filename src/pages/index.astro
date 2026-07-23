@@ -210,7 +210,7 @@ const metadata = {
     overflow: hidden;
   }
   .hero-bg {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background-image:
       radial-gradient(circle, rgba(229,57,53,0.06) 1px, transparent 1px);
     background-size: 52px 52px;
@@ -221,12 +221,12 @@ const metadata = {
     100% { background-position: 52px 52px; }
   }
   .hero-vignette {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background: radial-gradient(ellipse at 50% 40%, transparent 20%, var(--bg-deep) 75%);
     pointer-events: none;
   }
   .hero-scanlines {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
     pointer-events: none; opacity: 0.5;
   }
@@ -333,7 +333,7 @@ const metadata = {
     position: relative; overflow: hidden;
   }
   .btn-primary-hero::after {
-    content: ''; position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
     transform: translateX(-100%); transition: transform 0.5s;
   }
@@ -383,7 +383,7 @@ const metadata = {
     overflow: hidden;
   }
   .exp-bg-pattern {
-    position: absolute; inset: 0; opacity: 0.15;
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.15; pointer-events: none;
     background-image: radial-gradient(circle, rgba(6,182,212,0.15) 1px, transparent 1px);
     background-size: 36px 36px;
   }
@@ -443,7 +443,7 @@ const metadata = {
     overflow: hidden;
   }
   .puzzle-bg {
-    position: absolute; inset: 0; opacity: 0.12;
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.12; pointer-events: none;
     background-image: radial-gradient(circle, rgba(229,57,53,0.12) 1px, transparent 1px);
     background-size: 32px 32px;
   }
@@ -456,7 +456,7 @@ const metadata = {
     overflow: hidden;
   }
   .features-bg {
-    position: absolute; inset: 0; opacity: 0.4;
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.4; pointer-events: none;
   }
   .features-container {
     position: relative; max-width: 64rem; margin: 0 auto; text-align: center;
@@ -553,7 +553,7 @@ const metadata = {
     overflow: hidden;
   }
   .cta-bg {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background-image:
       radial-gradient(circle, rgba(229,57,53,0.08) 1px, transparent 1px);
     background-size: 48px 48px;
