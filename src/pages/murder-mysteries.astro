@@ -1,0 +1,206 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Murder Mysteries',
+  description: 'Immersive murder mystery experiences at The Gr8 Escape. Solve crimes at Doppio Zero or take the mystery home.',
+};
+
+const doppioGames = [
+  { name: 'Ghosts of the Past', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '👻' },
+  { name: 'The Gilded Carcanet', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '💎' },
+  { name: 'The Cost of the Truth', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '⚖️' },
+  { name: 'The Road to Olympus', price: 'R200/pp', duration: '2.5 hrs', players: '2–7', img: '🏛️' },
+];
+
+const homeGames = [
+  { name: 'Ghosts of the Past @ Home', price: 'R600/pack', players: '2–6', desc: 'One-use mystery kit. Solve the case from your living room.', img: '📦' },
+  { name: 'The Road to Olympus @ Home', price: 'R400/pack', players: '2–6', desc: 'One-use mystery kit. A Greek mythology-inspired whodunit.', img: '📦' },
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- ════════ HERO ════════ -->
+  <section class="mm-hero">
+    <div class="mm-hero-bg"></div>
+    <div class="mm-hero-content">
+      <div class="mm-badge"><span>🔍</span> Mystery Missions</div>
+      <h1>Murder <span class="text-red">Mysteries</span></h1>
+      <p>Step into a world of intrigue, deception, and deduction. Can you solve the crime?</p>
+    </div>
+  </section>
+
+  <!-- ════════ DOPPIO ZERO ════════ -->
+  <section class="mm-section">
+    <div class="mm-container">
+      <div class="mm-venue-badge">
+        <span>🍽️</span> Hosted at Doppio Zero — Pineslopes, Fourways
+      </div>
+      <h2>In-Person <span class="text-red">Mysteries</span></h2>
+      <p class="mm-sub">A Games Master guides your group through a live whodunit. Food and drinks available from Doppio Zero.</p>
+
+      <div class="mm-grid">
+        {doppioGames.map((game) => (
+          <div class="mm-card">
+            <div class="mm-card-emoji">{game.img}</div>
+            <h3>{game.name}</h3>
+            <div class="mm-stats">
+              <span>{game.players} players</span>
+              <span>{game.duration}</span>
+              <span class="mm-price">{game.price}</span>
+            </div>
+            <a href="https://gr8bookings.smartintegrate.co.za/book" target="_blank" rel="noopener noreferrer" class="mm-btn">Book This Mystery</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ @HOME ════════ -->
+  <section class="mm-home-section">
+    <div class="mm-container">
+      <h2>Play <span class="text-teal">@ Home</span></h2>
+      <p class="mm-sub">Can't make it to the venue? Bring the mystery to your living room. One-use kits — each pack serves 2–6 players. Delivery via Pudo locker or pickup in Fourways.</p>
+
+      <div class="mm-grid mm-grid-2">
+        {homeGames.map((game) => (
+          <div class="mm-card mm-card-home">
+            <div class="mm-card-emoji">{game.img}</div>
+            <h3>{game.name}</h3>
+            <p class="mm-home-desc">{game.desc}</p>
+            <div class="mm-stats">
+              <span>{game.players} players</span>
+              <span class="mm-price">{game.price}</span>
+            </div>
+            <a href="https://gr8bookings.smartintegrate.co.za/book" target="_blank" rel="noopener noreferrer" class="mm-btn mm-btn-teal">Order Now</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CTA ════════ -->
+  <section class="mm-cta">
+    <div class="mm-cta-bg"></div>
+    <h2>Ready to Solve a Mystery?</h2>
+    <p>All mysteries include a dedicated Games Master. Food and drinks available at the venue.</p>
+    <a href="https://gr8bookings.smartintegrate.co.za/book" target="_blank" rel="noopener noreferrer" class="btn-primary-hero glow-red">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      BOOK A MYSTERY
+    </a>
+  </section>
+</Layout>
+
+<style is:global>
+  .mm-hero {
+    position: relative; padding: 7rem 1.5rem 4rem;
+    background: #080808; overflow: hidden; text-align: center;
+  }
+  .mm-hero-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(156,39,176,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .mm-hero-content { position: relative; max-width: 36rem; margin: 0 auto; }
+  .mm-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 1rem; border-radius: 999px;
+    background: rgba(156,39,176,0.1); color: #9C27B0;
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .mm-hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; color: white;
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .mm-hero-content p { font-size: 1.05rem; color: #999; }
+
+  .mm-section { padding: 4rem 1.5rem; background: #0d0d0d; }
+  .mm-home-section { padding: 4rem 1.5rem; background: #141414; }
+  .mm-container { max-width: 56rem; margin: 0 auto; }
+  .mm-venue-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.4rem 0.9rem; border-radius: 999px;
+    background: rgba(156,39,176,0.08); color: #9C27B0;
+    font-size: 0.75rem; font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .mm-section h2, .mm-home-section h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
+    margin-bottom: 0.5rem;
+  }
+  .mm-sub { font-size: 0.95rem; color: #888; max-width: 36rem; margin-bottom: 2.5rem; }
+
+  .mm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .mm-grid-2 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+  .mm-card {
+    background: #141414; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1rem; padding: 1.75rem; text-align: center;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    display: flex; flex-direction: column;
+  }
+  .mm-card:hover {
+    border-color: rgba(156,39,176,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+  .mm-card-home { border-color: rgba(6,182,212,0.1); }
+  .mm-card-home:hover { border-color: rgba(6,182,212,0.3); }
+  .mm-card-emoji { font-size: 3rem; margin-bottom: 1rem; }
+  .mm-card h3 { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.75rem; }
+  .mm-stats {
+    display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    font-size: 0.8rem; color: #888; margin-bottom: 1.25rem;
+  }
+  .mm-price { color: var(--teal, #06B6D4); font-weight: 700; }
+  .mm-home-desc { font-size: 0.8rem; color: #888; margin-bottom: 1rem; line-height: 1.5; }
+  .mm-btn {
+    display: block; padding: 0.75rem; border-radius: 0.6rem;
+    background: rgba(156,39,176,0.1); color: #9C27B0;
+    font-weight: 700; font-size: 0.85rem; text-decoration: none;
+    transition: all 0.3s; margin-top: auto;
+  }
+  .mm-btn:hover { background: #9C27B0; color: white; }
+  .mm-btn-teal { background: rgba(6,182,212,0.1); color: var(--teal, #06B6D4); }
+  .mm-btn-teal:hover { background: var(--teal, #06B6D4); color: white; }
+
+  .mm-cta {
+    position: relative; padding: 5rem 1.5rem;
+    background: #080808; overflow: hidden; text-align: center;
+  }
+  .mm-cta-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(156,39,176,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .mm-cta h2 {
+    position: relative; font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 900; color: white; margin-bottom: 0.75rem;
+  }
+  .mm-cta p { position: relative; font-size: 0.95rem; color: #999; margin-bottom: 1.5rem; }
+  .mm-cta .btn-primary-hero { position: relative; }
+
+  .btn-primary-hero {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 1rem 2.25rem;
+    background: linear-gradient(135deg, #E53935, #B71C1C);
+    color: white; font-weight: 700; font-size: 0.95rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    border-radius: 0.6rem; text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 4px 20px rgba(229,57,53,0.3);
+    position: relative; overflow: hidden;
+  }
+  .btn-primary-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+    transform: translateX(-100%); transition: transform 0.5s;
+  }
+  .btn-primary-hero:hover::after { transform: translateX(100%); }
+  .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(229,57,53,0.45); }
+</style>

@@ -4,6 +4,7 @@ export const headerData = {
   links: [
     { text: 'Home', href: '/' },
     { text: 'Rooms', href: getPermalink('/rooms') },
+    { text: 'Murder Mysteries', href: getPermalink('/murder-mysteries') },
     { text: 'Book', href: getPermalink('/book') },
     { text: 'Rules & FAQs', href: getPermalink('/rules-faqs') },
     { text: 'Availability', href: getPermalink('/availability') },
@@ -19,6 +20,7 @@ export const footerData = {
       links: [
         { text: 'Home', href: '/' },
         { text: 'Rooms', href: '/rooms' },
+        { text: 'Murder Mysteries', href: '/murder-mysteries' },
         { text: 'Book', href: '/book' },
         { text: 'Rules & FAQs', href: '/rules-faqs' },
         { text: 'Availability', href: '/availability' },
@@ -35,9 +37,9 @@ export const footerData = {
   ],
   secondaryLinks: [],
   socialLinks: [
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://facebook.com/thegr8escape' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://instagram.com/thegr8escape' },
-    { ariaLabel: 'TikTok', icon: 'tabler:brand-tiktok', href: '#' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://facebook.com/thegr8escapefourways' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://instagram.com/gr8escaperooms' },
+    { ariaLabel: 'TikTok', icon: 'tabler:brand-tiktok', href: 'https://tiktok.com/@gr8escaperooms' },
   ],
   footNote: `© 2026 The Gr8 Escape. All rights reserved.`,
 };
