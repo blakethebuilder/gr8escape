@@ -1,14 +1,15 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
     { text: 'Home', href: '/' },
     { text: 'Rooms', href: getPermalink('/rooms') },
+    { text: 'Book', href: getPermalink('/book') },
     { text: 'Rules & FAQs', href: getPermalink('/rules-faqs') },
     { text: 'Availability', href: getPermalink('/availability') },
     { text: 'Contact', href: getPermalink('/contact') },
   ],
-  actions: [{ text: 'BOOK NOW!', href: 'https://thegr8escape.co.za/bookings/', target: '_blank' }],
+  actions: [{ text: 'BOOK NOW!', href: '/book' }],
 };
 
 export const footerData = {
@@ -18,6 +19,7 @@ export const footerData = {
       links: [
         { text: 'Home', href: '/' },
         { text: 'Rooms', href: '/rooms' },
+        { text: 'Book', href: '/book' },
         { text: 'Rules & FAQs', href: '/rules-faqs' },
         { text: 'Availability', href: '/availability' },
         { text: 'Contact', href: '/contact' },

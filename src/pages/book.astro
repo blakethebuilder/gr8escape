@@ -1,0 +1,172 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Book Your Escape',
+  description: 'Book your escape room experience at The Gr8 Escape. Choose your room, pick a date, and secure your spot.',
+};
+
+// Fallback room data (used if API is unreachable — matches Gr8 Escape's actual rooms)
+const fallbackRooms = [
+  { name: 'Asylum Escape', difficulty: '7/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🧪', color: '#E53935' },
+  { name: 'Trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🔥', color: '#FFB900' },
+  { name: 'The Hunted', difficulty: '8.5/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🌲', color: '#4CAF50' },
+  { name: 'Nightmare', difficulty: '9/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🌙', color: '#9C27B0' },
+  { name: 'The Basement', difficulty: '10/10', players: '2–8', duration: '60 min', price: 'R250', icon: '⛓️', color: '#FF9800' },
+  { name: "The Witch's Curse", difficulty: 'Outdoor', players: '2–4', duration: '45 min', price: 'R320', icon: '🧙‍♀️', color: '#7C4DFF' },
+];
+
+const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative py-24 overflow-hidden" style="background:#0a0a0a">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="dot-grid"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="tagline-reveal text-gr8-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
+        Secure Your Spot
+      </p>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight hero-heading">
+        Book Your <span class="text-gr8-red">Escape</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto hero-sub">
+        Choose your room, pick a time, and get ready for the ultimate challenge.
+      </p>
+    </div>
+  </section>
+
+  <!-- Room Selection Grid -->
+  <section class="py-20" style="background:#0d0d0d">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 bg-red-500/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
+          <span>🎯</span> Step 1 — Choose Your Room
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Pick Your <span class="text-gr8-red">Challenge</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="room-grid">
+        {fallbackRooms.map((room) => (
+          <div class="room-card group">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="text-4xl">{room.icon}</span>
+              <div>
+                <h3 class="text-xl font-bold text-white group-hover:text-gr8-red transition-colors">{room.name}</h3>
+                <span class="text-xs font-bold px-2 py-0.5 rounded-full" style={`background:${room.color}20; color:${room.color}`}>
+                  DIFFICULTY {room.difficulty}
+                </span>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 mb-5">
+              <div class="bg-[#242424] rounded-lg p-2 text-center border border-white/5">
+                <span class="text-white font-bold block text-sm">{room.players}</span>
+                <span class="text-gray-500 text-[10px] uppercase">Players</span>
+              </div>
+              <div class="bg-[#242424] rounded-lg p-2 text-center border border-white/5">
+                <span class="text-white font-bold block text-sm">{room.duration}</span>
+                <span class="text-gray-500 text-[10px] uppercase">Duration</span>
+              </div>
+              <div class="bg-[#242424] rounded-lg p-2 text-center border border-white/5">
+                <span class="text-gr8-gold font-bold block text-sm">{room.price}</span>
+                <span class="text-gray-500 text-[10px] uppercase">Per Person</span>
+              </div>
+            </div>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="btn-gr8 w-full text-center text-sm py-3">
+              SELECT ROOM
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20" style="background:#1a1a1a">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white">How Booking <span class="text-gr8-gold">Works</span></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-dark text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gr8-red/10 flex items-center justify-center">
+            <span class="text-2xl">1</span>
+          </div>
+          <h3 class="text-white font-bold mb-2">Choose a Room</h3>
+          <p class="text-gray-400 text-sm">Browse our 6 escape rooms and pick the challenge that calls to you.</p>
+        </div>
+        <div class="card-dark text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gr8-red/10 flex items-center justify-center">
+            <span class="text-2xl">2</span>
+          </div>
+          <h3 class="text-white font-bold mb-2">Pick Date & Time</h3>
+          <p class="text-gray-400 text-sm">Select an available slot from the live calendar in the booking system.</p>
+        </div>
+        <div class="card-dark text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gr8-red/10 flex items-center justify-center">
+            <span class="text-2xl">3</span>
+          </div>
+          <h3 class="text-white font-bold mb-2">Pay & Confirm</h3>
+          <p class="text-gray-400 text-sm">Secure your spot with a quick payment. You're all set for your escape!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 relative overflow-hidden" style="background:#0a0a0a">
+    <div class="absolute inset-0">
+      <div class="dot-grid"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
+    </div>
+    <div class="relative max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Ready to <span class="text-gr8-red">Escape</span>?</h2>
+      <p class="text-gray-300 text-lg mb-3">
+        Our booking system will open in a new tab. Choose your room, select a time, and secure your spot.
+      </p>
+      <p class="text-gray-500 text-sm mb-8 flex items-center justify-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        Opens in a new tab — secure & encrypted
+      </p>
+      <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer"
+         class="btn-gr8 text-xl px-14 py-5 shadow-lg shadow-red-500/30 inline-flex items-center gap-3 glow-red">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        LAUNCH BOOKING SYSTEM
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .room-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .room-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #E53935, #FFB900);
+    border-radius: 0.75rem 0.75rem 0 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .room-card:hover::before {
+    opacity: 1;
+  }
+  .room-card:hover {
+    border-color: #E53935;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(229, 57, 53, 0.12);
+  }
+</style>

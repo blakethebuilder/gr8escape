@@ -68,7 +68,7 @@ const metadata = {
         </p>
 
         <div class="flex flex-wrap justify-center gap-4 hero-cta">
-          <a href="/bookings" class="btn-gr8 text-lg px-10 py-4 shadow-lg shadow-red-500/25">
+          <a href="/book" class="btn-gr8 text-lg px-10 py-4 shadow-lg shadow-red-500/25">
             <span class="flex items-center gap-2">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               BOOK NOW
@@ -215,21 +215,6 @@ const metadata = {
 </Layout>
 
 <style is:global>
-  /* ── Dot grid background ── */
-  .dot-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle, rgba(229,57,53,0.15) 1px, transparent 1px);
-    background-size: 48px 48px;
-    animation: dot-pulse 4s ease-in-out infinite;
-    opacity: 0.6;
-  }
-  @keyframes dot-pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
-  }
-
   /* ── Hero title stagger animation ── */
   .hero-title {
     display: block;
@@ -270,9 +255,6 @@ const metadata = {
   .tagline-reveal {
     opacity: 0;
     animation: fade-slide-up 0.8s ease-out 0.3s forwards;
-  }
-  @keyframes fade-slide-up {
-    to { opacity: 1; transform: translateY(0); }
   }
 
   /* ── Timer ring ── */

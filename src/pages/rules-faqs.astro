@@ -20,7 +20,7 @@ const faqs = [
   { q: 'Can I book a private event?', a: 'Absolutely! We accommodate birthdays, bachelor/bachelorette parties, corporate team building, and more. See our Special Events page for packages.' },
   { q: "What if we don't escape in time?", a: "Don't worry! The Games Master will let you out. You can always come back and try again!" },
   { q: 'Is the room wheelchair accessible?', a: "Please contact us to discuss accessibility needs and we'll do our best to accommodate you." },
-  { q: 'How do I book?', a: 'Book directly through our online booking system. Visit the Bookings page to get started.' },
+  { q: 'How do I book?', a: 'Book directly through our online booking system. Visit the <a href="/book" class="text-gr8-red hover:text-gr8-gold underline">Book page</a> to get started.' },
 ];
 ---
 
@@ -71,7 +71,7 @@ const faqs = [
         {faqs.map((faq) => (
           <div class="card-dark">
             <h3 class="text-lg font-bold text-gr8-gold mb-2">{faq.q}</h3>
-            <p class="text-gray-400 leading-relaxed">{faq.a}</p>
+            <p class="text-gray-400 leading-relaxed" set:html={faq.a} />
           </div>
         ))}
       </div>
@@ -80,17 +80,4 @@ const faqs = [
 </Layout>
 
 <style is:global>
-  .dot-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle, rgba(229,57,53,0.15) 1px, transparent 1px);
-    background-size: 48px 48px;
-    animation: dot-pulse 4s ease-in-out infinite;
-    opacity: 0.6;
-  }
-  @keyframes dot-pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
-  }
 </style>
