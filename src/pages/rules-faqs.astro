@@ -3,24 +3,25 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Rules & FAQs',
+  description: 'Everything you need to know before your escape room adventure at The Gr8 Escape.',
 };
 
 const rules = [
   { icon: '🔞', title: 'Age Requirement', desc: 'Players under 16 must be accompanied by an adult. Minimum age is 10 years old.' },
-  { icon: '📱', title: 'No Phones', desc: 'No cell phones, cameras, or recording devices are allowed inside the room. This keeps the experience fair for all players.' },
-  { icon: '🔦', title: 'No Excessive Force', desc: "Don't force anything open or use excessive force. Our rooms are designed with clever puzzles — not brute strength." },
-  { icon: '⏰', title: 'Arrive Early', desc: 'Please arrive 15 minutes before your booking. Late arrivals may shorten your game time.' },
-  { icon: '🚫', title: 'No Food or Drinks', desc: 'No food, drinks, or gum are allowed inside the game rooms.' },
-  { icon: '💡', title: 'Ask for Hints', desc: 'Stuck? Use the hint system! Our Games Master is watching and ready to help — just ask!' },
+  { icon: '📱', title: 'No Phones', desc: 'No cell phones, cameras, or recording devices inside the room. This keeps the experience fair for everyone.' },
+  { icon: '🔦', title: 'No Brute Force', desc: "Don't force anything open. Our puzzles are clever — not about strength. If something feels stuck, it's not meant to open that way." },
+  { icon: '⏰', title: 'Arrive 15 Min Early', desc: 'Please arrive 15 minutes before your booking. Late arrivals may shorten your game time or forfeit the slot.' },
+  { icon: '🚫', title: 'No Food or Drinks', desc: 'No food, drinks, or gum inside the game rooms. Save the celebration for after you escape!' },
+  { icon: '💡', title: 'Hints Are Free', desc: 'Stuck? Just ask! Our Games Master monitors your progress and will drop hints when you need them.' },
 ];
 
 const faqs = [
-  { q: 'What happens if I need to cancel?', a: 'Please refer to our refund policy on the Contact page for cancellation and refund details.' },
-  { q: 'What should I bring?', a: 'Just yourself and your team! Everything you need is provided in the room. Please leave phones and bags outside.' },
-  { q: 'Can I book a private event?', a: 'Absolutely! We accommodate birthdays, bachelor/bachelorette parties, corporate team building, and more. See our Special Events page for packages.' },
-  { q: "What if we don't escape in time?", a: "Don't worry! The Games Master will let you out. You can always come back and try again!" },
-  { q: 'Is the room wheelchair accessible?', a: "Please contact us to discuss accessibility needs and we'll do our best to accommodate you." },
-  { q: 'How do I book?', a: 'Book directly through our online booking system. Visit the <a href="/book" class="text-gr8-red hover:text-gr8-gold underline">Book page</a> to get started.' },
+  { q: 'What happens if I need to cancel?', a: 'Cancellations made at least <strong>48 hours</strong> before your booking are refundable (less a small admin fee). Cancellations within 48 hours are non-refundable. See our <a href="/contact" class="text-gr8-red hover:text-gr8-gold underline">Contact page</a> for the full policy.' },
+  { q: 'What should I bring?', a: 'Just yourself and your team! Everything you need is in the room. Leave phones, bags, and outside distractions behind.' },
+  { q: 'Can I book a private event?', a: 'Absolutely! We host birthdays, bachelor/bachelorette parties, corporate team building, and more. Check our <a href="/rooms" class="text-gr8-red hover:text-gr8-gold underline">Rooms page</a> for packages and pricing.' },
+  { q: "What if we don't escape in time?", a: "The Games Master will let you out — don't worry! You can always come back and try again. Most teams don't escape on their first try." },
+  { q: 'Is the venue wheelchair accessible?', a: "Please <a href=\"/contact\" class=\"text-gr8-red hover:text-gr8-gold underline\">contact us</a> to discuss accessibility needs. We'll do our best to accommodate everyone." },
+  { q: 'How do I book?', a: 'Book directly through our <a href="/book" class="text-gr8-red hover:text-gr8-gold underline">online booking system</a>. Choose your room, pick a date and time, and secure your spot with a deposit.' },
 ];
 ---
 
@@ -32,10 +33,13 @@ const faqs = [
       <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+      <p class="tagline-reveal text-gr8-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
+        Be Prepared
+      </p>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight hero-heading">
         Rules <span class="text-gr8-red">&</span> <span class="text-gr8-gold">FAQs</span>
       </h1>
-      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto hero-sub">
         Everything you need to know before your escape room adventure.
       </p>
     </div>
@@ -44,18 +48,19 @@ const faqs = [
   <!-- Rules -->
   <section class="py-20" style="background:#1a1a1a">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">The Rules</h2>
-      <p class="text-gray-400 mb-10 text-lg">A few ground rules to keep the fun safe and fair for everyone.</p>
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 bg-gr8-red/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
+          <span>📋</span> Ground Rules
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">The <span class="text-gr8-red">Rules</span></h2>
+        <p class="text-gray-400 mt-3">A few ground rules to keep the fun safe and fair for everyone.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {rules.map((rule) => (
-          <div class="card-dark">
-            <div class="flex items-start gap-4">
-              <span class="text-3xl flex-shrink-0">{rule.icon}</span>
-              <div>
-                <h3 class="text-xl font-bold text-white mb-1">{rule.title}</h3>
-                <p class="text-gray-400 leading-relaxed">{rule.desc}</p>
-              </div>
-            </div>
+          <div class="rule-card group">
+            <span class="text-4xl block mb-4 group-hover:scale-110 transition-transform">{rule.icon}</span>
+            <h3 class="text-lg font-bold text-white mb-2">{rule.title}</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">{rule.desc}</p>
           </div>
         ))}
       </div>
@@ -63,21 +68,77 @@ const faqs = [
   </section>
 
   <!-- FAQs -->
-  <section class="py-20" style="background:#0a0a0a">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Frequently Asked Questions</h2>
-      <p class="text-gray-400 mb-10 text-lg">Got questions? We've got answers.</p>
-      <div class="grid md:grid-cols-2 gap-6">
-        {faqs.map((faq) => (
-          <div class="card-dark">
-            <h3 class="text-lg font-bold text-gr8-gold mb-2">{faq.q}</h3>
-            <p class="text-gray-400 leading-relaxed" set:html={faq.a} />
-          </div>
+  <section class="py-20" style="background:#0d0d0d">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 bg-gr8-gold/10 text-gr8-gold text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
+          <span>❓</span> Got Questions?
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Frequently <span class="text-gr8-gold">Asked</span></h2>
+      </div>
+      <div class="space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="faq-item group">
+            <summary class="cursor-pointer list-none flex items-center justify-between p-5 text-white font-semibold text-lg group-open:text-gr8-gold transition-colors">
+              {faq.q}
+              <svg class="w-5 h-5 flex-shrink-0 ml-4 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+              </svg>
+            </summary>
+            <div class="px-5 pb-5 text-gray-400 leading-relaxed" set:html={faq.a} />
+          </details>
         ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <p class="text-gray-500 text-sm mb-4">Still have questions? We're happy to help.</p>
+        <a href="/contact" class="hero-outline-btn text-sm">
+          Contact Us
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style is:global>
+  .rule-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .rule-card:hover {
+    border-color: #E53935;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(229, 57, 53, 0.12);
+  }
+
+  .faq-item {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 0.75rem;
+    transition: all 0.3s;
+  }
+  .faq-item[open] {
+    border-color: rgba(255, 185, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 185, 0, 0.08);
+  }
+
+  .hero-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+  }
+  .hero-outline-btn:hover {
+    border-color: #E53935;
+    background: rgba(229,57,53,0.1);
+    transform: translateY(-2px);
+  }
 </style>

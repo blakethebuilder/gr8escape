@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Availability',
+  description: 'Check room availability and book your escape room experience at The Gr8 Escape.',
 };
 ---
 
@@ -14,11 +15,14 @@ const metadata = {
       <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+      <p class="tagline-reveal text-gr8-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
+        Plan Your Visit
+      </p>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight hero-heading">
         Check <span class="text-gr8-red">Availability</span>
       </h1>
-      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-        See what's free before you book.
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto hero-sub">
+        We're open Thursday through Sunday. Book ahead to secure your preferred time slot.
       </p>
     </div>
   </section>
@@ -28,25 +32,25 @@ const metadata = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="grid md:grid-cols-3 gap-6 mb-12">
         <div class="card-dark">
-          <div class="text-3xl mb-3">📅</div>
+          <div class="text-4xl mb-4">📅</div>
           <h3 class="text-white font-bold mb-2">1. Pick a Date</h3>
-          <p class="text-gray-400 text-sm">Browse the calendar below for available slots.</p>
+          <p class="text-gray-400 text-sm">We're open Thursday – Sunday, 11:00 – 18:00. Browse available slots.</p>
         </div>
         <div class="card-dark">
-          <div class="text-3xl mb-3">🎯</div>
+          <div class="text-4xl mb-4">🎯</div>
           <h3 class="text-white font-bold mb-2">2. Choose Your Room</h3>
-          <p class="text-gray-400 text-sm">Each room has its own colour on the calendar.</p>
+          <p class="text-gray-400 text-sm">6 unique escape rooms — from beginner-friendly to hardcore challenges.</p>
         </div>
         <div class="card-dark">
-          <div class="text-3xl mb-3">🔗</div>
-          <h3 class="text-white font-bold mb-2">3. Book Now</h3>
-          <p class="text-gray-400 text-sm">Click through to secure your spot.</p>
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="text-white font-bold mb-2">3. Lock It In</h3>
+          <p class="text-gray-400 text-sm">Book and pay securely. Your adventure is locked in — show up and escape.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Calendar Embed -->
+  <!-- Booking CTA -->
   <section class="py-16" style="background:#0d0d0d">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="card-dark overflow-hidden p-0">
@@ -59,44 +63,49 @@ const metadata = {
           <span class="text-gray-500 text-xs font-mono">gr8escape.bookings</span>
         </div>
 
-        <!-- Placeholder calendar -->
         <div class="p-8 md:p-12 text-center">
-          <div class="inline-flex items-center gap-2 bg-red-500/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">
-            <span>⚡</span> Coming Soon
+          <div class="inline-flex items-center gap-2 bg-gr8-red/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">
+            <span>⚡</span> Live Booking
           </div>
-          <h2 class="text-2xl md:text-4xl font-bold text-white mb-4">Live Calendar <span class="text-gr8-gold">Incoming</span></h2>
+          <h2 class="text-2xl md:text-4xl font-bold text-white mb-4">
+            Ready to <span class="text-gr8-gold">Book</span>?
+          </h2>
           <p class="text-gray-400 max-w-lg mx-auto mb-8">
-            The Gr8 Escape will soon have a live availability calendar here so you can see which rooms are free 
-            at a glance. For now, <strong class="text-white">book directly</strong> below.
+            Our booking system shows live availability for all rooms. Pick your room,
+            choose a time, and secure your spot — all in one place.
           </p>
-          <a href="/book" class="btn-gr8 text-lg px-10 py-4 inline-flex items-center gap-2">
+          <a href="/book" class="btn-gr8 text-lg px-10 py-4 inline-flex items-center gap-2 glow-red">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            BOOK NOW
+            VIEW AVAILABILITY & BOOK
           </a>
         </div>
       </div>
 
       <!-- Room colour key -->
-      <div class="mt-6 grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-6 gap-3">
         <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full" style="background:#E53935"></span>
-          Asylum Escape
+          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#E53935"></span>
+          Asylum
         </div>
         <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full" style="background:#FFB900"></span>
+          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#FFB900"></span>
           Trapped
         </div>
         <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full" style="background:#4CAF50"></span>
+          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#4CAF50"></span>
           The Hunted
         </div>
         <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full" style="background:#9C27B0"></span>
+          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#9C27B0"></span>
           Nightmare
         </div>
         <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full" style="background:#FF9800"></span>
+          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#FF9800"></span>
           The Basement
+        </div>
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#7C4DFF"></span>
+          Witch's Curse
         </div>
       </div>
     </div>
@@ -105,12 +114,9 @@ const metadata = {
   <!-- CTA -->
   <section class="py-16" style="background:#1a1a1a">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Still ready to book?</h2>
-      <p class="text-gray-300 mb-6">We're open Thursday — Sunday, 11:00 — 18:00.</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to escape?</h2>
+      <p class="text-gray-300 mb-6">We're open Thursday – Sunday, 11:00 – 18:00.</p>
       <a href="/book" class="btn-gr8 text-lg px-10 py-4">BOOK YOUR SLOT</a>
     </div>
   </section>
 </Layout>
-
-<style is:global>
-</style>

@@ -2,23 +2,64 @@
 import Layout from '~/layouts/Layout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 
-const title = `Error 404`;
+const metadata = { title: 'Lost? — The Gr8 Escape' };
 ---
 
-<Layout metadata={{ title }}>
-  <section class="flex items-center h-full p-16">
-    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-      <div class="max-w-md text-center">
-        <h2 class="mb-8 font-bold text-9xl">
-          <span class="sr-only">Error</span>
-          <span class="text-primary">404</span>
-        </h2>
-        <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          But don't worry, you can find plenty of other things on our homepage.
-        </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+<Layout metadata={metadata}>
+  <section class="relative min-h-screen flex items-center overflow-hidden" style="background:#0a0a0a">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="dot-grid"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
+    </div>
+
+    <div class="relative w-full max-w-2xl mx-auto px-4 sm:px-6 py-24 text-center">
+      <!-- Room number style -->
+      <p class="text-gr8-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-8">
+        Room Not Found
+      </p>
+
+      <!-- Big 404 with glitch effect -->
+      <h1 class="text-[8rem] md:text-[12rem] font-black leading-none mb-4 tracking-tighter" style="color:#E53935; text-shadow: 0 0 60px rgba(229,57,53,0.4), 4px 4px 0 #C62828;">
+        404
+      </h1>
+
+      <p class="text-2xl md:text-3xl font-bold text-white mb-4">
+        You've wandered into a <span class="text-gr8-gold">locked room</span>.
+      </p>
+      <p class="text-lg text-gray-400 mb-10 max-w-md mx-auto leading-relaxed">
+        This page doesn't exist — but don't panic. Unlike our escape rooms, getting out of here is easy.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={getHomePermalink()} class="btn-gr8 text-lg px-10 py-4">
+          <span class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+            Back to Homepage
+          </span>
+        </a>
+        <a href="/rooms" class="hero-outline-btn text-lg">
+          Explore Rooms
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
       </div>
     </div>
   </section>
 </Layout>
+
+<style is:global>
+  .hero-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+  }
+  .hero-outline-btn:hover {
+    border-color: #E53935;
+    background: rgba(229,57,53,0.1);
+    transform: translateY(-2px);
+  }
+</style>
