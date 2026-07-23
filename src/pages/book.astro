@@ -3,11 +3,13 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Book Your Escape',
-  description: 'Book your escape room experience at The Gr8 Escape. Choose your room, pick a date, and secure your spot.',
+  description: 'Book your escape room at The Gr8 Escape. Choose your room, pick a time, and secure your spot.',
 };
 
-// Fallback room data (used if API is unreachable — matches Gr8 Escape's actual rooms)
-const fallbackRooms = [
+const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
+const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
+
+const rooms = [
   { name: 'Asylum Escape', difficulty: '7/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🧪', color: '#E53935' },
   { name: 'Trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🔥', color: '#06B6D4' },
   { name: 'The Hunted', difficulty: '8.5/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🌲', color: '#4CAF50' },
@@ -15,158 +17,274 @@ const fallbackRooms = [
   { name: 'The Basement', difficulty: '10/10', players: '2–8', duration: '60 min', price: 'R250', icon: '⛓️', color: '#FF9800' },
   { name: "The Witch's Curse", difficulty: 'Outdoor', players: '2–4', duration: '45 min', price: 'R320', icon: '🧙‍♀️', color: '#7C4DFF' },
 ];
-
-const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero -->
-  <section class="relative py-24 overflow-hidden" style="background:#0a0a0a">
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="dot-grid"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
-    </div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="tagline-reveal text-gr8-teal font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
-        Secure Your Spot
-      </p>
-      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight hero-heading">
-        Book Your <span class="text-gr8-red">Escape</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto hero-sub">
-        Choose your room, pick a time, and get ready for the ultimate challenge.
-      </p>
+  <!-- ════════ HERO ════════ -->
+  <section class="book-hero">
+    <div class="book-hero-bg"></div>
+    <div class="book-hero-content">
+      <div class="book-badge"><span>🎟️</span> Secure Your Spot</div>
+      <h1>Book Your <span class="text-red">Escape</span></h1>
+      <p>Choose your room. Pick your time. <em>Lock it in.</em></p>
     </div>
   </section>
 
-  <!-- Room Selection Grid -->
-  <section class="py-20" style="background:#0d0d0d">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-red-500/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
-          <span>🎯</span> Step 1 — Choose Your Room
-        </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-white">Pick Your <span class="text-gr8-red">Challenge</span></h2>
+  <!-- ════════ ROOM SELECT ════════ -->
+  <section class="book-rooms-section">
+    <div class="book-rooms-bg"></div>
+    <div class="book-container">
+      <div class="book-section-header">
+        <div class="book-step-badge">Step 1</div>
+        <h2>Pick Your <span class="text-red">Challenge</span></h2>
+        <p>Then click through to our booking system to select a date and time.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="room-grid">
-        {fallbackRooms.map((room) => (
-          <div class="room-card group">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-4xl">{room.icon}</span>
-              <div>
-                <h3 class="text-xl font-bold text-white group-hover:text-gr8-red transition-colors">{room.name}</h3>
-                <span class="text-xs font-bold px-2 py-0.5 rounded-full" style={`background:${room.color}20; color:${room.color}`}>
-                  DIFFICULTY {room.difficulty}
-                </span>
-              </div>
+      <div class="book-room-grid">
+        {rooms.map((room) => (
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="book-room-card" style={`--rc:${room.color}`}>
+            <div class="brc-emoji">{room.icon}</div>
+            <div class="brc-info">
+              <h3>{room.name}</h3>
+              <span class="brc-diff" style={`background:${room.color}18; color:${room.color}`}>Difficulty {room.difficulty}</span>
             </div>
-            <div class="grid grid-cols-3 gap-2 mb-5">
-              <div class="bg-[#242424] rounded-lg p-2 text-center border border-white/5">
-                <span class="text-white font-bold block text-sm">{room.players}</span>
-                <span class="text-gray-500 text-[10px] uppercase">Players</span>
-              </div>
-              <div class="bg-[#242424] rounded-lg p-2 text-center border border-white/5">
-                <span class="text-white font-bold block text-sm">{room.duration}</span>
-                <span class="text-gray-500 text-[10px] uppercase">Duration</span>
-              </div>
-              <div class="bg-[#242424] rounded-lg p-2 text-center border border-white/5">
-                <span class="text-gr8-teal font-bold block text-sm">{room.price}</span>
-                <span class="text-gray-500 text-[10px] uppercase">Per Person</span>
-              </div>
+            <div class="brc-stats">
+              <span class="brc-stat">{room.players} <small>Players</small></span>
+              <span class="brc-stat">{room.duration} <small>Duration</small></span>
+              <span class="brc-price">{room.price} <small>per person</small></span>
             </div>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="btn-gr8 w-full text-center text-sm py-3">
-              SELECT ROOM
-            </a>
-          </div>
+            <div class="brc-arrow">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="py-20" style="background:#1a1a1a">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-white">How Booking <span class="text-gr8-teal">Works</span></h2>
+  <!-- ════════ HOW IT WORKS ════════ -->
+  <section class="book-how-section">
+    <div class="book-container">
+      <div class="book-section-header">
+        <div class="book-step-badge book-step-teal">Step 2</div>
+        <h2>How It <span class="text-teal">Works</span></h2>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card-dark text-center">
-          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gr8-red/10 flex items-center justify-center">
-            <span class="text-2xl">1</span>
-          </div>
-          <h3 class="text-white font-bold mb-2">Choose a Room</h3>
-          <p class="text-gray-400 text-sm">Browse our 6 escape rooms and pick the challenge that calls to you.</p>
+      <div class="book-how-grid">
+        <div class="book-how-card">
+          <div class="bhc-num">1</div>
+          <h3>Choose a Room</h3>
+          <p>Pick from 6 immersive escape rooms. Each with its own story, difficulty, and atmosphere.</p>
         </div>
-        <div class="card-dark text-center">
-          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gr8-red/10 flex items-center justify-center">
-            <span class="text-2xl">2</span>
-          </div>
-          <h3 class="text-white font-bold mb-2">Pick Date & Time</h3>
-          <p class="text-gray-400 text-sm">Select an available slot from the live calendar in the booking system.</p>
+        <div class="book-how-arrow">→</div>
+        <div class="book-how-card">
+          <div class="bhc-num">2</div>
+          <h3>Pick Date & Time</h3>
+          <p>Use our live calendar to find an open slot that works for your group. Thursday – Sunday.</p>
         </div>
-        <div class="card-dark text-center">
-          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gr8-red/10 flex items-center justify-center">
-            <span class="text-2xl">3</span>
-          </div>
-          <h3 class="text-white font-bold mb-2">Pay & Confirm</h3>
-          <p class="text-gray-400 text-sm">Secure your spot with a quick payment. You're all set for your escape!</p>
+        <div class="book-how-arrow">→</div>
+        <div class="book-how-card">
+          <div class="bhc-num">3</div>
+          <h3>Pay & Confirm</h3>
+          <p>Secure your booking with a quick payment. You'll get a confirmation — show up and escape.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 relative overflow-hidden" style="background:#0a0a0a">
-    <div class="absolute inset-0">
-      <div class="dot-grid"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
-    </div>
-    <div class="relative max-w-2xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Ready to <span class="text-gr8-red">Escape</span>?</h2>
-      <p class="text-gray-300 text-lg mb-3">
-        Our booking system will open in a new tab. Choose your room, select a time, and secure your spot.
-      </p>
-      <p class="text-gray-500 text-sm mb-8 flex items-center justify-center gap-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
-        Opens in a new tab — secure & encrypted
-      </p>
-      <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer"
-         class="btn-gr8 text-xl px-14 py-5 shadow-lg shadow-red-500/30 inline-flex items-center gap-3 glow-red">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        LAUNCH BOOKING SYSTEM
-      </a>
+  <!-- ════════ CTA ════════ -->
+  <section class="book-final-cta">
+    <div class="book-final-bg"></div>
+    <div class="book-final-content">
+      <h2>Ready to <span class="text-red">Escape</span>?</h2>
+      <p>Our booking system opens in a new tab. Choose your room, pick a slot, and lock it in — it only takes a minute.</p>
+      <div class="book-final-actions">
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" class="btn-primary-hero glow-red">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          LAUNCH BOOKING SYSTEM
+        </a>
+        <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer" class="btn-ghost-hero">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+          Check Live Availability
+        </a>
+      </div>
     </div>
   </section>
 </Layout>
 
 <style is:global>
-  .room-card {
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  /* ── Hero ── */
+  .book-hero {
+    position: relative; padding: 7rem 1.5rem 4rem;
+    background: #080808; overflow: hidden; text-align: center;
   }
-  .room-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #E53935, #06B6D4);
-    border-radius: 0.75rem 0.75rem 0 0;
-    opacity: 0;
-    transition: opacity 0.3s;
+  .book-hero-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
-  .room-card:hover::before {
-    opacity: 1;
+  .book-hero-content { position: relative; max-width: 36rem; margin: 0 auto; }
+  .book-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 1rem; border-radius: 999px;
+    background: rgba(229,57,53,0.08); color: var(--red, #E53935);
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
   }
-  .room-card:hover {
-    border-color: #E53935;
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(229, 57, 53, 0.12);
+  .book-hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; color: white;
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .book-hero-content p { font-size: 1.1rem; color: #999; }
+  .book-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 600; }
+
+  /* ── Room grid ── */
+  .book-rooms-section {
+    position: relative; padding: 4rem 1.5rem;
+    background: #0d0d0d; overflow: hidden;
+  }
+  .book-rooms-bg {
+    position: absolute; inset: 0; opacity: 0.12;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.06) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  .book-container { position: relative; max-width: 56rem; margin: 0 auto; }
+  .book-section-header { text-align: center; margin-bottom: 2.5rem; }
+  .book-step-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.25rem 0.9rem; border-radius: 999px;
+    background: rgba(229,57,53,0.1); color: var(--red, #E53935);
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+  .book-step-teal { background: rgba(6,182,212,0.1); color: var(--teal, #06B6D4); }
+  .book-section-header h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
+    margin-bottom: 0.5rem;
+  }
+  .book-section-header p { font-size: 0.95rem; color: #888; }
+
+  .book-room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .book-room-card {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.25rem;
+    background: #141414; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.85rem;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    cursor: pointer; text-decoration: none;
+  }
+  .book-room-card:hover {
+    border-color: var(--rc);
+    transform: translateX(4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  }
+  .brc-emoji { font-size: 2.5rem; flex-shrink: 0; transition: transform 0.3s; }
+  .book-room-card:hover .brc-emoji { transform: scale(1.15); }
+  .brc-info { flex: 1; min-width: 0; }
+  .brc-info h3 {
+    font-size: 0.95rem; font-weight: 700; color: white;
+    margin-bottom: 0.3rem; transition: color 0.3s;
+  }
+  .book-room-card:hover .brc-info h3 { color: var(--rc); }
+  .brc-diff {
+    display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px;
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .brc-stats {
+    display: flex; flex-direction: column; gap: 0.2rem; flex-shrink: 0;
+  }
+  .brc-stat { font-size: 0.75rem; color: #ccc; font-weight: 600; white-space: nowrap; }
+  .brc-stat small { font-size: 0.6rem; color: #666; font-weight: 400; }
+  .brc-price { font-size: 0.85rem; color: var(--teal, #06B6D4); font-weight: 700; }
+  .brc-price small { font-size: 0.6rem; color: #666; font-weight: 400; }
+  .brc-arrow {
+    color: #555; transition: all 0.3s; flex-shrink: 0;
+  }
+  .book-room-card:hover .brc-arrow { color: var(--rc); transform: translateX(2px); }
+
+  /* ── How it works ── */
+  .book-how-section {
+    padding: 4rem 1.5rem;
+    background: #141414;
+  }
+  .book-how-grid {
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    max-width: 36rem; margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .book-how-grid { flex-direction: row; align-items: flex-start; }
+  }
+  .book-how-card {
+    flex: 1; text-align: center; padding: 1.5rem;
+  }
+  .bhc-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(229,57,53,0.1); color: var(--red, #E53935);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1rem; margin: 0 auto 0.75rem;
+  }
+  .book-how-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+  .book-how-card p { font-size: 0.8rem; color: #888; line-height: 1.5; }
+  .book-how-arrow {
+    color: rgba(255,255,255,0.1); font-size: 1.2rem; font-weight: 300;
+  }
+  @media (max-width: 767px) {
+    .book-how-arrow { transform: rotate(90deg); }
+  }
+
+  /* ── Final CTA ── */
+  .book-final-cta {
+    position: relative; padding: 5rem 1.5rem;
+    background: #080808; overflow: hidden; text-align: center;
+  }
+  .book-final-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .book-final-content { position: relative; max-width: 36rem; margin: 0 auto; }
+  .book-final-content h2 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem); font-weight: 900; color: white;
+    margin-bottom: 0.75rem;
+  }
+  .book-final-content p { font-size: 0.95rem; color: #999; line-height: 1.6; margin-bottom: 2rem; }
+  .book-final-actions {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+  }
+
+  .btn-primary-hero {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 1rem 2.25rem;
+    background: linear-gradient(135deg, #E53935, #B71C1C);
+    color: white; font-weight: 700; font-size: 0.95rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    border-radius: 0.6rem;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 4px 20px rgba(229,57,53,0.3);
+    position: relative; overflow: hidden; text-decoration: none;
+  }
+  .btn-primary-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+    transform: translateX(-100%); transition: transform 0.5s;
+  }
+  .btn-primary-hero:hover::after { transform: translateX(100%); }
+  .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(229,57,53,0.45); }
+
+  .btn-ghost-hero {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: 2px solid rgba(255,255,255,0.12);
+    color: white; font-weight: 600; font-size: 0.9rem;
+    border-radius: 0.6rem; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-ghost-hero:hover {
+    border-color: var(--teal, #06B6D4);
+    background: rgba(6,182,212,0.08);
+    transform: translateY(-2px);
   }
 </style>

@@ -1,157 +1,274 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+const metadata = {
+  title: 'Our Rooms',
+  description: 'Explore all 6 escape rooms at The Gr8 Escape. From Asylum to The Basement — which will you conquer?',
+};
+
 const rooms = [
-  { name: 'Asylum Escape', difficulty: '7/10', img: '/assets/asylum.jpg', icon: '🧪',
-    story: `Dr. Mulasy Tretour's office holds evidence of his vicious crimes — but one of his experiments is closer than you think. 60 minutes to gather the proof and get out before they get hold of you.` },
-  { name: 'Trapped', difficulty: '8/10', img: '/assets/trapped.jpg', icon: '🔥',
-    story: `The Butler welcomes you to Mr. Charles A Clarence's estate. Then the smoke starts pouring in. A fire is tearing through the mansion — 60 minutes to find another way out before you're burned alive.` },
-  { name: 'The Hunted', difficulty: '8.5/10', img: '/assets/hunted.jpg', icon: '🌲',
-    story: `Your uncle went quiet after months of letters from Eldertree. At his abandoned cabin the door slams shut. Destruction everywhere. Movement in the woods. Can you escape the creature that's taken the town?` },
-  { name: 'Nightmare', difficulty: '9/10', img: '/assets/nightmare.jpg', icon: '🌙',
-    story: `The Dead Moon rises once a year. Tonight the Sandman walks among us. You have 60 minutes to break his curse — or join his collection of night terrors forever.` },
-  { name: 'The Basement', difficulty: '10/10', img: '/assets/basement.jpg', icon: '⛓️',
-    story: `You wake up in darkness. Chains dragging on metal. Last thing you remember was the car with your friends. You're pawns in a psychopath's game — 60 minutes to escape his chamber for good.` },
+  {
+    name: 'Asylum Escape', difficulty: 7, icon: '🧪', color: '#E53935',
+    players: '2–8', duration: '60 min', price: 'R250',
+    story: "Dr. Mulasy Tretour's office holds evidence of his vicious crimes — but one of his experiments is closer than you think. Gather the proof and get out before they get hold of you.",
+    tag: 'Most Popular',
+  },
+  {
+    name: 'Trapped', difficulty: 8, icon: '🔥', color: '#06B6D4',
+    players: '2–8', duration: '60 min', price: 'R250',
+    story: "The Butler welcomes you to Mr. Charles A Clarence's estate. Then the smoke starts pouring in. A fire is tearing through the mansion — find another way out before you're burned alive.",
+  },
+  {
+    name: 'The Hunted', difficulty: 8.5, icon: '🌲', color: '#4CAF50',
+    players: '2–8', duration: '60 min', price: 'R250',
+    story: "Your uncle went quiet after months of letters from Eldertree. At his abandoned cabin the door slams shut. Movement in the woods. Can you escape the creature that's taken the town?",
+  },
+  {
+    name: 'Nightmare', difficulty: 9, icon: '🌙', color: '#9C27B0',
+    players: '2–8', duration: '60 min', price: 'R250',
+    story: "The Dead Moon rises once a year. Tonight the Sandman walks among us. You have 60 minutes to break his curse — or join his collection of night terrors forever.",
+  },
+  {
+    name: 'The Basement', difficulty: 10, icon: '⛓️', color: '#FF9800',
+    players: '2–8', duration: '60 min', price: 'R250',
+    story: "You wake up in darkness. Chains dragging on metal. You're pawns in a psychopath's game — 60 minutes to escape his chamber for good. Our hardest room.",
+    tag: 'Hardest',
+  },
+  {
+    name: "The Witch's Curse", difficulty: 'Outdoor', icon: '🧙‍♀️', color: '#7C4DFF',
+    players: '2–4', duration: '45 min', price: 'R320',
+    story: "Hidden within a container at The Golf Place — Fore-Ways lies a curse waiting to be broken. Solve magical puzzles in just 45 minutes. Our outdoor experience.",
+    tag: 'Outdoor',
+  },
 ];
 ---
 
-<Layout metadata={{ title: 'Our Rooms' }}>
-  <!-- Hero -->
-  <section class="relative min-h-[50vh] flex items-center overflow-hidden" style="background:#0d0d0d">
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="dot-grid"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0d0d0d 70%)"></div>
-    </div>
-    <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6 py-24 text-center">
-      <p class="tagline-reveal text-gr8-teal font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">Choose Your Challenge</p>
-      <h1 class="hero-heading text-5xl md:text-7xl font-black text-white mb-4">Our Escape Rooms</h1>
-      <p class="hero-sub text-lg md:text-xl text-gray-300 max-w-xl mx-auto">5 unique rooms + a special outdoor experience.<br><span class="text-gr8-red font-semibold">Can you escape them all?</span></p>
+<Layout metadata={metadata}>
+  <!-- ════════ HERO ════════ -->
+  <section class="rooms-hero">
+    <div class="rooms-hero-bg"></div>
+    <div class="rooms-hero-content">
+      <div class="rooms-badge"><span>🔍</span> Choose Your Challenge</div>
+      <h1>Our <span class="text-red">Escape</span> Rooms</h1>
+      <p>Six unique worlds. One way out. <em>Which will you survive?</em></p>
     </div>
   </section>
 
-  <!-- Room Cards -->
-  <section class="py-20" style="background-color:#0d0d0d">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {rooms.map(r => (
-          <div class="room-card group">
-            <div class="room-card-img h-56 bg-cover bg-center relative" style={`background-image:url(${r.img})`}>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] via-[#1e1e1e]/30 to-transparent"></div>
-              <span class="absolute bottom-3 left-3 text-5xl">{r.icon}</span>
-              <span class="absolute top-3 right-3 difficulty-badge">DIFFICULTY {r.difficulty}</span>
-            </div>
-            <div class="p-5 flex flex-col flex-1">
-              <h2 class="text-xl font-bold text-white mb-3">{r.name}</h2>
-              <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">{r.story}</p>
-              <a href="/book" class="btn-gr8 w-full text-center text-sm py-3">BOOK NOW</a>
-            </div>
+  <!-- ════════ ROOM GRID ════════ -->
+  <section class="rooms-grid-section">
+    <div class="rooms-grid-bg"></div>
+    <div class="rooms-grid">
+      {rooms.map((room) => (
+        <article class="room-card" style={`--room-color: ${room.color}`}>
+          <!-- Room atmosphere block -->
+          <div class="room-atmo" style={`background: linear-gradient(135deg, ${room.color}15, ${room.color}05)`}>
+            <span class="room-emoji">{room.icon}</span>
+            {room.tag && <span class="room-tag" style={`background:${room.color}20; color:${room.color}`}>{room.tag}</span>}
           </div>
-        ))}
-      </div>
+
+          <!-- Room info -->
+          <div class="room-body">
+            <div class="room-header">
+              <h2>{room.name}</h2>
+              <div class="room-difficulty">
+                <span class="diff-dots">
+                  {typeof room.difficulty === 'number' && Array.from({ length: 5 }, (_, i) => {
+                    const filled = i < Math.round(room.difficulty / 2);
+                    return <span class={`diff-dot${filled ? ' filled' : ''}`} style={filled ? `background:${room.color}` : ''}></span>;
+                  })}
+                </span>
+                <span class="diff-label">Difficulty {room.difficulty}/10</span>
+              </div>
+            </div>
+
+            <p class="room-story">{room.story}</p>
+
+            <div class="room-stats">
+              <div class="room-stat"><span class="room-stat-val">{room.players}</span><span class="room-stat-lbl">Players</span></div>
+              <div class="room-stat"><span class="room-stat-val">{room.duration}</span><span class="room-stat-lbl">Duration</span></div>
+              <div class="room-stat"><span class="room-stat-val accent">{room.price}</span><span class="room-stat-lbl">Per Person</span></div>
+            </div>
+
+            <a href="/book" class="room-book-btn">
+              Book This Room
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 
-  <!-- Witch's Curse Featured -->
-  <section class="py-20" style="background-color:#0d0d0d">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="featured-card overflow-hidden md:flex">
-        <div class="md:w-1/3 h-64 md:h-auto bg-gradient-to-br from-purple-900/60 to-[#1a1a1a] flex items-center justify-center relative">
-          <div class="absolute inset-0 dot-grid-subtle opacity-30"></div>
-          <span class="text-7xl relative z-10">🧙‍♀️</span>
-        </div>
-        <div class="md:w-2/3 p-8">
-          <span class="text-xs font-bold text-gr8-red bg-gr8-red/10 px-3 py-1.5 rounded-full mb-4 inline-block tracking-wider uppercase">Outdoor Experience</span>
-          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">The Witch's Curse</h2>
-          <p class="text-gray-300 mb-4">Hidden within a container at <strong class="text-white">The Golf Place — Fore-Ways</strong> lies a curse waiting to be broken. Solve magical puzzles in just <strong class="text-white">45 minutes</strong>.</p>
-          <div class="grid grid-cols-3 gap-4 text-center mb-6 max-w-sm">
-            <div class="bg-[#242424] rounded-lg p-3 border border-gray-700/50"><span class="text-gr8-red font-bold block text-lg">2–4</span><span class="text-xs text-gray-400">Players</span></div>
-            <div class="bg-[#242424] rounded-lg p-3 border border-gray-700/50"><span class="text-gr8-red font-bold block text-lg">45 min</span><span class="text-xs text-gray-400">Duration</span></div>
-            <div class="bg-[#242424] rounded-lg p-3 border border-gray-700/50"><span class="text-gr8-red font-bold block text-lg">R320</span><span class="text-xs text-gray-400">Per person</span></div>
-          </div>
-          <a href="/book" class="btn-gr8 inline-block">BOOK THIS ROOM</a>
-        </div>
-      </div>
-    </div>
+  <!-- ════════ CTA ════════ -->
+  <section class="rooms-cta">
+    <div class="rooms-cta-bg"></div>
+    <h2>Ready to Take On a Room?</h2>
+    <p>All rooms are open Thursday – Sunday. Choose your challenge and lock in your slot.</p>
+    <a href="/book" class="btn-primary-hero glow-red">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      BOOK NOW
+    </a>
   </section>
 </Layout>
 
 <style is:global>
   /* ── Hero ── */
-  .hero-heading {
-    opacity: 0;
-    animation: fade-slide-up 0.8s ease-out 0.3s forwards;
+  .rooms-hero {
+    position: relative; padding: 7rem 1.5rem 4rem;
+    background: #080808; overflow: hidden; text-align: center;
   }
-  .hero-sub {
-    opacity: 0;
-    animation: fade-slide-up 0.8s ease-out 0.6s forwards;
+  .rooms-hero-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    animation: bg-drift 20s linear infinite;
   }
-  .tagline-reveal {
-    opacity: 0;
-    animation: fade-slide-up 0.8s ease-out 0.1s forwards;
+  @keyframes bg-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 48px 48px; }
+  }
+  .rooms-hero-content { position: relative; max-width: 36rem; margin: 0 auto; }
+  .rooms-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 1rem; border-radius: 999px;
+    background: rgba(229,57,53,0.08); color: var(--red, #E53935);
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .rooms-hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; color: white;
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .rooms-hero-content p { font-size: 1.1rem; color: #999; }
+  .rooms-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 600; }
+
+  /* ── Grid section ── */
+  .rooms-grid-section {
+    position: relative; padding: 4rem 1.5rem 5rem;
+    background: #0d0d0d; overflow: hidden;
+  }
+  .rooms-grid-bg {
+    position: absolute; inset: 0; opacity: 0.15;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .rooms-grid {
+    position: relative; max-width: 68rem; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
   }
 
   /* ── Room card ── */
   .room-card {
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 0.75rem;
+    background: #141414;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1rem;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
-    position: relative;
-  }
-  .room-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: #E53935;
-    z-index: 2;
+    transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+    display: flex; flex-direction: column;
   }
   .room-card:hover {
-    border-color: #E53935;
+    border-color: var(--room-color, #E53935);
     transform: translateY(-6px);
-    box-shadow: 0 12px 35px rgba(229,57,53,0.2);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px color-mix(in srgb, var(--room-color, #E53935) 30%, transparent);
   }
-  .room-card-img {
+  .room-atmo {
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
     position: relative;
   }
-  .difficulty-badge {
-    display: inline-flex;
-    align-items: center;
-    background: linear-gradient(135deg, #E53935, #C62828);
-    color: white;
-    font-weight: 700;
-    font-size: 0.65rem;
-    padding: 0.3rem 0.6rem;
-    border-radius: 9999px;
-    letter-spacing: 0.03em;
-    box-shadow: 0 2px 10px rgba(229,57,53,0.4);
+  .room-emoji { font-size: 3.5rem; transition: transform 0.3s; }
+  .room-card:hover .room-emoji { transform: scale(1.15); }
+  .room-tag {
+    position: absolute; top: 0.75rem; right: 0.75rem;
+    padding: 0.2rem 0.6rem; border-radius: 999px;
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .room-body {
+    padding: 1.5rem; flex: 1; display: flex; flex-direction: column;
+  }
+  .room-header { margin-bottom: 1rem; }
+  .room-header h2 {
+    font-size: 1.25rem; font-weight: 800; color: white;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+  }
+  .room-card:hover .room-header h2 { color: var(--room-color); }
+  .room-difficulty { display: flex; align-items: center; gap: 0.5rem; }
+  .diff-dots { display: flex; gap: 3px; }
+  .diff-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+  }
+  .diff-dot.filled { background: #E53935; }
+  .diff-label { font-size: 0.65rem; color: #666; font-weight: 600; text-transform: uppercase; }
+
+  .room-story {
+    font-size: 0.85rem; color: #999; line-height: 1.65;
+    flex: 1; margin-bottom: 1.25rem;
   }
 
-  /* ── Featured card (Witch's Curse) ── */
-  .featured-card {
-    background: #1e1e1e;
-    border-radius: 0.75rem;
-    position: relative;
-    border: 1px solid rgba(156,39,176,0.3);
+  .room-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem; margin-bottom: 1.25rem;
+  }
+  .room-stat {
+    background: rgba(255,255,255,0.03);
+    border-radius: 0.6rem; padding: 0.6rem 0.4rem; text-align: center;
+  }
+  .room-stat-val { display: block; font-weight: 700; color: white; font-size: 0.85rem; }
+  .room-stat-val.accent { color: var(--teal, #06B6D4); }
+  .room-stat-lbl { font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .room-book-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.04);
+    color: white; font-weight: 600; font-size: 0.85rem;
+    border-radius: 0.6rem;
+    transition: all 0.3s;
+  }
+  .room-book-btn:hover {
+    background: var(--room-color, #E53935);
+    color: white;
+  }
+
+  /* ── CTA ── */
+  .rooms-cta {
+    position: relative; padding: 5rem 1.5rem;
+    background: #080808; overflow: hidden; text-align: center;
+  }
+  .rooms-cta-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .rooms-cta h2 {
+    position: relative; font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 900; color: white; margin-bottom: 0.75rem;
+  }
+  .rooms-cta p {
+    position: relative; font-size: 1rem; color: #999; margin-bottom: 1.5rem;
+  }
+  .rooms-cta .btn-primary-hero { position: relative; }
+
+  .btn-primary-hero {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 1rem 2.25rem;
+    background: linear-gradient(135deg, #E53935, #B71C1C);
+    color: white; font-weight: 700; font-size: 0.95rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    border-radius: 0.6rem;
     transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 4px 20px rgba(229,57,53,0.3);
+    position: relative; overflow: hidden;
   }
-  .featured-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 0.85rem;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(156,39,176,0.5), rgba(255,185,0,0.3), rgba(156,39,176,0.5));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+  .btn-primary-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+    transform: translateX(-100%); transition: transform 0.5s;
   }
-  .featured-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 35px rgba(156,39,176,0.2);
-  }
+  .btn-primary-hero:hover::after { transform: translateX(100%); }
+  .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(229,57,53,0.45); }
 </style>

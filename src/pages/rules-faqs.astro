@@ -7,138 +7,245 @@ const metadata = {
 };
 
 const rules = [
-  { icon: '🔞', title: 'Age Requirement', desc: 'Players under 16 must be accompanied by an adult. Minimum age is 10 years old.' },
-  { icon: '📱', title: 'No Phones', desc: 'No cell phones, cameras, or recording devices inside the room. This keeps the experience fair for everyone.' },
-  { icon: '🔦', title: 'No Brute Force', desc: "Don't force anything open. Our puzzles are clever — not about strength. If something feels stuck, it's not meant to open that way." },
-  { icon: '⏰', title: 'Arrive 15 Min Early', desc: 'Please arrive 15 minutes before your booking. Late arrivals may shorten your game time or forfeit the slot.' },
-  { icon: '🚫', title: 'No Food or Drinks', desc: 'No food, drinks, or gum inside the game rooms. Save the celebration for after you escape!' },
-  { icon: '💡', title: 'Hints Are Free', desc: 'Stuck? Just ask! Our Games Master monitors your progress and will drop hints when you need them.' },
+  { icon: '🔞', title: 'Age Requirement', desc: 'Players under 16 must be accompanied by an adult. Minimum age is 10.' },
+  { icon: '📱', title: 'No Phones Allowed', desc: 'No phones, cameras, or recording devices inside the rooms. Keeps it fair for everyone.' },
+  { icon: '🔦', title: 'No Brute Force', desc: "Don't force anything. Our puzzles are clever — if it feels stuck, it's not meant to open that way." },
+  { icon: '⏰', title: 'Arrive 15 Minutes Early', desc: 'Late arrivals may shorten your game time or forfeit the slot. Plan ahead.' },
+  { icon: '🚫', title: 'No Food or Drinks', desc: 'Save the celebration for after you escape. No food, drinks, or gum in the rooms.' },
+  { icon: '💡', title: 'Hints Are Free', desc: 'Stuck? Just ask! Our Games Master watches your progress and drops hints when you need them.' },
 ];
 
 const faqs = [
-  { q: 'What happens if I need to cancel?', a: 'Cancellations made at least <strong>48 hours</strong> before your booking are refundable (less a small admin fee). Cancellations within 48 hours are non-refundable. See our <a href="/contact" class="text-gr8-red hover:text-gr8-teal underline">Contact page</a> for the full policy.' },
-  { q: 'What should I bring?', a: 'Just yourself and your team! Everything you need is in the room. Leave phones, bags, and outside distractions behind.' },
-  { q: 'Can I book a private event?', a: 'Absolutely! We host birthdays, bachelor/bachelorette parties, corporate team building, and more. Check our <a href="/rooms" class="text-gr8-red hover:text-gr8-teal underline">Rooms page</a> for packages and pricing.' },
-  { q: "What if we don't escape in time?", a: "The Games Master will let you out — don't worry! You can always come back and try again. Most teams don't escape on their first try." },
-  { q: 'Is the venue wheelchair accessible?', a: "Please <a href=\"/contact\" class=\"text-gr8-red hover:text-gr8-teal underline\">contact us</a> to discuss accessibility needs. We'll do our best to accommodate everyone." },
-  { q: 'How do I book?', a: 'Book directly through our <a href="/book" class="text-gr8-red hover:text-gr8-teal underline">online booking system</a>. Choose your room, pick a date and time, and secure your spot with a deposit.' },
+  {
+    q: 'How do I book?',
+    a: 'Book through our <a href="/book" class="faq-link">online booking system</a>. Choose your room, pick a date and time, and secure your spot.',
+  },
+  {
+    q: 'What happens if I need to cancel?',
+    a: 'Cancellations 48+ hours before your booking are refundable (less a small admin fee). Within 48 hours, bookings are non-refundable. See our <a href="/contact" class="faq-link">refund policy</a> for details.',
+  },
+  {
+    q: 'What should I bring?',
+    a: 'Just yourself and your team! We provide everything. Leave phones, bags, and outside distractions behind.',
+  },
+  {
+    q: 'Can I book a private event?',
+    a: 'Absolutely! We host birthdays, bachelor/bachelorette parties, and corporate team building. Check the <a href="/rooms" class="faq-link">rooms page</a> for packages and pricing.',
+  },
+  {
+    q: "What if we don't escape?",
+    a: "The Games Master lets you out — don't worry. Most first-timers don't escape. Come back and try again.",
+  },
+  {
+    q: 'Is the venue accessible?',
+    a: 'Please <a href="/contact" class="faq-link">contact us</a> to discuss accessibility needs. We\'ll do our best to accommodate everyone.',
+  },
+  {
+    q: 'How many people per room?',
+    a: 'Most rooms fit 2–8 players. The Witch\'s Curse (outdoor) fits 2–4. Larger groups can split across multiple rooms.',
+  },
+  {
+    q: 'Can kids play?',
+    a: 'Yes! Minimum age is 10, and under-16s need an adult present. Our rooms are challenging but not gory or horror-focused.',
+  },
 ];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero -->
-  <section class="relative py-24 overflow-hidden" style="background:#0a0a0a">
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="dot-grid"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
-    </div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="tagline-reveal text-gr8-teal font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
-        Be Prepared
-      </p>
-      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight hero-heading">
-        Rules <span class="text-gr8-red">&</span> <span class="text-gr8-teal">FAQs</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto hero-sub">
-        Everything you need to know before your escape room adventure.
-      </p>
+  <!-- ════════ HERO ════════ -->
+  <section class="faq-hero">
+    <div class="faq-hero-bg"></div>
+    <div class="faq-hero-content">
+      <div class="faq-badge"><span>📋</span> Be Prepared</div>
+      <h1>Rules <span class="text-red">&</span> <span class="text-teal">FAQs</span></h1>
+      <p>Everything you need to know before you step into the room.</p>
     </div>
   </section>
 
-  <!-- Rules -->
-  <section class="py-20" style="background:#1a1a1a">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-gr8-red/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
-          <span>📋</span> Ground Rules
-        </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-white">The <span class="text-gr8-red">Rules</span></h2>
-        <p class="text-gray-400 mt-3">A few ground rules to keep the fun safe and fair for everyone.</p>
+  <!-- ════════ RULES ════════ -->
+  <section class="rules-section">
+    <div class="rules-bg"></div>
+    <div class="rules-container">
+      <div class="section-intro">
+        <div class="si-badge"><span>📋</span> Ground Rules</div>
+        <h2>The <span class="text-red">Rules</span></h2>
+        <p>A few simple rules to keep the fun safe and fair for everyone.</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="rules-grid">
         {rules.map((rule) => (
-          <div class="rule-card group">
-            <span class="text-4xl block mb-4 group-hover:scale-110 transition-transform">{rule.icon}</span>
-            <h3 class="text-lg font-bold text-white mb-2">{rule.title}</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">{rule.desc}</p>
+          <div class="rule-card">
+            <span class="rule-emoji">{rule.icon}</span>
+            <h3>{rule.title}</h3>
+            <p>{rule.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- FAQs -->
-  <section class="py-20" style="background:#0d0d0d">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-gr8-teal/10 text-gr8-teal text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4">
-          <span>❓</span> Got Questions?
-        </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-white">Frequently <span class="text-gr8-teal">Asked</span></h2>
+  <!-- ════════ FAQs ════════ -->
+  <section class="faqs-section">
+    <div class="faqs-container">
+      <div class="section-intro">
+        <div class="si-badge si-badge-teal"><span>❓</span> Got Questions?</div>
+        <h2>Frequently <span class="text-teal">Asked</span></h2>
       </div>
-      <div class="space-y-4">
-        {faqs.map((faq, i) => (
-          <details class="faq-item group">
-            <summary class="cursor-pointer list-none flex items-center justify-between p-5 text-white font-semibold text-lg group-open:text-gr8-teal transition-colors">
-              {faq.q}
-              <svg class="w-5 h-5 flex-shrink-0 ml-4 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-              </svg>
+
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{faq.q}</span>
+              <svg class="faq-chevron" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
             </summary>
-            <div class="px-5 pb-5 text-gray-400 leading-relaxed" set:html={faq.a} />
+            <div class="faq-answer" set:html={faq.a} />
           </details>
         ))}
       </div>
 
-      <div class="text-center mt-10">
-        <p class="text-gray-500 text-sm mb-4">Still have questions? We're happy to help.</p>
-        <a href="/contact" class="hero-outline-btn text-sm">
-          Contact Us
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-        </a>
+      <div class="faq-footer">
+        <p>Still have questions?</p>
+        <a href="/contact" class="btn-ghost-hero">Contact Us <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style is:global>
+  /* ── Hero ── */
+  .faq-hero {
+    position: relative; padding: 7rem 1.5rem 4rem;
+    background: #080808; overflow: hidden; text-align: center;
+  }
+  .faq-hero-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .faq-hero-content { position: relative; max-width: 34rem; margin: 0 auto; }
+  .faq-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 1rem; border-radius: 999px;
+    background: rgba(229,57,53,0.08); color: var(--red, #E53935);
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .faq-hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; color: white;
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .faq-hero-content p { font-size: 1.05rem; color: #999; }
+
+  /* ── Shared section intro ── */
+  .section-intro { text-align: center; margin-bottom: 3rem; }
+  .si-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.25rem 0.9rem; border-radius: 999px;
+    background: rgba(229,57,53,0.08); color: var(--red, #E53935);
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+  .si-badge-teal { background: rgba(6,182,212,0.08); color: var(--teal, #06B6D4); }
+  .section-intro h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
+    margin-bottom: 0.5rem;
+  }
+  .section-intro p { font-size: 0.95rem; color: #888; }
+
+  /* ── Rules ── */
+  .rules-section {
+    position: relative; padding: 4rem 1.5rem;
+    background: #0d0d0d; overflow: hidden;
+  }
+  .rules-bg {
+    position: absolute; inset: 0; opacity: 0.1;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.06) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  .rules-container { position: relative; max-width: 56rem; margin: 0 auto; }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
   .rule-card {
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    background: #141414; border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 0.85rem; padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
   }
   .rule-card:hover {
-    border-color: #E53935;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(229, 57, 53, 0.12);
+    border-color: rgba(229,57,53,0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   }
+  .rule-emoji {
+    font-size: 2rem; display: block; margin-bottom: 0.75rem;
+    transition: transform 0.3s;
+  }
+  .rule-card:hover .rule-emoji { transform: scale(1.1); }
+  .rule-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+  .rule-card p { font-size: 0.8rem; color: #888; line-height: 1.55; }
 
+  /* ── FAQs ── */
+  .faqs-section {
+    padding: 4rem 1.5rem 5rem;
+    background: #141414;
+  }
+  .faqs-container { max-width: 40rem; margin: 0 auto; }
+  .faq-list {
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
   .faq-item {
-    background: #1e1e1e;
-    border: 1px solid #333;
+    background: #1a1a1a; border: 1px solid rgba(255,255,255,0.05);
     border-radius: 0.75rem;
-    transition: all 0.3s;
+    transition: all 0.25s;
   }
   .faq-item[open] {
-    border-color: rgba(6, 182, 212, 0.3);
-    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.08);
+    border-color: rgba(6,182,212,0.2);
+    box-shadow: 0 4px 20px rgba(6,182,212,0.06);
   }
+  .faq-question {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding: 1.1rem 1.25rem;
+    font-size: 0.95rem; font-weight: 600; color: #ddd;
+    cursor: pointer; list-style: none;
+    transition: color 0.2s;
+    user-select: none;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-item[open] .faq-question { color: var(--teal, #06B6D4); }
+  .faq-chevron {
+    flex-shrink: 0; color: #555;
+    transition: transform 0.25s;
+  }
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg); color: var(--teal, #06B6D4);
+  }
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.85rem; color: #999; line-height: 1.7;
+  }
+  .faq-link { color: var(--red, #E53935); text-decoration: underline; transition: color 0.2s; }
+  .faq-link:hover { color: var(--teal, #06B6D4); }
 
-  .hero-outline-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: white;
-    font-weight: 600;
-    border-radius: 0.5rem;
+  .faq-footer {
+    text-align: center; margin-top: 2.5rem;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .faq-footer p { font-size: 0.85rem; color: #666; }
+
+  .btn-ghost-hero {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 1.75rem;
+    border: 2px solid rgba(255,255,255,0.12);
+    color: white; font-weight: 600; font-size: 0.9rem;
+    border-radius: 0.6rem; text-decoration: none;
     transition: all 0.3s;
   }
-  .hero-outline-btn:hover {
-    border-color: #E53935;
-    background: rgba(229,57,53,0.1);
+  .btn-ghost-hero:hover {
+    border-color: var(--red, #E53935);
+    background: rgba(229,57,53,0.08);
     transform: translateY(-2px);
   }
 </style>

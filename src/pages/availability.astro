@@ -2,121 +2,256 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Availability',
-  description: 'Check room availability and book your escape room experience at The Gr8 Escape.',
+  title: 'Live Availability',
+  description: 'Check live room availability at The Gr8 Escape. See open slots across all 6 escape rooms.',
 };
+
+const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero -->
-  <section class="relative py-24 overflow-hidden" style="background:#0a0a0a">
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="dot-grid"></div>
-      <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
-    </div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="tagline-reveal text-gr8-teal font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
-        Plan Your Visit
-      </p>
-      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight hero-heading">
-        Check <span class="text-gr8-red">Availability</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto hero-sub">
-        We're open Thursday through Sunday. Book ahead to secure your preferred time slot.
-      </p>
+  <!-- ════════ HERO ════════ -->
+  <section class="avail-hero">
+    <div class="avail-hero-bg"></div>
+    <div class="avail-hero-content">
+      <div class="avail-badge"><span>📅</span> Live Calendar</div>
+      <h1>Check <span class="text-red">Availability</span></h1>
+      <p>See open slots across all 6 rooms in real time. Updated live from our booking system.</p>
     </div>
   </section>
 
-  <!-- How it works -->
-  <section class="py-16" style="background:#1a1a1a">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="card-dark">
-          <div class="text-4xl mb-4">📅</div>
-          <h3 class="text-white font-bold mb-2">1. Pick a Date</h3>
-          <p class="text-gray-400 text-sm">We're open Thursday – Sunday, 11:00 – 18:00. Browse available slots.</p>
-        </div>
-        <div class="card-dark">
-          <div class="text-4xl mb-4">🎯</div>
-          <h3 class="text-white font-bold mb-2">2. Choose Your Room</h3>
-          <p class="text-gray-400 text-sm">6 unique escape rooms — from beginner-friendly to hardcore challenges.</p>
-        </div>
-        <div class="card-dark">
-          <div class="text-4xl mb-4">🔒</div>
-          <h3 class="text-white font-bold mb-2">3. Lock It In</h3>
-          <p class="text-gray-400 text-sm">Book and pay securely. Your adventure is locked in — show up and escape.</p>
-        </div>
+  <!-- ════════ HOW IT WORKS ════════ -->
+  <section class="avail-steps-section">
+    <div class="avail-steps-grid">
+      <div class="avail-step">
+        <div class="avail-step-num">1</div>
+        <h3>Open the Calendar</h3>
+        <p>Click below to launch our live calendar. It shows every available slot across all rooms.</p>
+      </div>
+      <div class="avail-step-connector"></div>
+      <div class="avail-step">
+        <div class="avail-step-num">2</div>
+        <h3>Pick Your Slot</h3>
+        <p>Browse by day, room, and time. Color-coded by room — find what works for your group.</p>
+      </div>
+      <div class="avail-step-connector"></div>
+      <div class="avail-step">
+        <div class="avail-step-num">3</div>
+        <h3>Book Instantly</h3>
+        <p>Click any available slot to jump straight into the booking flow. Secure it before someone else does.</p>
       </div>
     </div>
   </section>
 
-  <!-- Booking CTA -->
-  <section class="py-16" style="background:#0d0d0d">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="card-dark overflow-hidden p-0">
-        <div class="bg-[#1e1e1e] p-4 border-b border-gray-700/50 flex items-center gap-3">
-          <div class="flex gap-2">
-            <span class="w-3 h-3 rounded-full bg-gr8-red"></span>
-            <span class="w-3 h-3 rounded-full bg-gr8-teal"></span>
-            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+  <!-- ════════ CALENDAR LINK ════════ -->
+  <section class="avail-calendar-section">
+    <div class="avail-calendar-bg"></div>
+    <div class="avail-calendar-card">
+      <!-- Terminal chrome -->
+      <div class="cal-chrome">
+        <span class="cal-dot cal-dot-red"></span>
+        <span class="cal-dot cal-dot-teal"></span>
+        <span class="cal-dot cal-dot-green"></span>
+        <span class="cal-title">live.gr8escape.availability</span>
+      </div>
+      <div class="cal-body">
+        <div class="cal-preview">
+          <div class="cal-day-row">
+            <span class="cal-day active">Thu</span><span class="cal-day">Fri</span><span class="cal-day">Sat</span><span class="cal-day">Sun</span>
           </div>
-          <span class="text-gray-500 text-xs font-mono">gr8escape.bookings</span>
-        </div>
-
-        <div class="p-8 md:p-12 text-center">
-          <div class="inline-flex items-center gap-2 bg-gr8-red/10 text-gr8-red text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">
-            <span>⚡</span> Live Booking
+          <div class="cal-rooms-preview">
+            <div class="cal-room-row"><span class="cal-room-dot" style="background:#E53935"></span> Asylum Escape <span class="cal-slots">4 slots</span></div>
+            <div class="cal-room-row"><span class="cal-room-dot" style="background:#06B6D4"></span> Trapped <span class="cal-slots">3 slots</span></div>
+            <div class="cal-room-row"><span class="cal-room-dot" style="background:#4CAF50"></span> The Hunted <span class="cal-slots">5 slots</span></div>
+            <div class="cal-room-row"><span class="cal-room-dot" style="background:#9C27B0"></span> Nightmare <span class="cal-slots">2 slots</span></div>
+            <div class="cal-room-row"><span class="cal-room-dot" style="background:#FF9800"></span> The Basement <span class="cal-slots">6 slots</span></div>
+            <div class="cal-room-row"><span class="cal-room-dot" style="background:#7C4DFF"></span> Witch's Curse <span class="cal-slots">3 slots</span></div>
           </div>
-          <h2 class="text-2xl md:text-4xl font-bold text-white mb-4">
-            Ready to <span class="text-gr8-teal">Book</span>?
-          </h2>
-          <p class="text-gray-400 max-w-lg mx-auto mb-8">
-            Our booking system shows live availability for all rooms. Pick your room,
-            choose a time, and secure your spot — all in one place.
-          </p>
-          <a href="/book" class="btn-gr8 text-lg px-10 py-4 inline-flex items-center gap-2 glow-red">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            VIEW AVAILABILITY & BOOK
-          </a>
         </div>
       </div>
-
-      <!-- Room colour key -->
-      <div class="mt-6 grid grid-cols-2 md:grid-cols-6 gap-3">
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#E53935"></span>
-          Asylum
-        </div>
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#06B6D4"></span>
-          Trapped
-        </div>
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#4CAF50"></span>
-          The Hunted
-        </div>
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#9C27B0"></span>
-          Nightmare
-        </div>
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#FF9800"></span>
-          The Basement
-        </div>
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:#7C4DFF"></span>
-          Witch's Curse
-        </div>
+      <div class="cal-footer">
+        <p>Week navigation  •  Day selector with slot counts  •  Click any slot to book</p>
+        <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer" class="btn-primary-hero glow-teal">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+          OPEN LIVE CALENDAR
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-16" style="background:#1a1a1a">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to escape?</h2>
-      <p class="text-gray-300 mb-6">We're open Thursday – Sunday, 11:00 – 18:00.</p>
-      <a href="/book" class="btn-gr8 text-lg px-10 py-4">BOOK YOUR SLOT</a>
-    </div>
+  <!-- ════════ CTA ════════ -->
+  <section class="avail-cta">
+    <div class="avail-cta-bg"></div>
+    <h2>See a slot you like?</h2>
+    <p>Open Thursday – Sunday, 11:00 – 18:00. Slots fill fast — don't wait.</p>
+    <a href="/book" class="btn-primary-hero glow-red">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      BOOK YOUR ESCAPE
+    </a>
   </section>
 </Layout>
+
+<style is:global>
+  /* ── Hero ── */
+  .avail-hero {
+    position: relative; padding: 7rem 1.5rem 5rem;
+    background: var(--bg-deep, #080808); overflow: hidden; text-align: center;
+  }
+  .avail-hero-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(6,182,212,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .avail-hero-content { position: relative; max-width: 36rem; margin: 0 auto; }
+  .avail-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 1rem; border-radius: 999px;
+    background: rgba(6,182,212,0.08); color: var(--teal, #06B6D4);
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .avail-hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; color: white;
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .avail-hero-content p { font-size: 1.1rem; color: #999; line-height: 1.6; }
+
+  /* ── Steps ── */
+  .avail-steps-section {
+    padding: 4rem 1.5rem;
+    background: var(--bg-mid, #141414);
+  }
+  .avail-steps-grid {
+    max-width: 48rem; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .avail-step {
+    text-align: center; padding: 1.5rem;
+  }
+  .avail-step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(229,57,53,0.1); color: var(--red, #E53935);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.1rem;
+    margin: 0 auto 0.75rem;
+  }
+  .avail-step h3 { font-size: 1.15rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+  .avail-step p { font-size: 0.9rem; color: #888; line-height: 1.5; }
+  .avail-step-connector {
+    width: 1px; height: 24px; background: rgba(255,255,255,0.08); margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .avail-steps-grid {
+      flex-direction: row; align-items: flex-start;
+    }
+    .avail-step { flex: 1; }
+    .avail-step-connector {
+      width: 48px; height: 1px; margin-top: 2.5rem;
+    }
+  }
+
+  /* ── Calendar card ── */
+  .avail-calendar-section {
+    position: relative; padding: 4rem 1.5rem;
+    background: var(--bg-dark, #0d0d0d); overflow: hidden;
+  }
+  .avail-calendar-bg {
+    position: absolute; inset: 0; opacity: 0.3;
+    background-image: radial-gradient(circle, rgba(6,182,212,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .avail-calendar-card {
+    position: relative; max-width: 36rem; margin: 0 auto;
+    background: #141414; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .avail-calendar-card:hover {
+    border-color: rgba(6,182,212,0.3);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(6,182,212,0.1);
+  }
+  .cal-chrome {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(0,0,0,0.3); border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .cal-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .cal-dot-red { background: var(--red, #E53935); }
+  .cal-dot-teal { background: var(--teal, #06B6D4); }
+  .cal-dot-green { background: #22C55E; }
+  .cal-title {
+    margin-left: 0.5rem; font-size: 0.7rem; color: #555;
+    font-family: 'Courier New', monospace;
+  }
+  .cal-body { padding: 1.5rem; }
+  .cal-day-row {
+    display: flex; gap: 0.5rem; margin-bottom: 1.25rem;
+  }
+  .cal-day {
+    flex: 1; text-align: center; padding: 0.5rem;
+    border-radius: 0.5rem; font-size: 0.75rem; font-weight: 600;
+    color: #666; background: rgba(255,255,255,0.03);
+  }
+  .cal-day.active { color: white; background: rgba(6,182,212,0.15); }
+  .cal-rooms-preview {
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .cal-room-row {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.5rem 0.75rem; border-radius: 0.5rem;
+    background: rgba(255,255,255,0.02); font-size: 0.8rem; color: #aaa;
+    transition: background 0.2s;
+  }
+  .cal-room-row:hover { background: rgba(255,255,255,0.05); }
+  .cal-room-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .cal-slots { margin-left: auto; font-size: 0.7rem; color: #666; font-weight: 600; }
+  .cal-footer {
+    padding: 1.25rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  .cal-footer p {
+    font-size: 0.8rem; color: #666; margin-bottom: 1rem;
+  }
+
+  /* ── CTA ── */
+  .avail-cta {
+    position: relative; padding: 5rem 1.5rem;
+    background: var(--bg-deep, #080808); overflow: hidden; text-align: center;
+  }
+  .avail-cta-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .avail-cta h2 {
+    position: relative; font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 900; color: white; margin-bottom: 0.75rem;
+  }
+  .avail-cta p {
+    position: relative; font-size: 1rem; color: #999; margin-bottom: 1.5rem;
+  }
+  .avail-cta .btn-primary-hero { position: relative; }
+
+  /* ── Shared button (also used on homepage) ── */
+  .btn-primary-hero {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 1rem 2.25rem;
+    background: linear-gradient(135deg, var(--red, #E53935), #B71C1C);
+    color: white; font-weight: 700; font-size: 0.95rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    border-radius: 0.6rem;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 4px 20px rgba(229,57,53,0.3);
+    position: relative; overflow: hidden;
+  }
+  .btn-primary-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+    transform: translateX(-100%); transition: transform 0.5s;
+  }
+  .btn-primary-hero:hover::after { transform: translateX(100%); }
+  .btn-primary-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(229,57,53,0.45);
+  }
+</style>
