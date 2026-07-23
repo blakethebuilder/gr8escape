@@ -9,7 +9,7 @@ const metadata = {
 // Fallback room data (used if API is unreachable — matches Gr8 Escape's actual rooms)
 const fallbackRooms = [
   { name: 'Asylum Escape', difficulty: '7/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🧪', color: '#E53935' },
-  { name: 'Trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🔥', color: '#FFB900' },
+  { name: 'Trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🔥', color: '#06B6D4' },
   { name: 'The Hunted', difficulty: '8.5/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🌲', color: '#4CAF50' },
   { name: 'Nightmare', difficulty: '9/10', players: '2–8', duration: '60 min', price: 'R250', icon: '🌙', color: '#9C27B0' },
   { name: 'The Basement', difficulty: '10/10', players: '2–8', duration: '60 min', price: 'R250', icon: '⛓️', color: '#FF9800' },
@@ -27,7 +27,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
       <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 0%, #0a0a0a 70%)"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <p class="tagline-reveal text-gr8-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
+      <p class="tagline-reveal text-gr8-teal font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">
         Secure Your Spot
       </p>
       <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight hero-heading">
@@ -71,7 +71,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
                 <span class="text-gray-500 text-[10px] uppercase">Duration</span>
               </div>
               <div class="bg-[#242424] rounded-lg p-2 text-center border border-white/5">
-                <span class="text-gr8-gold font-bold block text-sm">{room.price}</span>
+                <span class="text-gr8-teal font-bold block text-sm">{room.price}</span>
                 <span class="text-gray-500 text-[10px] uppercase">Per Person</span>
               </div>
             </div>
@@ -88,7 +88,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
   <section class="py-20" style="background:#1a1a1a">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-white">How Booking <span class="text-gr8-gold">Works</span></h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">How Booking <span class="text-gr8-teal">Works</span></h2>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="card-dark text-center">
@@ -156,7 +156,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #E53935, #FFB900);
+    background: linear-gradient(90deg, #E53935, #06B6D4);
     border-radius: 0.75rem 0.75rem 0 0;
     opacity: 0;
     transition: opacity 0.3s;
