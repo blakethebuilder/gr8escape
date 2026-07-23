@@ -1,6 +1,5 @@
 ---
 // Particle / laser-grid background — escape room atmosphere
-// Props: particleCount, connectDistance, speed, color1, color2, opacity
 export interface Props {
   particleCount?: number;
   connectDistance?: number;
@@ -22,9 +21,13 @@ const {
   mazeMode = false,
   className = '',
 } = Astro.props;
+
+// Unique ID for this canvas instance
+const uid = `pb-${Math.random().toString(36).slice(2, 10)}`;
 ---
 
 <canvas
+  id={uid}
   class={`particle-bg ${className}`}
   data-particles={particleCount}
   data-connect={connectDistance}
@@ -38,8 +41,11 @@ const {
 
 <script>
   (() => {
-    const canvas = document.currentScript?.previousElementSibling as HTMLCanvasElement | null;
+    // Find the canvas right before this script
+    const all = document.querySelectorAll('canvas.particle-bg:not([data-live])');
+    const canvas = all[all.length - 1] as HTMLCanvasElement | null;
     if (!canvas) return;
+    canvas.setAttribute('data-live', 'true');
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
