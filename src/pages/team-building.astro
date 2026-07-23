@@ -1,0 +1,135 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Team Building',
+  description: 'Corporate team building at The Gr8 Escape. The ultimate team activity in Fourways, Johannesburg.',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="tb-hero">
+    <div class="tb-hero-bg"></div>
+    <div class="tb-hero-content">
+      <div class="tb-badge"><span>🤝</span> Corporate & Groups</div>
+      <h1>Team <span class="text-red">Building</span></h1>
+      <p>Trust falls? Icebreakers? Hard pass. <em>This is the team activity that actually works.</em></p>
+    </div>
+  </section>
+
+  <section class="tb-section">
+    <div class="tb-container">
+      <div class="tb-intro">
+        <h2>Why Escape Rooms <span class="text-red">Work</span> for Teams</h2>
+        <p>Don't spend another team building day doing trust falls. An escape room is the ultimate team activity — everyone shares the same goal: escape the room. Under pressure, real teamwork emerges. Communication sharpens. Leaders step up. And when the door opens, everyone celebrates together.</p>
+      </div>
+
+      <div class="tb-grid">
+        <div class="tb-card">
+          <div class="tb-icon">💬</div>
+          <h3>Communication</h3>
+          <p>Scattered clues, ticking clock — your team learns to share information fast or fail together.</p>
+        </div>
+        <div class="tb-card">
+          <div class="tb-icon">🧠</div>
+          <h3>Problem Solving</h3>
+          <p>Puzzles that require different thinking styles. Everyone brings something to the table.</p>
+        </div>
+        <div class="tb-card">
+          <div class="tb-icon">🎯</div>
+          <h3>Shared Goal</h3>
+          <p>No politics, no hierarchy — just 60 minutes to work together toward one outcome.</p>
+        </div>
+        <div class="tb-card">
+          <div class="tb-icon">🏆</div>
+          <h3>Real Bonding</h3>
+          <p>Shared panic, shared triumph — that builds camaraderie trust falls can only dream of.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tb-cta">
+    <div class="tb-cta-bg"></div>
+    <h2>Ready to Build Your Team?</h2>
+    <p>We accommodate groups of all sizes across multiple rooms. Contact us for corporate packages and pricing.</p>
+    <div class="tb-actions">
+      <a href="https://gr8bookings.smartintegrate.co.za/book" target="_blank" rel="noopener noreferrer" class="btn-primary-hero glow-red">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        BOOK NOW
+      </a>
+      <a href="/contact" class="btn-ghost-hero">Contact Us <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .tb-hero {
+    position: relative; padding: 5rem 1.5rem 3rem;
+    background: #080808; overflow: hidden; text-align: center;
+  }
+  .tb-hero-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .tb-hero-content { position: relative; max-width: 34rem; margin: 0 auto; }
+  .tb-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.3rem 1rem; border-radius: 999px;
+    background: rgba(229,57,53,0.08); color: var(--red, #E53935);
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+  }
+  .tb-hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 1rem; }
+  .tb-hero-content p { font-size: 1.05rem; color: #999; }
+  .tb-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 600; }
+
+  .tb-section { padding: 3rem 1.5rem; background: #0d0d0d; }
+  .tb-container { max-width: 48rem; margin: 0 auto; }
+  .tb-intro { text-align: center; margin-bottom: 3rem; }
+  .tb-intro h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: white; margin-bottom: 1rem; }
+  .tb-intro p { font-size: 0.95rem; color: #999; line-height: 1.7; max-width: 36rem; margin: 0 auto; }
+
+  .tb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .tb-card {
+    background: #141414; border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.85rem; padding: 1.5rem; text-align: center;
+    transition: all 0.3s;
+  }
+  .tb-card:hover { border-color: rgba(229,57,53,0.25); transform: translateY(-3px); }
+  .tb-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .tb-card h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+  .tb-card p { font-size: 0.8rem; color: #888; line-height: 1.5; }
+
+  .tb-cta {
+    position: relative; padding: 4rem 1.5rem;
+    background: #080808; overflow: hidden; text-align: center;
+  }
+  .tb-cta-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(229,57,53,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .tb-cta h2 { position: relative; font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: white; margin-bottom: 0.75rem; }
+  .tb-cta p { position: relative; font-size: 0.95rem; color: #999; margin-bottom: 1.5rem; }
+  .tb-actions { position: relative; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary-hero {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 1rem 2.25rem;
+    background: linear-gradient(135deg, #E53935, #B71C1C);
+    color: white; font-weight: 700; font-size: 0.95rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    border-radius: 0.6rem; text-decoration: none;
+    transition: all 0.3s; box-shadow: 0 4px 20px rgba(229,57,53,0.3);
+  }
+  .btn-primary-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(229,57,53,0.45); }
+  .btn-ghost-hero {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 1rem 2rem; text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.12); color: white; font-weight: 600; font-size: 0.9rem;
+    border-radius: 0.6rem; transition: all 0.3s;
+  }
+  .btn-ghost-hero:hover { border-color: var(--red, #E53935); background: rgba(229,57,53,0.08); transform: translateY(-2px); }
+</style>
