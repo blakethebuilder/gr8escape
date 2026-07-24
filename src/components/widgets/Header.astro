@@ -25,15 +25,10 @@ function isActive(path: string) {
 
       <!-- Book CTA + Mobile Toggle -->
       <div class="flex items-center gap-3">
-        <div class="nav-dropdown">
-          <a href="/book" class="hidden sm:inline-flex items-center px-5 py-2 bg-gr8-red text-white font-bold text-sm rounded-lg hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-500/25">
-            BOOK NOW! ▾
-          </a>
-          <div class="dropdown-menu dropdown-right">
-            <a href="/book">📅 Book a Room</a>
-            <a href="https://gr8bookings.smartintegrate.co.za/availability" target="_blank" rel="noopener noreferrer">📊 Live Availability</a>
-          </div>
-        </div>
+        <a href="/book"
+           class="hidden sm:inline-flex items-center px-5 py-2 bg-gr8-red text-white font-bold text-sm rounded-lg hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-500/25">
+          BOOK NOW!
+        </a>
         <button id="gr8-menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors" aria-label="Toggle menu">
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
             <path stroke-linecap="round" id="menu-icon-open" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
@@ -52,10 +47,7 @@ function isActive(path: string) {
         <a href="/team-building" class="mob-link">Team Building</a>
         <a href="/rules-faqs" class="mob-link">Rules & FAQs</a>
         <a href="/contact" class="mob-link">Contact</a>
-        <div class="grid grid-cols-2 gap-2 mt-3">
-          <a href="/book" class="btn-gr8 text-center py-3 text-sm">BOOK NOW</a>
-          <a href="https://gr8bookings.smartintegrate.co.za/availability" target="_blank" rel="noopener noreferrer" class="text-center py-3 text-sm rounded-lg border border-white/10 text-white font-semibold hover:border-white/30 transition-all">Availability</a>
-        </div>
+        <a href="/book" class="btn-gr8 text-center py-3 text-sm mt-3">BOOK NOW</a>
       </div>
     </div>
   </div>

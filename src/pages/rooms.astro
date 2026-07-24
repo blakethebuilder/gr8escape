@@ -59,7 +59,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
       {rooms.map((room) => (
         <details class="r-card" style={`--rc:${room.color}`} id={room.slug}>
           <summary class="r-summary">
-            <div class="r-photo" style={`background-image:url('/assets/${room.slug}.jpg')`}>
+            <div class="r-photo" style={room.slug !== 'the-witchs-curse' ? `background-image:url('/assets/${room.slug === 'the-basement' ? 'basement' : room.slug}.jpg')` : `background:linear-gradient(135deg, ${room.color}20, ${room.color}08)`}>
               <div class="r-photo-overlay"></div>
               <span class="r-emoji">{room.icon}</span>
               <span class="r-diff" style={`background:${room.color}; color:white`}>
