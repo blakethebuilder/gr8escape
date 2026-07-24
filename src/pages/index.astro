@@ -11,9 +11,13 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Full-page particle layer (one canvas for everything) -->
+  <div style="position:fixed;inset:0;z-index:0;pointer-events:none">
+    <ParticleBackground particleCount={120} connectDistance={180} speed={0.35} opacity={0.7} />
+  </div>
+
   <!-- ════════════ HERO ════════════ -->
   <section class="hero-section">
-    <ParticleBackground particleCount={120} connectDistance={180} speed={0.35} opacity={0.7} />
     <div class="hero-content">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
@@ -161,7 +165,6 @@ const metadata = {
 
   <!-- ════════════ FINAL CTA ════════════ -->
   <section class="cta-section">
-    <ParticleBackground particleCount={80} connectDistance={140} speed={0.3} opacity={0.5} />
     <div class="cta-content">
       <h2>Do You Have What It Takes to <span class="text-red">Escape</span>?</h2>
       <p>Immersive worlds. Mind-bending puzzles. <strong>60 minutes.</strong> The only question left is — <em>will you make it out?</em></p>
@@ -199,7 +202,7 @@ const metadata = {
     display: flex;
     align-items: safe center;
     justify-content: safe center;
-    background: #080808;
+    background: transparent;
     overflow: hidden;
     padding: 5rem 0 3rem;
   }
@@ -538,7 +541,7 @@ const metadata = {
   .cta-section {
     position: relative; z-index: 2;
     padding: 4rem 1.5rem;
-    background: #080808;
+    background: transparent;
     overflow: hidden;
   }
   .cta-content {
