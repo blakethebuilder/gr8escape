@@ -86,7 +86,7 @@ const uid = `pb-${Math.random().toString(36).slice(2, 10)}`;
           y: Math.random() * h,
           vx: (Math.random() - 0.5) * spd,
           vy: (Math.random() - 0.5) * spd,
-          size: Math.random() * 3 + 1.2,
+          size: Math.random() * 4 + 2,
           color: Math.random() > 0.4 ? c1 : c2,
         });
       }
@@ -144,9 +144,9 @@ const uid = `pb-${Math.random().toString(36).slice(2, 10)}`;
 
         // Glow
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 5, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = alpha * 0.2;
+        ctx.globalAlpha = alpha * 0.15;
         ctx.fill();
       }
       ctx.globalAlpha = 1;

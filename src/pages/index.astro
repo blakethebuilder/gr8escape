@@ -13,14 +13,12 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Full-page particle layer -->
   <div style="position:fixed;inset:0;z-index:0;pointer-events:none">
-    <ParticleBackground particleCount={100} connectDistance={150} speed={0.4} opacity={0.55} />
+    <ParticleBackground particleCount={120} connectDistance={180} speed={0.35} opacity={0.7} />
   </div>
-  <div class="page-vignette" style="position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(2,2,2,0.3) 85%)"></div>
+  <div class="page-vignette" style="position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 40%, transparent 60%, rgba(0,0,0,0.2) 100%)"></div>
 
   <!-- ════════════ HERO ════════════ -->
   <section class="hero-section">
-    <div class="hero-scanlines"></div>
-
     <div class="hero-content">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
@@ -52,7 +50,7 @@ const metadata = {
       </div>
 
       <p class="hero-subtitle">
-        You and your team have <strong>60 minutes</strong> to crack codes, solve puzzles, and find your way out.
+        You and your team have <strong>60 minutes</strong> to connect the dots, crack the codes, and find your way out.
         <em>Can you beat the clock?</em>
       </p>
 
@@ -188,9 +186,9 @@ const metadata = {
     --teal: #06B6D4;
     --teal-dark: #0891B2;
     --bg-deep: #080808;
-    --bg-dark: rgba(6,6,6,0.94);
-    --bg-mid: rgba(8,8,8,0.92);
-    --bg-card: rgba(10,10,10,0.9);
+    --bg-dark: #0a0a0a;
+    --bg-mid: #0d0d0d;
+    --bg-card: #111;
     --border-dim: rgba(255,255,255,0.06);
     --border-mid: rgba(255,255,255,0.1);
   }
@@ -224,11 +222,6 @@ const metadata = {
     position: absolute; inset: 0; pointer-events: none;
     background: radial-gradient(ellipse at 50% 40%, transparent 20%, var(--bg-deep) 75%);
     pointer-events: none;
-  }
-  .hero-scanlines {
-    position: absolute; inset: 0; pointer-events: none;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-    pointer-events: none; opacity: 0.5;
   }
   .hero-content {
     position: relative; z-index: 1;
@@ -439,7 +432,7 @@ const metadata = {
   .puzzle-section {
     position: relative; z-index: 2;
     padding: 5rem 0;
-    background: rgba(26,26,26,0.85);
+    background: #0f0f0f;
     overflow: hidden;
   }
   .puzzle-bg {
