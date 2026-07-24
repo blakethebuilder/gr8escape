@@ -11,14 +11,9 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Full-page particle layer -->
-  <div style="position:fixed;inset:0;z-index:0;pointer-events:none">
-    <ParticleBackground particleCount={120} connectDistance={180} speed={0.35} opacity={0.7} />
-  </div>
-  <div class="page-vignette" style="position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 40%, transparent 60%, rgba(0,0,0,0.2) 100%)"></div>
-
   <!-- ════════════ HERO ════════════ -->
   <section class="hero-section">
+    <ParticleBackground particleCount={120} connectDistance={180} speed={0.35} opacity={0.7} />
     <div class="hero-content">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
@@ -204,7 +199,7 @@ const metadata = {
     display: flex;
     align-items: safe center;
     justify-content: safe center;
-    background: transparent;
+    background: #080808;
     overflow: hidden;
     padding: 5rem 0 3rem;
   }
