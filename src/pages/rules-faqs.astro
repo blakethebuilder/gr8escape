@@ -57,7 +57,7 @@ const faqs = [
     <div class="faq-hero-bg"></div>
     <div class="faq-hero-content">
       <div class="faq-badge"><span>📋</span> Be Prepared</div>
-      <h1>Rules <span class="text-red">&</span> <span class="text-teal">FAQs</span></h1>
+      <h1>Rules <span class="text-red">&</span> <span class="text-lime">FAQs</span></h1>
       <p>Everything you need to know before you step into the room.</p>
     </div>
   </section>
@@ -88,8 +88,8 @@ const faqs = [
   <section class="faqs-section">
     <div class="faqs-container">
       <div class="section-intro">
-        <div class="si-badge si-badge-teal"><span>❓</span> Got Questions?</div>
-        <h2>Frequently <span class="text-teal">Asked</span></h2>
+        <div class="si-badge si-badge-lime"><span>❓</span> Got Questions?</div>
+        <h2>Frequently <span class="text-lime">Asked</span></h2>
       </div>
 
       <div class="faq-list">
@@ -146,7 +146,7 @@ const faqs = [
     font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
     margin-bottom: 1rem;
   }
-  .si-badge-teal { background: rgba(6,182,212,0.08); color: var(--teal, #06B6D4); }
+  .si-badge-lime { background: rgba(163,230,53,0.08); color: var(--lime, #A3E635); }
   .section-intro h2 {
     font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
     margin-bottom: 0.5rem;
@@ -202,8 +202,8 @@ const faqs = [
     transition: all 0.25s;
   }
   .faq-item[open] {
-    border-color: rgba(6,182,212,0.2);
-    box-shadow: 0 4px 20px rgba(6,182,212,0.06);
+    border-color: rgba(163,230,53,0.2);
+    box-shadow: 0 4px 20px rgba(163,230,53,0.06);
   }
   .faq-question {
     display: flex; align-items: center; justify-content: space-between;
@@ -214,20 +214,20 @@ const faqs = [
     user-select: none;
   }
   .faq-question::-webkit-details-marker { display: none; }
-  .faq-item[open] .faq-question { color: var(--teal, #06B6D4); }
+  .faq-item[open] .faq-question { color: var(--lime, #A3E635); }
   .faq-chevron {
     flex-shrink: 0; color: #555;
     transition: transform 0.25s;
   }
   .faq-item[open] .faq-chevron {
-    transform: rotate(180deg); color: var(--teal, #06B6D4);
+    transform: rotate(180deg); color: var(--lime, #A3E635);
   }
   .faq-answer {
     padding: 0 1.25rem 1.25rem;
     font-size: 0.85rem; color: #999; line-height: 1.7;
   }
   .faq-link { color: var(--red, #E53935); text-decoration: underline; transition: color 0.2s; }
-  .faq-link:hover { color: var(--teal, #06B6D4); }
+  .faq-link:hover { color: var(--lime, #A3E635); }
 
   .faq-footer {
     text-align: center; margin-top: 2.5rem;

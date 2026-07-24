@@ -22,7 +22,7 @@
   --animate-fade: fadeInUp 1s both;
 
   --color-gr8-red: #E53935;
-  --color-gr8-teal: #06B6D4;
+  --color-gr8-lime: #A3E635;
 
   @keyframes fadeInUp {
     0% {
@@ -76,7 +76,7 @@
 :root {
   --color-gr8-red: #E53935;
   --color-gr8-red-hover: #C62828;
-  --color-gr8-teal: #06B6D4;
+  --color-gr8-lime: #A3E635;
   --color-gr8-dark: #242424;
   --color-gr8-darker: #1a1a1a;
   --color-gr8-black: #0d0d0d;
@@ -85,7 +85,7 @@
 .dark {
   --aw-color-primary: #E53935;
   --aw-color-secondary: #C62828;
-  --aw-color-accent: #06B6D4;
+  --aw-color-accent: #A3E635;
   --aw-color-text-page: #ffffff;
   --aw-color-text-muted: #aaaaaa;
   --aw-color-bg-page: #242424;
@@ -134,7 +134,7 @@
   opacity: 0.5;
 }
 .dot-grid-teal {
-  background-image: radial-gradient(circle, rgba(6,182,212,0.1) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(163,230,53,0.1) 1px, transparent 1px);
 }
 .dot-grid-purple {
   background-image: radial-gradient(circle, rgba(156,39,176,0.08) 1px, transparent 1px);
@@ -192,20 +192,21 @@
   box-shadow: 0 2px 8px rgba(229,57,53,0.3);
 }
 
-.btn-gr8-teal {
+.btn-gr8-lime {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, #06B6D4, #0891B2);
-  color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #A3E635, #84CC16);
+  color: #0a0a0a; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
   border-radius: 0.5rem; border: none; cursor: pointer; text-decoration: none;
   transition: all 0.3s var(--ease-out-expo);
 }
-.btn-gr8-teal:hover {
-  background: linear-gradient(135deg, #0891B2, #0E7490);
+.btn-gr8-lime:hover {
+  background: linear-gradient(135deg, #84CC16, #65A30D);
+  color: #000;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(6,182,212,0.4);
+  box-shadow: 0 8px 25px rgba(163,230,53,0.4);
 }
-.btn-gr8-teal:active { transform: translateY(0); }
+.btn-gr8-lime:active { transform: translateY(0); }
 
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -224,12 +225,12 @@
 
 /* ── Glow utilities ── */
 .glow-red  { box-shadow: 0 0 20px rgba(229,57,53,0.3), 0 0 40px rgba(229,57,53,0.1); }
-.glow-teal { box-shadow: 0 0 20px rgba(6,182,212,0.3), 0 0 40px rgba(6,182,212,0.1); }
+.glow-lime { box-shadow: 0 0 20px rgba(163,230,53,0.3), 0 0 40px rgba(163,230,53,0.1); }
 
 /* ── Gradient section divider ── */
 .section-divider {
   height: 3px; border: none; opacity: 0.5;
-  background: linear-gradient(90deg, transparent, #E53935, #06B6D4, #E53935, transparent);
+  background: linear-gradient(90deg, transparent, #E53935, #A3E635, #E53935, transparent);
 }
 
 /* ── Consistent badge/chip ── */
@@ -240,7 +241,7 @@
   transition: all 0.2s;
 }
 .badge-red  { background: rgba(229,57,53,0.1); color: #E53935; }
-.badge-teal { background: rgba(6,182,212,0.1); color: #06B6D4; }
+.badge-lime { background: rgba(163,230,53,0.1); color: #A3E635; }
 .badge-purple { background: rgba(156,39,176,0.1); color: #9C27B0; }
 
 /* ── Consistent section heading ── */
@@ -358,12 +359,12 @@
   box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
 }
 
-.btn-gr8-teal {
+.btn-gr8-lime {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, #06B6D4, #0891B2);
+  background: linear-gradient(135deg, #A3E635, #84CC16);
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
@@ -373,8 +374,8 @@
   cursor: pointer;
   border: none;
 }
-.btn-gr8-teal:hover {
-  background: linear-gradient(135deg, #0891B2, #0E7490);
+.btn-gr8-lime:hover {
+  background: linear-gradient(135deg, #84CC16, #65A30D);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
 }
@@ -407,7 +408,7 @@
 /* ── Gradient Dividers ── */
 .section-divider {
   height: 4px;
-  background: linear-gradient(90deg, transparent, #E53935, #06B6D4, #E53935, transparent);
+  background: linear-gradient(90deg, transparent, #E53935, #A3E635, #E53935, transparent);
   border: none;
   opacity: 0.6;
 }

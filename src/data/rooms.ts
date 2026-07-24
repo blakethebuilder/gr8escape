@@ -22,7 +22,7 @@ export const rooms: RoomData[] = [
     tag: 'Most Popular',
   },
   {
-    name: 'Trapped', slug: 'trapped', difficulty: 8, icon: '🔥', color: '#06B6D4',
+    name: 'Trapped', slug: 'trapped', difficulty: 8, icon: '🔥', color: '#A3E635',
     players: '2–8', duration: '60 min', price: 'R320',
     story: "The Butler welcomes you to Mr. Charles A Clarence's estate. Then the smoke starts pouring in. A fire is tearing through the mansion — find another way out before you're burned alive.",
   },

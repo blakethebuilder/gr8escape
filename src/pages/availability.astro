@@ -50,7 +50,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
       <!-- Terminal chrome -->
       <div class="cal-chrome">
         <span class="cal-dot cal-dot-red"></span>
-        <span class="cal-dot cal-dot-teal"></span>
+        <span class="cal-dot cal-dot-lime"></span>
         <span class="cal-dot cal-dot-green"></span>
         <span class="cal-title">live.gr8escape.availability</span>
       </div>
@@ -61,7 +61,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
           </div>
           <div class="cal-rooms-preview">
             <div class="cal-room-row"><span class="cal-room-dot" style="background:#E53935"></span> Asylum Escape <span class="cal-slots">4 slots</span></div>
-            <div class="cal-room-row"><span class="cal-room-dot" style="background:#06B6D4"></span> Trapped <span class="cal-slots">3 slots</span></div>
+            <div class="cal-room-row"><span class="cal-room-dot" style="background:#A3E635"></span> Trapped <span class="cal-slots">3 slots</span></div>
             <div class="cal-room-row"><span class="cal-room-dot" style="background:#4CAF50"></span> The Hunted <span class="cal-slots">5 slots</span></div>
             <div class="cal-room-row"><span class="cal-room-dot" style="background:#9C27B0"></span> Nightmare <span class="cal-slots">2 slots</span></div>
             <div class="cal-room-row"><span class="cal-room-dot" style="background:#FF9800"></span> The Basement <span class="cal-slots">6 slots</span></div>
@@ -99,14 +99,14 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
   }
   .avail-hero-bg {
     position: absolute; inset: 0; pointer-events: none;
-    background-image: radial-gradient(circle, rgba(6,182,212,0.06) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(163,230,53,0.06) 1px, transparent 1px);
     background-size: 48px 48px;
   }
   .avail-hero-content { position: relative; max-width: 36rem; margin: 0 auto; }
   .avail-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.3rem 1rem; border-radius: 999px;
-    background: rgba(6,182,212,0.08); color: var(--teal, #06B6D4);
+    background: rgba(163,230,53,0.08); color: var(--lime, #A3E635);
     font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;
     margin-bottom: 1.5rem;
   }
@@ -157,7 +157,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
   }
   .avail-calendar-bg {
     position: absolute; inset: 0; pointer-events: none; opacity: 0.3;
-    background-image: radial-gradient(circle, rgba(6,182,212,0.08) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(163,230,53,0.08) 1px, transparent 1px);
     background-size: 40px 40px;
   }
   .avail-calendar-card {
@@ -167,8 +167,8 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
     transition: all 0.3s;
   }
   .avail-calendar-card:hover {
-    border-color: rgba(6,182,212,0.3);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(6,182,212,0.1);
+    border-color: rgba(163,230,53,0.3);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(163,230,53,0.1);
   }
   .cal-chrome {
     display: flex; align-items: center; gap: 0.5rem;
@@ -177,7 +177,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
   }
   .cal-dot { width: 10px; height: 10px; border-radius: 50%; }
   .cal-dot-red { background: var(--red, #E53935); }
-  .cal-dot-teal { background: var(--teal, #06B6D4); }
+  .cal-dot-lime { background: var(--lime, #A3E635); }
   .cal-dot-green { background: #22C55E; }
   .cal-title {
     margin-left: 0.5rem; font-size: 0.7rem; color: #555;
@@ -192,7 +192,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
     border-radius: 0.5rem; font-size: 0.75rem; font-weight: 600;
     color: #666; background: rgba(255,255,255,0.03);
   }
-  .cal-day.active { color: white; background: rgba(6,182,212,0.15); }
+  .cal-day.active { color: white; background: rgba(163,230,53,0.15); }
   .cal-rooms-preview {
     display: flex; flex-direction: column; gap: 0.5rem;
   }

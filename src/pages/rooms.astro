@@ -14,7 +14,7 @@ const rooms = [
     story: "Dr. Mulasy Tretour's office holds evidence of his vicious crimes — but one of his experiments is closer than you think. Gather the proof and get out before they get hold of you.",
   },
   {
-    name: 'Trapped', slug: 'trapped', difficulty: 8, icon: '🔥', color: '#06B6D4',
+    name: 'Trapped', slug: 'trapped', difficulty: 8, icon: '🔥', color: '#A3E635',
     players: '2–8', duration: '60 min', price: 'R320',
     story: "The Butler welcomes you to Mr. Charles A Clarence's estate. Then the smoke starts pouring in. A fire is tearing through the mansion — find another way out before you're burned alive.",
   },
@@ -74,7 +74,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
               <div class="r-preview-stats">
                 <span>{room.players} players</span>
                 <span>{room.duration}</span>
-                <span class="text-teal">{room.price}/pp</span>
+                <span class="text-lime">{room.price}/pp</span>
               </div>
             </div>
           </summary>
@@ -85,7 +85,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
               <div><span>Players</span><strong>{room.players}</strong></div>
               <div><span>Duration</span><strong>{room.duration}</strong></div>
               <div><span>Difficulty</span><strong>{typeof room.difficulty === 'number' ? `${room.difficulty}/10` : 'Outdoor'}</strong></div>
-              <div><span>Price</span><strong class="text-teal">{room.price}/pp</strong></div>
+              <div><span>Price</span><strong class="text-lime">{room.price}/pp</strong></div>
             </div>
             <a href={`${BOOKING_URL}?room=${room.slug}`} target="_blank" rel="noopener noreferrer" class="r-book-btn">
               Book {room.name}
@@ -128,7 +128,7 @@ const BOOKING_URL = 'https://gr8bookings.smartintegrate.co.za/book';
   }
   .r-hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; margin-bottom: 0.75rem; }
   .r-hero-content p { font-size: 1rem; color: #999; }
-  .r-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 500; }
+  .r-hero-content em { font-style: normal; color: var(--lime, #A3E635); font-weight: 500; }
 
   .r-section { padding: 2rem 1.5rem 4rem; background: #0d0d0d; }
   .r-grid { max-width: 48rem; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }

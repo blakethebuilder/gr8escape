@@ -11,7 +11,7 @@ const CALENDAR_URL = 'https://gr8bookings.smartintegrate.co.za/availability';
 
 const rooms = [
   { name: 'Asylum Escape', slug: 'asylum-escape', difficulty: '7/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🧪', color: '#E53935' },
-  { name: 'Trapped', slug: 'trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🔥', color: '#06B6D4' },
+  { name: 'Trapped', slug: 'trapped', difficulty: '8/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🔥', color: '#A3E635' },
   { name: 'The Hunted', slug: 'the-hunted', difficulty: '8.5/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🌲', color: '#4CAF50' },
   { name: 'Nightmare', slug: 'nightmare', difficulty: '9/10', players: '2–8', duration: '60 min', price: 'R320', icon: '🌙', color: '#9C27B0' },
   { name: 'The Basement', slug: 'the-basement', difficulty: '10/10', players: '2–8', duration: '60 min', price: 'R320', icon: '⛓️', color: '#FF9800' },
@@ -66,8 +66,8 @@ const rooms = [
   <section class="book-how-section">
     <div class="book-container">
       <div class="book-section-header">
-        <div class="book-step-badge book-step-teal">Step 2</div>
-        <h2>How It <span class="text-teal">Works</span></h2>
+        <div class="book-step-badge book-step-lime">Step 2</div>
+        <h2>How It <span class="text-lime">Works</span></h2>
       </div>
       <div class="book-how-grid">
         <div class="book-how-card">
@@ -135,7 +135,7 @@ const rooms = [
     line-height: 1.1; margin-bottom: 1rem;
   }
   .book-hero-content p { font-size: 1.1rem; color: #999; }
-  .book-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 600; }
+  .book-hero-content em { font-style: normal; color: var(--lime, #A3E635); font-weight: 600; }
 
   /* ── Room grid ── */
   .book-rooms-section {
@@ -156,7 +156,7 @@ const rooms = [
     font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
     margin-bottom: 1rem;
   }
-  .book-step-teal { background: rgba(6,182,212,0.1); color: var(--teal, #06B6D4); }
+  .book-step-lime { background: rgba(163,230,53,0.1); color: var(--lime, #A3E635); }
   .book-section-header h2 {
     font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: white;
     margin-bottom: 0.5rem;
@@ -198,7 +198,7 @@ const rooms = [
   }
   .brc-stat { font-size: 0.75rem; color: #ccc; font-weight: 600; white-space: nowrap; }
   .brc-stat small { font-size: 0.6rem; color: #666; font-weight: 400; }
-  .brc-price { font-size: 0.85rem; color: var(--teal, #06B6D4); font-weight: 700; }
+  .brc-price { font-size: 0.85rem; color: var(--lime, #A3E635); font-weight: 700; }
   .brc-price small { font-size: 0.6rem; color: #666; font-weight: 400; }
   .brc-arrow {
     color: #555; transition: all 0.3s; flex-shrink: 0;
@@ -283,8 +283,8 @@ const rooms = [
     transition: all 0.3s;
   }
   .btn-ghost-hero:hover {
-    border-color: var(--teal, #06B6D4);
-    background: rgba(6,182,212,0.08);
+    border-color: var(--lime, #A3E635);
+    background: rgba(163,230,53,0.08);
     transform: translateY(-2px);
   }
 </style>

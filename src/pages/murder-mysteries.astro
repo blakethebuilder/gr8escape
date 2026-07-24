@@ -50,7 +50,7 @@ const homeGames = [
                   <h3>{game.name}</h3>
                   <svg class="m-chevron" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
                 </div>
-                <div class="m-stats">{game.players} players &bull; {game.duration} &bull; <span class="text-teal">{game.price}/pp</span></div>
+                <div class="m-stats">{game.players} players &bull; {game.duration} &bull; <span class="text-lime">{game.price}/pp</span></div>
               </div>
             </summary>
             <div class="m-details">
@@ -70,8 +70,8 @@ const homeGames = [
   <section class="m-section m-section-alt">
     <div class="m-container">
       <div class="m-section-head">
-        <div class="m-venue m-venue-teal"><span>🏠</span> Play at Home &bull; One-use kits &bull; 2–6 players &bull; Pudo delivery or Fourways pickup</div>
-        <h2>Play <span class="text-teal">@ Home</span></h2>
+        <div class="m-venue m-venue-lime"><span>🏠</span> Play at Home &bull; One-use kits &bull; 2–6 players &bull; Pudo delivery or Fourways pickup</div>
+        <h2>Play <span class="text-lime">@ Home</span></h2>
       </div>
       <div class="m-grid m-grid-2">
         {homeGames.map((game) => (
@@ -83,7 +83,7 @@ const homeGames = [
                   <h3>{game.name}</h3>
                   <svg class="m-chevron" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
                 </div>
-                <div class="m-stats">{game.players} players &bull; {game.duration} &bull; <span class="text-teal">{game.price}/pack</span></div>
+                <div class="m-stats">{game.players} players &bull; {game.duration} &bull; <span class="text-lime">{game.price}/pack</span></div>
               </div>
             </summary>
             <div class="m-details">
@@ -129,7 +129,7 @@ const homeGames = [
   }
   .m-hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: white; margin-bottom: 0.75rem; }
   .m-hero-content p { font-size: 1rem; color: #999; }
-  .m-hero-content em { font-style: normal; color: var(--teal, #06B6D4); font-weight: 500; }
+  .m-hero-content em { font-style: normal; color: var(--lime, #A3E635); font-weight: 500; }
 
   .m-section { padding: 2rem 1.5rem; background: #0d0d0d; }
   .m-section-alt { background: #111; }
@@ -142,7 +142,7 @@ const homeGames = [
     font-size: 0.7rem; font-weight: 600; margin-bottom: 0.75rem;
     text-align: center;
   }
-  .m-venue-teal { background: rgba(6,182,212,0.08); color: var(--teal, #06B6D4); }
+  .m-venue-lime { background: rgba(163,230,53,0.08); color: var(--lime, #A3E635); }
   .m-section-head h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: white; }
 
   .m-grid { display: flex; flex-direction: column; gap: 0.65rem; }
