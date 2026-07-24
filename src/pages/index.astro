@@ -161,7 +161,7 @@ const metadata = {
 
   <!-- ════════════ FINAL CTA ════════════ -->
   <section class="cta-section">
-    <div class="cta-bg"></div>
+    <ParticleBackground particleCount={80} connectDistance={140} speed={0.3} opacity={0.5} />
     <div class="cta-content">
       <h2>Do You Have What It Takes to <span class="text-red">Escape</span>?</h2>
       <p>Immersive worlds. Mind-bending puzzles. <strong>60 minutes.</strong> The only question left is — <em>will you make it out?</em></p>
@@ -538,14 +538,8 @@ const metadata = {
   .cta-section {
     position: relative; z-index: 2;
     padding: 4rem 1.5rem;
-    background: transparent;
+    background: #080808;
     overflow: hidden;
-  }
-  .cta-bg {
-    position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      radial-gradient(circle, rgba(229,57,53,0.08) 1px, transparent 1px);
-    background-size: 48px 48px;
   }
   .cta-content {
     position: relative; max-width: 36rem; margin: 0 auto; text-align: center;
